@@ -32,3 +32,4 @@ El objetivo de nuestro proyecto es lo siguiente:
 -Generar clientes pontenciales
 -Ganar nuevos clientes
 -Potenciar la marca personal
+-promover nuevos modelos de ropas
