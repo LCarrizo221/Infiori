@@ -6,6 +6,10 @@ Info:
 -----------------------Integrante uno--------------------------------------
 Hola, mi nombre es Matias Emmanuel Puyo, soy de la Provincia de la Rioja Capital.
 
+-----------------------Integrante dos--------------------------------------
+Soy Santiago Zalazar, estudiante de Lic. en Sistemas, riojano de 23 años.
+
+
 
 
 
