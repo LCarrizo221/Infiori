@@ -12,6 +12,9 @@ Soy Santiago Zalazar, estudiante de Lic. en Sistemas, riojano de 23 años.
 -----------------------Integrante tres--------------------------------------
 ¡Hello world! My name is Franco. I´m biogeneticist and i´m 30 years old.
 
+-----------------------Integrante cuatro------------------------------------
+Soy Lucas Carrizo, nacido en catarmarca, me gusta hacer musica y programar.
+
 
 
 --------------------------------------------------------------------------------------------------------------------------
