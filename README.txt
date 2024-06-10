@@ -11,6 +11,22 @@ Soy Santiago Zalazar, estudiante de Lic. en Sistemas, riojano de 23 años.
 
 
 
+Descripcion:
+Nuestra tienda ofrece una amplia variedad de prendas de vestir para mujeres. 
+Desde ropa casual, como camisetas, jeans y sudaderas, hasta trajes de noche 
+y vestidos elegantes para ocasiones especiales.
+Ropa Interior y Lencería:
+Tenemos una sección dedicada a la ropa interior, que incluye desde básicos hasta diseños más elaborados.
+
+nuestras pagina va dirigido para:
+Mujeres de Todas las Edades: Nuestro enfoque principal es atender a mujeres de todas las edades,
+desde adolescentes hasta adultos mayores.
+
+Atraemos a mujeres que buscan moda casual para el día a día,
+así como a aquellas que desean lucir elegantes en eventos especiales.
+
+Adaptamos nuestra oferta para satisfacer diferentes presupuestos,
+desde opciones asequibles hasta prendas más exclusivas
 
 
 Referentes :
