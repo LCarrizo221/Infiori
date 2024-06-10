@@ -9,14 +9,20 @@ Hola, mi nombre es Matias Emmanuel Puyo, soy de la Provincia de la Rioja Capital
 -----------------------Integrante dos--------------------------------------
 Soy Santiago Zalazar, estudiante de Lic. en Sistemas, riojano de 23 años.
 
+-----------------------Integrante tres--------------------------------------
+¡Hello world! My name is Franco. I´m biogeneticist and i´m 30 years old.
 
 
+
+--------------------------------------------------------------------------------------------------------------------------
 Descripcion:
 Nuestra tienda ofrece una amplia variedad de prendas de vestir para mujeres. 
-Desde ropa casual, como camisetas, jeans y sudaderas, hasta trajes de noche 
+Desde ropa casual, como camisetas, jeans, trajes de noche 
 y vestidos elegantes para ocasiones especiales.
 Ropa Interior y Lencería:
 Tenemos una sección dedicada a la ropa interior, que incluye desde básicos hasta diseños más elaborados.
+Calzado:
+Una amplia variedad en calzado, de cuero y simil cuero.
 
 Nuestra pagina va dirigido a:
 Mujeres de Todas las Edades: Nuestro enfoque principal es atender a mujeres de todas las edades,
@@ -36,9 +42,14 @@ Referentes :
 -------------- https://vans.com.ar/ --------------
 // Logo en el footer, seccion de Newsletter con formulario para el mail
 
--------------https://www.modatex.com.ar/---------------
-//boton ingresar , formulario de inicio de sesion 
+-------------- https://www.modatex.com.ar/ ---------------
+// Boton ingresar , formulario de inicio de sesion 
 
+-------------- https://www.billabong.com.ar --------------
+// Pagina registro
+
+-------------- https://karamelho.com.ar/ ------------
+// Cards de productos
 
 
 
