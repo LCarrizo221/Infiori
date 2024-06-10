@@ -18,7 +18,7 @@ y vestidos elegantes para ocasiones especiales.
 Ropa Interior y Lencería:
 Tenemos una sección dedicada a la ropa interior, que incluye desde básicos hasta diseños más elaborados.
 
-nuestras pagina va dirigido para:
+Nuestra pagina va dirigido a:
 Mujeres de Todas las Edades: Nuestro enfoque principal es atender a mujeres de todas las edades,
 desde adolescentes hasta adultos mayores.
 
