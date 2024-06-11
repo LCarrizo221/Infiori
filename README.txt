@@ -15,6 +15,9 @@ Soy Santiago Zalazar, estudiante de Lic. en Sistemas, riojano de 23 años.
 -----------------------Integrante cuatro------------------------------------
 Soy Lucas Carrizo, nacido en catarmarca, me gusta hacer musica y programar.
 
+-----------------------Integrante cinco-------------------------------------
+Soy Gabriel Garcia, estudiante de la Lic. En Sistemas. Soy de la Provincia de Formosa
+
 
 
 --------------------------------------------------------------------------------------------------------------------------
