@@ -35,7 +35,7 @@ Atraemos a mujeres que buscan moda casual para el día a día,
 así como a aquellas que desean lucir elegantes en eventos especiales.
 
 Adaptamos nuestra oferta para satisfacer diferentes presupuestos,
-desde opciones asequibles hasta prendas más exclusivas
+desde opciones accesible hasta prendas más exclusivas.
 
 
 Referentes :
