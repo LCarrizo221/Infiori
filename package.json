@@ -1,0 +1,15 @@
+{
+  "name": "grupo_4_ecomerce",
+  "version": "1.0.0",
+  "description": "Proyecto Integrador de Digital House\r Grupo 4\r Tema: Ecomerce de Indumentaria\r Integrantes: Lucas Carrizo, Franco Mercado, Matias Puyo, Gabriel Garcia, Santiago Zalazar\r Info:\r -----------------------Integrante uno--------------------------------------\r Hola, mi nombre es Matias Emmanuel Puyo, soy de la Provincia de la Rioja Capital.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
