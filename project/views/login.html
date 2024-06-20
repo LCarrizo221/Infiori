@@ -4,24 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <img src="/public/img/redond quiza.png" alt="">
+    <link rel="stylesheet" href="/public/css/login.css" />
 </head>
 
 <body>
+  <div class="container">
+    <img class="logo" src="/public/img/redond quiza.png" alt="Logo" >
   <form action="resultado.html" method="POST">
-    <p>
+    <p class="nombre">
       <!-- campo para el nombre -->
       <label for="nombre">Nombre</label>
       <input type="text" id="nombre" name="nombre" required>
     </p>
-
     <p>
       <!-- campo para la contraseña -->
       <label for="password">Contraseña:</label>
       <input type="password" id="password" name="password" required>
-
     </p>
     <button type="submit">Iniciar Sesion</button>
+    
   </form>
+</div>
 </body>
 </html>
