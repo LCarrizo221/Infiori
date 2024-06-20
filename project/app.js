@@ -12,3 +12,6 @@ app.listen(3000, (err) => console.log("Server run: http://www.localhost:3000"))
 
 app.use(express.static("./public"));
 
+app.get('/views/detailProduct.html',(req,res)=>{
+    res.sendFile(path.resolve(__dirname,'./views/detailProduct.html'));
+});
