@@ -1,0 +1,30 @@
+main{
+    width: 100vw;
+}
+
+section{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-body a{
+    background-color: #DABDBD;
+    border: 0cap;
+    color: #A76A6A;
+}
+.card-body h5{
+    color: #A76A6A;
+}
+
+.card {
+    margin: 1rem 0;
+}

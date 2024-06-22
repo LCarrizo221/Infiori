@@ -7,3 +7,29 @@
 body{
     width: 100vw;
 }
+
+@media (min-width: 577px){
+    nav{
+        justify-content: space-around;
+    }
+    .logoInfioriNav{
+        width: 200px;
+    }
+    .fa-magnifying-glass{
+        display: none;
+    }
+    img.logoFooter{
+        width: 200px;
+    }
+    .divFooter{
+        width: 200px;
+    }
+}
+
+@media (max-width: 576px){
+    .inputNav{
+        display: none;
+    }
+}
+
+
