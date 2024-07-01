@@ -1,4 +1,5 @@
 header{
+    width: 100%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -28,6 +29,7 @@ nav{
     text-align: center;
     border: 0cap;
     margin-left: 1rem;
+    display: none;
 }
 
 .inputNav::placeholder{

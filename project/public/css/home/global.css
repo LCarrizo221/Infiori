@@ -24,12 +24,26 @@ body{
     .divFooter{
         width: 200px;
     }
-}
-
-@media (max-width: 576px){
+    section article{
+        width: 300px;
+        flex-wrap: wrap;
+    }
+    main section {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: stretch;
+    }
     .inputNav{
-        display: none;
+        display: block;
+    }
+    section article{
+        width: 40%;
     }
 }
 
+@media (min-width: 993px){
+    section article {
+        width: 20%;
+    }
+}
 

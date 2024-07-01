@@ -15,3 +15,7 @@ app.use(express.static("./public"));
 app.get('/detailProduct',(req,res)=>{
     res.sendFile(path.resolve(__dirname,'./views/detailProduct.html'));
 });
+
+app.get("/login", (req,res) =>{
+    res.sendFile(path.resolve("views/login.html"))
+})

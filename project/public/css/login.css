@@ -7,7 +7,7 @@ header{
     flex-wrap: wrap;
     align-items: baseline;
     flex-direction: column;
-  
+
 }
 body {
     display: flex;
