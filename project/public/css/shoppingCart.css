@@ -9,7 +9,7 @@ body {
 
 /* Estilos del header */
 header {
-    background-color: #DDAD89;
+    background-color: #DDADB9;
     padding: 0.9375rem; /* 15px / 16px */
 }
 
@@ -18,29 +18,43 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 0 0.625rem; /* 10px / 16px */
+    position: relative;
+}
+.logoEmpresa{
+    position:absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    max-height: 6rem;
+    width: auto;
 }
 
 /* Botón de atrás */
 .btn-atras {
-    background: none;
-    padding: 0.2rem;
-    border: none;
+    background: #DDADB9;
+    padding: 0.5rem;
+    border: 2px solid #A76A6A;
     font-size: 1.5rem;
     color: #A76A6A;
     cursor: pointer;
+    border-radius: 360%;
+    transition: 0.7s;
+    margin-right: auto;
+}
+.btn-atras:hover{
+    background-color: #7A5E66;
+    color: #5C3A3A;
 }
 
-/* Compra segura */
+/* Compra sgura */
 .compra-segura {
     display: flex;
     align-items: center;
-    margin-left: auto;
-    margin-right: 1rem; /* Espacio a la derecha */
+    margin-right: 0rem;
 }
 
 .texto-compra-segura {
-    margin-right: 0.3125rem; /* 5px / 16px */
-    font-size: 0.875rem; /* 14px / 16px */
+    margin-right: 0.3125rem; 
+    font-size: 0.875rem; 
     font-weight: 700;
     color: #A76A6A;
 }
@@ -57,10 +71,10 @@ header {
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid #A76A6A;
-    margin-left: 1.2rem;
+    margin-left: 0.5rem;
 }
 
-/* Media queries para ajustes en diferentes tamaños de pantalla */
+/* queries para ajustes en diferentes tamaño de pantalla */
 @media screen and (max-width: 360px) {
     body {
         font-size: 14px;
@@ -95,6 +109,7 @@ header {
 
     .texto-compra-segura {
         font-size: 1rem;
+
     }
 
     .foto-perfil {
@@ -121,6 +136,7 @@ header {
 }
 .itemContainer {
     margin-top: 1rem;
+    margin-bottom: 2rem;
 }
 
 .buyItem {
@@ -212,6 +228,66 @@ header {
     border-color: #A76A6A;
     outline: none;
 }
+@media screen and (min-width: 768px) {
+    .itemContainer {
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 2rem;
+    }
+
+    .buyItem {
+        padding: 1.5rem;
+        display: grid;
+        grid-template-columns: 25% 1fr auto;
+        gap: 2rem;
+        align-items: start;
+    }
+
+    .productImage {
+        width: 100%;
+        height: auto;
+        margin-right: 0;
+    }
+
+    .productInfo {
+        padding-right: 1rem;
+    }
+
+    .productName {
+        font-size: 1.3rem;
+    }
+
+    .productDescription {
+        font-size: 1rem;
+    }
+
+    .productActions {
+        margin-left: 0;
+        justify-content: flex-start;
+    }
+
+    .productPrice {
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .actionButtons {
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .quantityForm {
+        margin-bottom: 0;
+        margin-right: 1rem;
+    }
+
+    .removeButton {
+        padding: 0.6rem 1.2rem;
+        font-size: 1rem;
+    }
+}
 
 /* A PARTIR DE ACA ME ROMPO LA CABEZA INTENTANDO HACER UN MENU DESPLEGABLE */
 
@@ -229,10 +305,13 @@ header {
 .toggleShoppingCartLabel{
     display: block;
     padding: 1rem;
-    background-color: #DDAD89;
+    background-color: #ddad89cb;
     color: #A76A6A;
     text-align: center;
     cursor: pointer;
+}
+.toggleShoppingCartLabel:hover{
+    background-color: #DDAD89;
 }
 .toggleShoppingCartLabel i{
     margin-left: 0.5rem;

@@ -12,13 +12,15 @@
 <body>
     <header>
         <nav class="nav-carrito">
-            <button class="btn-atras">
+            <a href="/"> <button class="btn-atras" >
                 <i class="fas fa-arrow-left"></i>
-            </button>
+            </button></a>
+    
+            <img src="/img/logoinfiori.png" alt="logoEmpresa" class="logoEmpresa">
             <div class="compra-segura">
                 <span class="texto-compra-segura">Compra segura</span>
                 <i class="fas fa-lock"></i>
-            <img class="foto-perfil" src="imagen-de-perfil.jpg" alt="Foto de perfil">
+            <img class="foto-perfil" src="/img/profilePic.png" alt="Foto de perfil">
         </nav>
     </header>
     <main>
@@ -28,11 +30,60 @@
         </h1>
         <div class="itemContainer">
             <div class="buyItem">
-                <img src="productImage.png" alt="product" class="productImage">
+                <img src="/img/image7.jpg" alt="Chaleco Quimia" class="productImage">
                 <div class="productInfo">
-                    <h2 class="porductName">Nombre del producto</h2>
-                    <p class="productDescription">                    <p>Descripcion random sobre un producto que te va a mejorar la vida si o si estoy 100% seguro ya no se que mas poner en una description ayuda que tengas lindo dia</p>
-                </p>
+                    <h2 class="porductName">Chaleco Quimia Corderito</h2>
+                    <p class="productDescription">Chaleco de corderito suave y cálido. Ideal para el invierno, combina estilo y comodidad en un diseño elegante y versátil.</p>
+                </div>
+                <div class="productActions">
+                    <span class="productPrice">$4500</span>
+                    <div class="actionButtons">
+                        <form action="/app.js" method="get" class="quantityForm">
+                            <label for="quantity" class="quantityLabel">Cantidad</label>
+                            <select name="quantity" id="quantity" class="quantitySelector">
+                                <option value="1">1 unidad</option>
+                                <option value="2">2 unidades</option>
+                                <option value="3">3 unidades</option>
+                                <option value="4">4 unidades</option>
+                                <option value="5">5 unidades</option>
+                            </select>
+                        </form>
+                        <button type="reset" class="removeButton">Quitar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="itemContainer">
+            <div class="buyItem">
+                <img src="/img/detailProduct/cartera.jpeg" alt="Cartera de Cuero" class="productImage">
+                <div class="productInfo">
+                    <h2 class="porductName">Cartera de Cuero Clásica</h2>
+                    <p class="productDescription">Elegante cartera de cuero genuino. Espaciosa y duradera, perfecta para el uso diario con un toque de sofisticación.</p>
+                </div>
+                <div class="productActions">
+                    <span class="productPrice">$3200</span>
+                    <div class="actionButtons">
+                        <form action="/app.js" method="get" class="quantityForm">
+                            <label for="quantity" class="quantityLabel">Cantidad</label>
+                            <select name="quantity" id="quantity" class="quantitySelector">
+                                <option value="1">1 unidad</option>
+                                <option value="2">2 unidades</option>
+                                <option value="3">3 unidades</option>
+                                <option value="4">4 unidades</option>
+                                <option value="5">5 unidades</option>
+                            </select>
+                        </form>
+                        <button type="reset" class="removeButton">Quitar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="itemContainer">
+            <div class="buyItem">
+                <img src="/img/detailProduct/reloj.jpeg" alt="Reloj Casio Mujer" class="productImage">
+                <div class="productInfo">
+                    <h2 class="porductName">Reloj Casio Mujer Elegance</h2>
+                    <p class="productDescription">Reloj Casio para mujer, modelo Elegance. Combina estilo y funcionalidad con su diseño moderno y resistente al agua.</p>
                 </div>
                 <div class="productActions">
                     <span class="productPrice">$2900</span>
@@ -47,7 +98,7 @@
                                 <option value="5">5 unidades</option>
                             </select>
                         </form>
-                        <button type="reset" class="removeButton" >Quitar</button>
+                        <button type="reset" class="removeButton">Quitar</button>
                     </div>
                 </div>
             </div>
