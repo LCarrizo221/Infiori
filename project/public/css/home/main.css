@@ -36,6 +36,7 @@ article img{
     align-items: center;
     justify-content: space-between;
     flex-grow: 0.3;
+    text-align: center;
 }
 
 .card-body a{

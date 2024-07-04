@@ -22,9 +22,12 @@ footer{
 }
 .footerContact{
     display: flex;
+    width: 30%;
     flex-direction: column;
     flex-wrap: wrap;
-    align-items: center;
+    align-content: center ;
+    justify-content: space-around;
+    text-align: center;
 }
 
 .placeFooter{
@@ -40,8 +43,23 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    bottom: 3rem;
-    right: 3.5rem;
+    position: absolute;
+    top: -1.5rem;
+    right: 33%;
     z-index: 10;
+}
+
+.iconsFooter a {
+    color: #D9D9D9;
+    font-size: 20px;
+}
+
+.iconsFooter {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #a76a6a;
+    border-radius: 10px 0 0 10px;
 }
