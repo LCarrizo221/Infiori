@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: "Raleway", sans-serif;
 }
 
 body{
@@ -44,7 +45,9 @@ main section{
 
 .titleArt{
     margin: 30px;
+    margin-bottom: 35px;
     width: 100%;
+    text-align: center;
 }
 
 main section .pictureArt{
@@ -57,7 +60,7 @@ section .plusPictures{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    
+    background-color: #a76a6a;
     width: 25%;
 
 }
@@ -67,15 +70,22 @@ section .plusPictures{
     text-align: center;
 }
 
+
+
 section .pictureMajor{
     width: 100%;
-    box-shadow: inset 0px 0px 6px 6px rgba(0,0,0,0.4);
+    background-color: #a76a6a;
 
 }
 
 section .pictureMajor img{
     width: 100%;
+    width: 100%;
+    padding: 6px;
+    border-radius: 25px;
 }
+
+
 
 .comprar {
     display: flex;
@@ -89,6 +99,16 @@ section .pictureMajor img{
     color: #fff;
     transition-property: background-color, color;
     transition-duration: 0.5s;
+}
+
+@keyframes movInline{
+    0% {transform: translateX(-20px);}
+    25% {transform: translateX(20px);}
+}
+
+.interests h1{
+    font-size: 45px;
+    animation: movInline 5s infinite;
 }
 
 /* 
@@ -127,7 +147,7 @@ main img{
     width: 27px;
     height: 22px;
     color: #39b54a;
-    background-color: #ebebeb;
+    
     border: 1px solid #39b54a;
     border-radius: 50%;
     padding-top: 2px;
@@ -141,7 +161,8 @@ main img{
     padding: 0px;
     box-sizing: border-box;
     position: relative;
-    bottom: 15px;
+    bottom: 20px;
+    left: 20px;
 }
 
 .precios{
@@ -150,13 +171,40 @@ main img{
     gap: 0.5rem;
 }
 
+
+
 .priceProduct{
     display: flex;
     justify-content: flex-start;
     align-items: baseline;
     gap: 0.5rem;
-    margin-bottom: 15px;
-    padding-top: 25px;
+    
+}
+
+.price{
+    margin-right: 5px;
+    height: 30%;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.details{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.details p{
+    width: 45%;
+    color: #39b54a;
+    font-size: 15px;
+}
+
+.typePay{
+    width: 100%;
+    text-align: center;
 }
 
 .interests{
@@ -171,17 +219,20 @@ main img{
     width: 100%;
     margin-bottom: 1rem;
     padding-bottom: 5px;
+    border-radius: 20px;
 }
-
-.interests .products .main-article{
-    margin-bottom: 25px;
-}
-
 
 
 div.products article:hover{
     box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.75);
  
+  }
+
+  div.products article:hover i{
+    cursor: pointer;
+    transform: rotate(-90deg);
+    transition: .6s;
+
   }
 
   .buttons{
@@ -248,8 +299,21 @@ div.products article:hover{
     
     main section .pictureArt .details{
         order: 3;
+        background-color: #a76a6a;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        align-content: center;
+        flex-direction: column;
     }
 
+    .details p{
+      width: 100%;  
+    }
 
 
 
@@ -277,26 +341,75 @@ main section .pictureArt{
         flex-direction: row;
         flex-wrap: nowrap;
         align-items: center;
+        gap: 1rem;
+        background-color: #a76a6a;
 
 }
 
 section .plusPictures{
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    
-    width: 25%;
+    flex-wrap: nowrap;
+    order: 1;
+    width: 30%;
+    height: 100%;
 
 }
 .plusPictures img{
     width: 100%;
+    height: 30%;
+    border-radius: 20px;
 }
 
 section .pictureMajor{
     width: 100%;
+    order: 2;
 }
 
 section .pictureMajor img{
     width: 100%;
 }
+
+
+main section .pictureArt .details{
+    order: 3;
+    background-color: #a76a6a;
+    width: 35%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    align-content: center;
+    flex-direction: column;
+}
+
+.price{
+    margin-right: 5px;
+    height: auto;
+    font-weight: bolder;
+    font-size: 35px;
+
+}
+
+.details p{
+    width: 100%;
+    color: #39b54a;
+    font-size: 15px;
+}
+
+section div.products{
+    display: flex;
+    width: 100%;
+    
+    flex-direction: row;
+}
+
+section div.products article {
+    width: 40%;
+    display: flex;
+    align-items: flex-start;
+}
+
 }
