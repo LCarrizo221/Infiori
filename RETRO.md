@@ -1,3 +1,5 @@
+
+--------------------------------------------------------------------------------------------------------------
 *MORE:
 -----> Reuniones.
     Si bien tenemos buena comunicacion en gral en el grupo de wtspp, no estan de mas las reuniones a traves de discord para ayudarnos.
