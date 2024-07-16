@@ -1,9 +1,7 @@
-const path = require("node:path");
-
 
 const homeController = {
     main: (req,res) =>{
-        res.render("/home")
+        res.render("home")
     }
 }
 

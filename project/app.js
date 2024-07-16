@@ -1,7 +1,7 @@
 const express=require('express');
 const path = require("node:path");
 const app= express();
-const homeRoute = ("/routes/homeRoute")
+const homeRoute = require("./routes/homeRoute")
 
 const port = 3000 || process.env.PORT;
 
@@ -11,12 +11,9 @@ app.listen(port, (err) => console.log(`Server run: http://localhost:${port}`))
 
 app.use(express.static("./public"));
 
+
 app.set ("view engine", "ejs");
-
-
-
-app.get("/", homeRoute)
-
+app.use("/", homeRoute)
 
 app.get('/detailProduct',(req,res)=>{
     res.sendFile(path.resolve(__dirname,'./views/detailProduct.html'));
