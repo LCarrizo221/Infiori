@@ -1,7 +1,8 @@
 const express=require('express');
 const path = require("node:path");
 const app= express();
-const homeRoute = require("./routes/homeRoute")
+const homeRoute = require("./routes/homeRoute");
+const userRoute = require("./routes/userRoute");
 
 const port = 3000 || process.env.PORT;
 
@@ -14,18 +15,14 @@ app.use(express.static("./public"));
 
 app.set ("view engine", "ejs");
 app.use("/", homeRoute)
+app.use("/user", userRoute);
+
 
 app.get('/detailProduct',(req,res)=>{
     res.sendFile(path.resolve(__dirname,'./views/detailProduct.html'));
 });
 
-app.get("/login", (req,res) =>{
-    res.sendFile(path.resolve("views/login.html"))
-})
+
 app.get('/shoppingCart',(req,res)=>{
     res.sendFile(path.resolve(__dirname,'./views/carrito-compra.html'));
 });
-
-app.get("/register", (req,res) =>{
-    res.sendFile(path.resolve("views/formulario.html"))
-})
