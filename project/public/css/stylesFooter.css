@@ -1,0 +1,96 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100vw;
+}
+
+footer{
+    font-size: smaller;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: #DABDBD;
+    margin-top: 3rem;
+    position: relative;
+}
+
+.logoFooter {
+    width: 100px;
+}
+
+.footerNews{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.footerContact{
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center ;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.placeFooter{
+    width: 10rem;
+    text-align: center;
+    border: 0cap;
+    border-radius: 20px;
+    background-color: #D9D9D9;
+    color: #B9B7B7;
+}
+
+.divFooter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -1.5rem;
+    right: 33%;
+    z-index: 10;
+}
+
+.iconsFooter a {
+    color: #D9D9D9;
+    font-size: 20px;
+}
+
+.iconsFooter {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #a76a6a;
+    border-radius: 10px 0 0 10px;
+}
+
+@media (min-width: 577px) {
+    img.logoFooter{
+        width: 200px;
+    }
+    .divFooter{
+        width: 200px;
+    }
+    footer .divFooter{
+        top: -2.5rem;
+        right: 37%;
+    }
+}
+
+
+@media (min-width: 993px) {
+    footer .divFooter{
+        top: -2.5rem;
+        right: 42%;
+    }
+}

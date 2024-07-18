@@ -1,0 +1,149 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100vw;
+}
+
+header{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: #DDADB9;
+}
+nav{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    column-gap: 0.5rem;
+    background-color: #FFFDFD;
+}
+
+.logoInfioriNav{
+    width: 100px;
+    margin: 0 0;
+}
+
+.inputNav{
+    background-color: #DDADB9;
+    border-radius: 10px;
+    width: 8rem;
+    text-align: center;
+    border: 0cap;
+    margin-left: 1rem;
+    display: none;
+}
+
+.inputNav::placeholder{
+    color: #A76A6A;
+}
+
+.logoUser{
+    color: #DDADB9;
+}
+.logoCart{
+    color: #DDADB9;
+}
+
+.fa-solid{
+    color: #DDADB9;
+}
+
+#carouselExample{
+    width: 50vw;
+
+}
+.navDesk{
+    display: none;
+}
+
+@media (min-width: 577px) {
+    nav{
+        justify-content: space-around;
+    }
+    .logoInfioriNav{
+        width: 200px;
+    }
+    .fa-magnifying-glass{
+        display: none;
+    }
+    .navDesk{
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        column-gap: 1rem;
+        padding-right: 1rem;
+    }
+    .navDesk img {
+        width: 250px;
+    }
+    .navMob{
+        display: none;
+    }
+    .divUl {
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-end;
+        position: relative;
+        top: 3rem;
+        right: 3rem
+    }
+    .divUl ul{
+        list-style-type: none;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .navDesk a{
+        text-decoration: none;
+        color: #b9b7b7;
+        cursor: pointer;
+    }
+    .navDesk a:hover {
+        color: #DDADB9;
+        transition: 500ms;
+    }
+    .inputNav{
+        display: block;
+    }
+
+}
+
+@media (min-width: 993px) {
+    .inputNavDesk {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        row-gap: 2rem;
+        
+    }
+    .inputNavDesk input {
+        text-align: center;
+        background-color: #DDADB9;
+        height: 2rem;
+        border: 0cap;
+        border-radius: 10px;
+    }
+    .iconsDesk {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+}
