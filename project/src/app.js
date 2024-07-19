@@ -21,6 +21,8 @@ app.use(express.static(path.join(__dirname, "..", "public")));
 app.use("/", homeRoute);
 app.use("/product", productsRoute);
 app.use("/user", userRoute);
+app.use(express.urlencoded({extended: false}))
+app.use(express.json())
 
 app.listen(port, () => {
   console.log(`Server run: http://localhost:${port}`);

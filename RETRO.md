@@ -49,3 +49,43 @@
 -----> No commitear.
     Evitamos un dolor de cabeza.
 -------------------------------------------------------------------------------------------------------------
+
+
+
+///////////////////////////////////////////////RETROSPECTIVA 2///////////////////////////////////////////////
+
+
+*MORE:
+-----> Avisar Cuando hacen push para que no hayan incompatibilidades.
+-----> Mas juntadas para mejorar el desarrollo del proyecto.
+-----> Practicar.
+-----> Leer documentos.
+-----> Reuniones.
+-----> FeedBack entre el grupo.
+-----> Partidas en lolcito.
+-------------------------------------------------------------------------------------------------------------
+*START:
+-----> Aprender a usar branch en git.
+-----> 2 reuniones semanales.
+-----> Documentar mas el codigo.
+-----> Reunirnos para codear.
+-----> Comentar el codigo.
+-----> Usar las mismas paletas de colores.
+-------------------------------------------------------------------------------------------------------------
+*LESS:
+-----> Relajarse.
+-----> No ver el contenido de PG.
+-----> No avisar cuando se modifica el codigo.
+-----> Distraerse.
+-----> Dormir xd
+-----> Diseños diferentes.
+-------------------------------------------------------------------------------------------------------------
+*CONTINUE:
+-----> Seguir avisando de los push.
+-----> Mantener el buen clima.
+-----> LLevar al dia las act de PG.
+-----> Buena comunicacion.
+-------------------------------------------------------------------------------------------------------------
+*STOP:
+-----> ----------------
+-------------------------------------------------------------------------------------------------------------
