@@ -2,17 +2,13 @@
     margin: 0;
     padding: 0;
     font-family: "Raleway", sans-serif;
+    
 }
 
 body{
     width: 100%;
 }
 
-
-header{
-  
-    border: 3px solid #DDADB9;
-}
 
 .head_box{
     display: flex;
@@ -44,16 +40,17 @@ main section{
 }
 
 .titleArt{
-    margin: 30px;
-    margin-bottom: 35px;
+    border-top: 5px solid pink;
+    margin-top: 10px;
+    padding: 15px;
     width: 100%;
     text-align: center;
+    font-size: 10px;
 }
 
 main section .pictureArt{
     display: flex;
     width: 100%;
-
 }
 
 section .plusPictures{
@@ -65,9 +62,9 @@ section .plusPictures{
 
 }
 .plusPictures img{
-    width: 25%;
-    height: 100%;
-    text-align: center;
+    width: 90%;
+    margin: 15px;
+    border-radius: 20px;
 }
 
 
@@ -75,14 +72,14 @@ section .plusPictures{
 section .pictureMajor{
     width: 100%;
     background-color: #a76a6a;
+    text-align: center;
 
 }
 
 section .pictureMajor img{
     width: 100%;
-    width: 100%;
-    padding: 6px;
-    border-radius: 25px;
+    padding: 25px;
+    border-radius: 40px;
 }
 
 
@@ -91,7 +88,7 @@ section .pictureMajor img{
     width: 30%;
     height: 50px;
     border-radius: 40px;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: bold;
     outline: none;
     transition: .4s;
@@ -114,7 +111,7 @@ section .pictureMajor img{
 
 .interests h1{
     font-size: 45px;
-    animation: movInline 5s infinite;
+   animation: movInline 5s infinite; 
 }
 
 /* 
@@ -132,12 +129,13 @@ main section div.products article{
     border: 5px solid pink;
     border-radius: 5%;
 }
-
+/* 
 main img{
     width: 50%;
     height: 50%;
    
 }
+    */
 
 .product-info {
     padding: 15px;
@@ -189,9 +187,9 @@ main img{
 
 .price{
     margin-right: 5px;
-    height: 30%;
+    height: 40px;
     font-weight: bolder;
-    font-size: 20px;
+    font-size: 30px;
 }
 
 .details{
@@ -204,13 +202,18 @@ main img{
 
 .details p{
     width: 45%;
-    color: #39b54a;
+    color: #2add42;
     font-size: 20px;
+    font-weight: 600;
 }
 
 .typePay{
     width: 100%;
     text-align: center;
+}
+
+.typePay i{
+    font-size: 25px;
 }
 
 .interests{
@@ -257,7 +260,7 @@ div.products article:hover{
     width: 30%;
     height: 50px;
     border-radius: 40px;
-    font-size: 1rem;
+    font-size: 0.6rem;
     font-weight: bold;
     outline: none;
     transition: .4s;
@@ -273,7 +276,7 @@ div.products article:hover{
         transition-duration: 0.5s; 
   }
 
-@media (min-width: 320px){
+@media (min-width: 320px){ /* MOBILE SCREEN */
     
     body{
         width: 100%;
@@ -297,6 +300,7 @@ div.products article:hover{
         align-items: center;
         order: 2;
         width: 100%;
+        height: 80px;
         flex-wrap: nowrap;
         justify-content: space-around;
     }
@@ -342,11 +346,14 @@ div.products article:hover{
 
 
 
-@media (min-width: 768px){
+@media (min-width: 768px){ /* TABLET SCREEN */
     body{
         width: 100%;
     }
    
+    .titleArt{
+        font-size: 25px;
+    }
 
     img#logoPage{
         width: 30%;
@@ -362,13 +369,10 @@ main section{
 
 main section .pictureArt{
     display: flex;
-        width: 100%;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        align-items: center;
-        gap: 1rem;
-        background-color: #a76a6a;
-
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    background-color: #a76a6a;
 }
 
 section .plusPictures{
@@ -376,23 +380,20 @@ section .plusPictures{
     flex-direction: column;
     flex-wrap: nowrap;
     order: 1;
-    width: 30%;
-    height: 100%;
-
+    width: 20%;
+    justify-content: center;
 }
+
 .plusPictures img{
-    width: 100%;
-    height: 30%;
+    width: 90%;
+    margin: 10px;
+    height: 100%;
     border-radius: 20px;
 }
 
 section .pictureMajor{
-    width: 100%;
     order: 2;
-}
-
-section .pictureMajor img{
-    width: 100%;
+    width: 50%;
 }
 
 
@@ -400,7 +401,6 @@ main section .pictureArt .details{
     order: 3;
     background-color: #a76a6a;
     width: 35%;
-    height: 100%;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -411,17 +411,16 @@ main section .pictureArt .details{
 }
 
 .price{
-    margin-right: 5px;
     height: auto;
     font-weight: bolder;
-    font-size: 35px;
+    font-size: 40px;
 
 }
 
 .details p{
     width: 100%;
-    color: #39b54a;
-    font-size: 15px;
+    color: #30df47;
+    font-size: 20px;
 }
 
 section div.products{
@@ -437,4 +436,49 @@ section div.products article {
     align-items: flex-start;
 }
 
+.comprar{
+    font-size: 1.5rem;
 }
+
+.buttons .addArt{
+    font-size: 1rem;
+}
+}
+
+
+@media (min-width: 1024px){ /* DESKTOP SCREEN */
+
+    main section .pictureArt{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        background-color: #a76a6a;
+        justify-content: space-evenly;
+    }
+
+    section .plusPictures{
+        height: 25%;
+        width: 20%;
+    }
+
+    .plusPictures img{
+        width: 65%;
+    }
+
+    section .pictureMajor{
+        width: 40%;
+
+    }
+
+    section .pictureMajor img{
+        padding: 10px;
+    }
+
+    .buttons .addArt{
+        font-size: 1.5rem;
+    }
+
+    
+}
+
