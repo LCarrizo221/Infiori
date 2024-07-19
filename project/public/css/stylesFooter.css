@@ -1,3 +1,13 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100vw;
+}
+
 footer{
     font-size: smaller;
     width: 100%;
@@ -62,4 +72,25 @@ footer{
     justify-content: space-around;
     background-color: #a76a6a;
     border-radius: 10px 0 0 10px;
+}
+
+@media (min-width: 577px) {
+    img.logoFooter{
+        width: 200px;
+    }
+    .divFooter{
+        width: 200px;
+    }
+    footer .divFooter{
+        top: -2.5rem;
+        right: 37%;
+    }
+}
+
+
+@media (min-width: 993px) {
+    footer .divFooter{
+        top: -2.5rem;
+        right: 42%;
+    }
 }

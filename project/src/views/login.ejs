@@ -2,32 +2,92 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INGRESAR</title>
     <link rel="stylesheet" href="/css/login.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/03e63e3d58.js" crossorigin="anonymous"></script>
+    <title>login</title>
 </head>
-
 <body>
-  <%- include("partials/header") %>
-  
-  <div class="container">
+    <header>
+        <nav class="navMob">
+            <i class="fa-solid fa-bars"></i>
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="¿Que buscas?" class="inputNav">
+            <img src="/img/logoinfiori.png" alt="" class="logoInfioriNav">
+            <a href="/register" class="logoUser"><i class="fa-solid fa-user"></i></a>
+            <a href="/shoppingCart" class="logoCart"><i class="fa-solid fa-cart-shopping"></i></a>
+        </nav>
 
-    <img class="logo" src="/public/img/logoinfiori.png" alt="Logo" >
-  <form action="resultado.html" method="POST">
-    <p class="nombre">
-      <!-- campo para el nombre -->
-      <label for="nombre"></label>
-      <input type="text" placeholder="Usuario" id="nombre" name="nombre" required>
-    </p>
-    <p>
-      <!-- campo para la contraseña -->
-      <label for="password"></label>
-      <input type="password" placeholder="Contraseña" id="password" name="password" required>
-    </p>
-    <button type="submit">Iniciar Sesion</button>
-    <button type="submit">Registrarse</button>
-    
-  </form>
- </div>
+        <nav class="navDesk">
+            <img src="/img/logoinfiori.png" alt="">
+            <div class="divUl">
+                <ul>
+                    <li><a href="">Calzado</a></li>
+                    <li><a href="">Indumentaria</a></li>
+                    <li><a href="">Fiesta</a></li>
+                    <li><a href="">Accesorios</a></li>
+                </ul>
+            </div>
+            <div class="inputNavDesk">
+                <input type="text" placeholder="¿Que buscas?">
+                <div class="iconsDesk">
+                    <a href="/" class="logoUser"><i class="fa-solid fa-user"></i></a>
+                    <a href="/shoppingCart" class="logoCart"><i class="fa-solid fa-cart-shopping"></i></a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <form action="">
+            <h2>Iniciar Sesion</h2>
+            
+            <img src="/img/logoinfiori.png" alt="">
+
+            <label for="nombre"  class="inp">
+                <input type="text" name="" id="" placeholder="Usuario" id="nombre" name="nombre" required>
+            </label>
+
+            <label for="password"  class="inp">
+                <input type="password" name="password" id="password" placeholder="Contraseña" required>
+            </label>
+
+            <label for="" class="butt">
+                <button type="submit">Ingresar</button>
+                <button type="submit">Registrarse</button>
+            </label>
+        </form>
+    </main>
+
+    <footer>
+        <div class="footerNews">
+            <p> NEWSLETTER</p>
+            <P>No te pierdas ninguna novedad.</P>
+            <form action="">
+                <label for="">
+                    <input type="email" placeholder="ingresar tu email" class="placeFooter">
+                </label>
+            </form>
+        </div>
+        <div class="divFooter">
+            <img src="/img/logoinfiori.png" alt="" width="200px" class="logoFooter">
+        </div>
+        <div class="footerContact">
+                <p>Contact us</p>
+            <div class="iconsFooter">
+                <a href="">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a href="">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+
 </body>
 </html>

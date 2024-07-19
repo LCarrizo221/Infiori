@@ -11,7 +11,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/css/home/styles.css">
+    <link rel="stylesheet" href="/css/stylesHome.css">
+    <link rel="stylesheet" href="/css/stylesHeader.css">
+    <link rel="stylesheet" href="/css/stylesFooter.css">
 </head>
 
 <body>
@@ -42,77 +44,16 @@
     </header>
     <main>
         <section>
-            <article>
-                <img src="/img/image7.jpg" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Chaleco Quimia</h5>
-                    <p class="card-text">En eco-cuero forrado con corderito, de tipo pesado.</p>
-                    <a href="/product/detail">Ir a...</a>
-                </div>
-            </article>
-
-            <article>
-                <img src="/img/image22.jpg" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Campera Rougue</h5>
-                    <p class="card-text">En jean, corte oversize.</p>
-                    <a href="#">Ir a...</a>
-                </div>
-            </article>
-
-            <article>
-                <img src="/img/image8.jpg" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Campera The Grinch</h5>
-                    <p class="card-text">Puffer, impermeable con plumas de ganzo.</p>
-                    <a href="#">Ir a...</a>
-                </div>
-            </article>
-
-            <article>
-                <img src="/img/image15.jpg" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Campera Moura</h5>
-                    <p class="card-text">En eco-cuero forrada.</p>
-                    <a href="#">Ir a...</a>
-                </div>
-            </article>
-
-            <article>
-                <img src="/img/image20.jpg" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Conjunto spice</h5>
-                    <p class="card-text">En morley frizado</p>
-                    <a href="#">Ir a...</a>
-                </div>
-            </article>
-
-            <article>
-                <img src="/img/image21.jpg" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Vestido azeb</h5>
-                    <p class="card-text">En lycra y algodon, super comodo.</p>
-                    <a href="#">Ir a...</a>
-                </div>
-            </article>
-
-            <article>
-                <img src="/img/image11.jpg" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Puffer Blacky</h5>
-                    <p class="card-text">Chaleco Puffer super abrigado</p>
-                    <a href="#">Ir a...</a>
-                </div>
-            </article>
-
-            <article>
-                <img src="/img/image14.jpg" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Buzo tejigo</h5>
-                    <p class="card-text">Tejido estampado</p>
-                    <a href="#">Ir a...</a>
-                </div>
-            </article>
+            <% articles.forEach(item => {%>
+                <article>
+                    <img src=<%= item.imagen %> alt="">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= item.titulo %></h5>
+                        <p class="card-text"><%= item.descripcion %></p>
+                        <a href="/product/detail">Ir a...</a>
+                    </div>
+                </article>
+            <%}); %>
         </section>
     </main>
     <%- include("partials/footer") %>
