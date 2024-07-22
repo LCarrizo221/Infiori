@@ -5,6 +5,10 @@ const app = express();
 //define port
 const port = 3000 || process.env.PORT;
 
+//Ready const for working method POST
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
+
 //define routes
 const homeRoute = require("./routes/homeRoute");
 const productsRoute = require("./routes/productsRoute");
@@ -21,8 +25,15 @@ app.use(express.static(path.join(__dirname, "..", "public")));
 app.use("/", homeRoute);
 app.use("/product", productsRoute);
 app.use("/user", userRoute);
+
+//Configuration petitions user the method PUT and DELETE
 app.use(express.urlencoded({extended: false}))
-app.use(express.json())
+app.use(express.json());
+
+//Configuration 404 error handler
+app.use((req,res,next) => {
+res.status(404).render('not-found');
+});
 
 app.listen(port, () => {
   console.log(`Server run: http://localhost:${port}`);
