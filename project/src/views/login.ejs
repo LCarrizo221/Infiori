@@ -39,23 +39,23 @@
     </header>
 
     <main>
-        <form action="">
-            <h2>Iniciar Sesion</h2>
+        <form action="/user/login" method="POST">
+            <h2>Iniciar Sesión</h2>
             
-            <img src="/img/logoinfiori.png" alt="">
-
-            <label for="nombre"  class="inp">
-                <input type="text" name="" id="" placeholder="Usuario" id="nombre" name="nombre" required>
+            <img src="/img/logoinfiori.png" alt="Logo Infiori">
+    
+            <label for="userName" class="inp">
+                <input type="text" id="userName" name="userName" placeholder="Nombre de Usuario" required>
             </label>
-
-            <label for="password"  class="inp">
-                <input type="password" name="password" id="password" placeholder="Contraseña" required>
+    
+            <label for="password" class="inp">
+                <input type="password" id="password" name="password" placeholder="Contraseña" required>
             </label>
-
-            <label for="" class="butt">
+    
+            <div class="butt">
                 <button type="submit">Ingresar</button>
-                <button type="submit">Registrarse</button>
-            </label>
+                <a href="/user/register"><button type="button">Registrarse</button></a>
+            </div>
         </form>
     </main>
 
