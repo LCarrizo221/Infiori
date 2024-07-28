@@ -18,6 +18,7 @@ const userRoute = require("./routes/userRoute");
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
+
 //midleware dir public
 app.use(express.static(path.join(__dirname, "..", "public")));
 

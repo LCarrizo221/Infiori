@@ -29,7 +29,7 @@
     <main>
         <section>
             <div class="titleArt">
-                <h1>Borcego Mujer Maquina de guerra</h1>
+                <h1><%= product.titulo %></h1>
             </div>
             <div class="pictureArt">
                 <div class="plusPictures">
@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="pictureMajor">
-                    <img src="/img/detailProduct/borcego1.png" />
+                    <img src="<%= product.imagen %>" />
                 </div>
 
                 <div class="details">
@@ -66,7 +66,7 @@
 
             </div>
         </section>
-        <%- include("partials/cards") %>
+       
     </main>
     <%- include("partials/footer") %>
 </body>
