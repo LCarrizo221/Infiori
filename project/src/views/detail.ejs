@@ -29,13 +29,15 @@
     <main>
         <section>
             <div class="titleArt">
-                <h1><%= product.titulo %></h1>
+                <h1>
+                    <%= product.titulo %>
+                </h1>
             </div>
             <div class="pictureArt">
                 <div class="plusPictures">
-                    <img src="/img/detailProduct/borcego2.png" />
-                    <img src="/img/detailProduct/borcego3 (1).png" />
-                    <img src="/img/detailProduct/borcego3 (2).png" />
+                    <img src=<%=selectedProduct.imagen %> />
+                    <img src=<%=selectedProduct.imagen %> />
+                    <img src=<%=selectedProduct.imagen %> />
                 </div>
 
                 <div class="pictureMajor">
@@ -43,8 +45,11 @@
                 </div>
 
                 <div class="details">
-                    <h3 class="price">$89.999</h3>
-                    <p>6 coutas de $21.600</p>
+                    <h3 class="price">
+                        <%= selectedProduct.precio %>
+                    </h3>
+                    <p>6 cuotas de $<%= selectedProduct.precio /6 %>
+                    </p>
                     <div class="typePay">
                         <h4>Elegir pagar con:</h4>
                         <i class="fa-regular fa-credit-card"></i>
@@ -66,7 +71,7 @@
 
             </div>
         </section>
-       
+
     </main>
     <%- include("partials/footer") %>
 </body>

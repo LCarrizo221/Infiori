@@ -4,6 +4,7 @@ const router = express.Router();
 
 
 router.get("/", homeControl.main);
+router.get("category/:word", homeControl.filter)
 
 
 module.exports = router;
