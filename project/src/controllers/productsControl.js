@@ -1,8 +1,13 @@
 const { log } = require("console");
-const articles = require("../models/products.json")
 
+const fs = require('fs');
+const path = require('node:path');
+
+const productsFilePath = path.join(__dirname,"../models/products.json");
+const articles = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 const product = {
+
     main: (req,res) =>{
         res.render("carrito-compra");
     },
@@ -18,9 +23,29 @@ const product = {
         res.render("formUpload");
     },
     upLoadImag: (req,res) =>{
-        console.log(req.file);
-        res.send("archivo subido correctamente")
-      
+        let updated = false;
+        let id = articles.length+1;
+        
+        let articleUpd = articles.filter((article) => {
+            if(article.id != id){
+            article.id = id;
+            article.titulo = req.body.titulo;
+            article.descripcion = req.body.descripcion;
+            article.imagen = '/img/'+req.file.filename;
+            article.tipo = req.body.tipo;
+            article.precio = req.body.precio;
+            updated = true;
+        }
+            return article;
+        });
+        if (updated) {
+            fs.writeFileSync(productsFilePath, JSON.stringify(articleUpd, null, 2));
+            //res.send(productUpd[id-1]);
+            res.send("archivo subido correctamente");
+        } else {
+            res.send('Producto no encontrado' );
+        }
+    
     }
 
 };

@@ -9,7 +9,7 @@ let storage = multer.diskStorage({
     },
     filename: (req,file,callback)=> {
 
-    callback(null, file.originalname+'-'+ Date.now() + path.extname(file.originalname));
+    callback(null, 'Article-'+ Date.now() + path.extname(file.originalname));
     }
 });
 
