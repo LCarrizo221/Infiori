@@ -9,7 +9,7 @@ router.get("/detail/:id", productsControl.detail);
 router.get("/edit",productsControl.edit);
 router.get("/upload", productsControl.upLoad);
 router.post("/upload/", Fileupload.single('imagen'), productsControl.upLoadImag);
-
+router.post("/")
 
 
 module.exports = router;
