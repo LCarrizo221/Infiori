@@ -7,7 +7,7 @@ const productsFilePath = path.join(__dirname,"../models/products.json");
 const articles = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 const product = {
-    main: (req, res) => {
+    cart: (req, res) => {
         res.render("carrito-compra");
     },
     detail: (req, res) => {
