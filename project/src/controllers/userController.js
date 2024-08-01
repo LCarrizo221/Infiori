@@ -1,19 +1,69 @@
+const fs = require("node:fs/promises");
+const path = require("path");
+
+const usersFilePath = path.join(__dirname, '../models/users.json');
+
 const userController = {
-    showLogin: (req,res) => {
+    showLogin: (req, res) => {
         res.render("login.ejs");
     },
+
     processLogin: (req, res) => {
         const { userName, password } = req.body;
         console.log(`Intento de login con usuario: ${userName}`);
         res.redirect('/');
     },
-    showRegister: (req,res) => {
+
+    showRegister: (req, res) => {
         res.render("register.ejs");
     },
-    processRegister: (req, res) => {
-        const { userName, password } = req.body;
+
+    processRegister: async (req, res) => {
+        const { userName, password, nombre, apellido } = req.body;
         console.log(`Intento de registro con user: ${userName}`);
-        res.redirect('/user/login');
+
+        try {
+            // Leer los usuarios actuales
+            let users = [];
+            try {
+                const usersData = await fs.readFile(usersFilePath, 'utf8');
+                users = JSON.parse(usersData);
+            } catch (error) {
+                if (error.code === 'ENOENT') {
+                    // Si el archivo no existe, creamos un archivo vacío
+                    await fs.writeFile(usersFilePath, JSON.stringify([]), 'utf8');
+                } else {
+                    console.error("No se pudo leer el JSON de usuarios", error);
+                    throw error;
+                }
+            }
+
+            // Crear un nuevo usuario
+            const newUser = {
+                id: users.length + 1,
+                firstName: nombre,
+                lastName: apellido,
+                email: userName,
+                password,
+                category: "user",
+                image: ""
+            };
+
+            users.push(newUser);
+
+            // Escribir los usuarios actualizados en el archivo
+            await fs.writeFile(usersFilePath, JSON.stringify(users, null, 2), 'utf8');
+            console.log(`${userName} se agregó correctamente`);
+
+            // Redirigir al usuario después de que se haya agregado correctamente
+            res.redirect('/user/login');
+            
+        } catch (error) {
+            console.error("Error en el registro:", error);
+            if (!res.headersSent) {
+                res.status(500).send("Error al registrar el usuario");
+            }
+        }
     }
 };
 
