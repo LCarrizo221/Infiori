@@ -1,10 +1,5 @@
-const { log } = require("console");
 
-const fs = require('fs');
-const path = require('node:path');
-
-const productsFilePath = path.join(__dirname,"../models/products.json");
-const articles = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+const datasource = require('../../services/datasource');
 
 const product = {
     cart: (req, res) => {
@@ -45,7 +40,8 @@ const product = {
             res.send('Producto no encontrado' );
         }
     
-    }
+    },
+
 }
 
 
