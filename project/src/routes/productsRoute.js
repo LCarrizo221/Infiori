@@ -12,6 +12,10 @@ router.get("/edit",productsControl.edit);
 router.get("/upload", productsControl.upLoad);
 router.post("/upload/", Fileupload.single('imagen'), productsControl.create);
 
+//Implements for Lucas Carrizo 
+router.post("/upload/", Fileupload.single('imagen'), productsControl.upLoadImag);
+router.post("/");
+
 router.get("/delete/:id/", productsControl.delete);
 
 
