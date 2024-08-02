@@ -1,114 +1,114 @@
 [
-    {
-        "id": 1,
-        "titulo": "Chaleco Quimia",
-        "descripcion": "En eco-cuero forrado con corderito, de tipo pesado.",
-        "imagen": "/img/products/image7.jpg",
-        "tipo": "indumentaria",
-        "precio": 14999
-    },
-    {
-        "id": 2,
-        "titulo": "Campera Rougue",
-        "descripcion": "En jean, corte oversize.",
-        "imagen": "/img/products/image22.jpg",
-        "tipo": "indumentaria",
-        "precio": 19999
-    },
-    {
-        "id": 3,
-        "titulo": "Campera The Grinch",
-        "descripcion": "Puffer, impermeable con plumas de ganzo.",
-        "imagen": "/img/products/image8.jpg",
-        "tipo": "indumentaria",
-        "precio": 33499
-    },
-    {
-        "id": 4,
-        "titulo": "Campera Moura",
-        "descripcion": "En eco-cuero forrada.",
-        "imagen": "/img/products/image15.jpg",
-        "tipo": "indumentaria",
-        "precio": 25999
-    },
-    {
-        "id": 5,
-        "titulo": "Conjunto spice",
-        "descripcion": "En morley frizado.",
-        "imagen": "/img/products/image20.jpg",
-        "tipo": "indumentaria",
-        "precio": 18999
-    },
-    {
-        "id": 6,
-        "titulo": "Vestido azeb",
-        "descripcion": "En lycra y algodón, super cómodo.",
-        "imagen": "/img/products/image21.jpg",
-        "tipo": "indumentaria",
-        "precio": 17999
-    },
-    {
-        "id": 7,
-        "titulo": "Puffer Blacky",
-        "descripcion": "Chaleco Puffer super abrigado.",
-        "imagen": "/img/products/image4.jpg",
-        "tipo": "indumentaria",
-        "precio": 21999
-    },
-    {
-        "id": 8,
-        "titulo": "Buzo tejigo",
-        "descripcion": "Tejido estampado.",
-        "imagen": "/img/products/image14.jpg",
-        "tipo": "indumentaria",
-        "precio": 12999
-    },
-    {
-        "id": 9,
-        "titulo": "Camisa fresia",
-        "descripcion": "En seda importada.",
-        "imagen": "/img/products/image1.jpg",
-        "tipo": "indumentaria",
-        "precio": 15999
-    },
-    {
-        "id": 10,
-        "titulo": "Borcegos bay",
-        "descripcion": "En cuero con hebillas.",
-        "imagen": "/img/products/image2.jpg",
-        "tipo": "calzado",
-        "precio": 29999
-    },
-    {
-        "id": 11,
-        "titulo": "Botas hailey",
-        "descripcion": "En cuero, calidad super premium.",
-        "imagen": "/img/products/image3.jpg",
-        "tipo": "calzado",
-        "precio": 34999
-    },
-    {
-        "id": 12,
-        "titulo": "Sweater cloudy",
-        "descripcion": "Tejido premium, lana pesada.",
-        "imagen": "/img/products/image9.jpg",
-        "tipo": "indumentaria",
-        "precio": 17999
-    },
-    {
-        "id": 13,
-        "titulo": "Botas baty",
-        "descripcion": "En cuero, altas super cómodas.",
-        "imagen": "/img/products/image10.jpg",
-        "tipo": "calzado",
-        "precio": 27999
-    },
-    {
-        "id": 14,
-        "titulo": "Camisa monique",
-        "descripcion": "Seda importada de primera calidad.",
-        "imagen": "/img/products/image18.jpg",
-        "tipo": "indumentaria",
-        "precio": 16999
-    }
+  {
+    "id": 1,
+    "titulo": "Chaleco Quimia",
+    "descripcion": "En eco-cuero forrado con corderito, de tipo pesado.",
+    "imagen": "/img/products/image7.jpg", 
+    "tipo": "indumentaria",
+    "precio": 14999
+  },
+  {
+    "id": 2,
+    "titulo": "Campera Rougue",
+    "descripcion": "En jean, corte oversize.",
+    "imagen": "/img/products/image22.jpg",
+    "tipo": "indumentaria",
+    "precio": 19999
+  },
+  {
+    "id": 3,
+    "titulo": "Campera The Grinch",
+    "descripcion": "Puffer, impermeable con plumas de ganzo.",
+    "imagen": "/img/products/image8.jpg",
+    "tipo": "indumentaria",
+    "precio": 33499
+  },
+  {
+    "id": 4,
+    "titulo": "Campera Moura",
+    "descripcion": "En eco-cuero forrada.",
+    "imagen": "/img/products/image15.jpg",
+    "tipo": "indumentaria",
+    "precio": 25999
+  },
+  {
+    "id": 5,
+    "titulo": "Conjunto spice",
+    "descripcion": "En morley frizado.",
+    "imagen": "/img/products/image20.jpg",
+    "tipo": "indumentaria",
+    "precio": 18999
+  },
+  {
+    "id": 6,
+    "titulo": "Vestido azeb",
+    "descripcion": "En lycra y algodón, super cómodo.",
+    "imagen": "/img/products/image21.jpg",
+    "tipo": "indumentaria",
+    "precio": 17999
+  },
+  {
+    "id": 7,
+    "titulo": "Puffer Blacky",
+    "descripcion": "Chaleco Puffer super abrigado.",
+    "imagen": "/img/products/image4.jpg",
+    "tipo": "indumentaria",
+    "precio": 21999
+  },
+  {
+    "id": 8,
+    "titulo": "Buzo tejigo",
+    "descripcion": "Tejido estampado.",
+    "imagen": "/img/products/image14.jpg",
+    "tipo": "indumentaria",
+    "precio": 12999
+  },
+  {
+    "id": 9,
+    "titulo": "Camisa fresia",
+    "descripcion": "En seda importada.",
+    "imagen": "/img/products/image1.jpg",
+    "tipo": "indumentaria",
+    "precio": 15999
+  },
+  {
+    "id": 10,
+    "titulo": "Borcegos bay",
+    "descripcion": "En cuero con hebillas.",
+    "imagen": "/img/products/image2.jpg",
+    "tipo": "calzado",
+    "precio": 29999
+  },
+  {
+    "id": 11,
+    "titulo": "Botas hailey",
+    "descripcion": "En cuero, calidad super premium.",
+    "imagen": "/img/products/image3.jpg",
+    "tipo": "calzado",
+    "precio": 34999
+  },
+  {
+    "id": 12,
+    "titulo": "Sweater cloudy",
+    "descripcion": "Tejido premium, lana pesada.",
+    "imagen": "/img/products/image9.jpg",
+    "tipo": "indumentaria",
+    "precio": 17999
+  },
+  {
+    "id": 13,
+    "titulo": "Botas baty",
+    "descripcion": "En cuero, altas super cómodas.",
+    "imagen": "/img/products/image10.jpg",
+    "tipo": "calzado",
+    "precio": 27999
+  },
+  {
+    "id": 14,
+    "titulo": "Camisa monique",
+    "descripcion": "Seda importada de primera calidad.",
+    "imagen": "/img/products/image18.jpg",
+    "tipo": "indumentaria",
+    "precio": 16999
+  }
 ]

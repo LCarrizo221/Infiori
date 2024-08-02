@@ -21,30 +21,27 @@ const product = {
     upLoad: (req, res) => {
         res.render("formUpload");
     },
-    upLoadImag: (req,res) =>{
-        let updated = false;
+    create: (req,res) =>{
         let id = articles.length+1;
-        
-        let articleUpd = articles.filter((article) => {
-            if(article.id != id){
-            article.id = id;
-            article.titulo = req.body.titulo;
-            article.descripcion = req.body.descripcion;
-            article.imagen = '/img/'+req.file.filename;
-            article.tipo = req.body.tipo;
-            article.precio = req.body.precio;
-            updated = true;
-        }
-            return article;
-        });
-        if (updated) {
-            fs.writeFileSync(productsFilePath, JSON.stringify(articleUpd, null, 2));
-            //res.send(productUpd[id-1]);
-            res.send("archivo subido correctamente");
-        } else {
-            res.send('Producto no encontrado' );
-        }
-    
+        const article = {
+            id: id,
+            titulo: req.body.titulo,
+            descripcion: req.body.descripcion,
+            imagen: '/img/products/' + req.file.filename,
+            tipo: req.body.tipo,
+            precio: req.body.precio
+        };
+        articles.push(article);
+        fs.writeFileSync(productsFilePath, JSON.stringify(articles, null, 2));
+        //res.send("archivo subido correctamente" );
+        res.redirect("/");
+
+    },
+    delete: (req,res)=>{
+        let id = req.params.id;
+        let artDel = articles.filter((article) => article.id != id);
+        fs.writeFileSync(productsFilePath, JSON.stringify(artDel, null, 2));
+        res.redirect("/");
     }
 }
 
