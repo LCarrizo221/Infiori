@@ -26,8 +26,9 @@ app.use(express.static(path.join(__dirname, "..", "public")));
 app.use("/", homeRoute);
 app.use("/product", productsRoute);
 app.use("/user", userRoute);
+app.use("/cart", productsRoute)
 
-//Configuration petitions user the method PUT and DELETE
+//Configuration petitions user the method PUT an.d DELETE
 app.use(express.urlencoded({extended: false}))
 app.use(express.json());
 
