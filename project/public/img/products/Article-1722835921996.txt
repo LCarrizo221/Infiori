@@ -1,0 +1,32 @@
+Servicio DNS
+            --> Sistem de nombre de dominio
+            --> Base de datos Distribuida
+
+    Cliente/servidor DNS
+            --> Paquetes UDP al DNS local
+            --> TCP p/ trans de zona.
+
+    Ventajas
+            --->Carga excesiva en la red
+            --> No duplicidad de nombres
+            -->Consistencia de la informacion.
+            --> Facil Comunicacion
+    Fucionamiento
+            --> Cliente hace una peticion al DNS
+            primario, este luego la aloja a los secundarios.
+
+    Elementos
+            -->Sintaxis del nombre
+            --> Clasificacion de los dominios
+    Delegacion de autoridades
+            --> InterNIC zona de autoridad.
+            --> Registro de Dominios NIC.AR 
+            -->Registro de Recursos RR 
+    Implementacion BDD
+            --> Primarios o maestros: Alacen de su zona local en una bd local.
+            -->Secundarios o esclavos: Obtienen los datos de su zona desde otro servidor.
+            -->Transferencia de zonas: AXFR o IXFR
+            --> Servidor raiz ROOTSERVER.ORG 
+    Funciones Cliente DNS
+            --> Tipo de preguntas: Recursiva - Iterativa - Inversa(in-addr.arpa ip6.arpa )
+            --> 

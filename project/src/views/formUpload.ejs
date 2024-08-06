@@ -19,27 +19,68 @@
     <main>
         <form action="/product/upload/" method="post" enctype="multipart/form-data">
             <h2>Cargar Producto</h2>
-            
+
+            <!-- comprobacion de errores
+            <% if(locals.errors) { %>
+            <% for( let oneError in errors) { %>
+               <p class="feedback is-danger"> <%= errors[oneError].msg %></p> 
+            <% } %>
+           <% } %> -->
+
             <img src="/img/logoinfiori.png" alt="">
 
             <label for="titulo"  class="inp">
-                <input type="text" name="titulo" id="titulo" placeholder="Ingrese el titulo del articulo">
+                <input type="text" name="titulo" id="titulo" placeholder="Ingrese el titulo del articulo" 
+                value="<%=locals.old && old.titulo ? old.titulo : ''  %>"
+                class="form-control <%= locals.errors && errors.titulo ? 'is-invalid' : null %> ">
             </label>
-
+            <% if(locals.errors && errors.titulo) { %>
+                <p class="text-danger"> <%= errors.titulo.msg %> </p>
+                <% } %>
             <label for="descripcion"  class="inp">
-                <input type="text" name="descripcion" id="descripcion" placeholder="Ingrese una breve descripcion" maxlength="100">
+                <input type="text" name="descripcion" id="descripcion" placeholder="Ingrese una breve descripcion" maxlength="100"
+                value="<%=locals.old && old.descripcion ? old.descripcion : ''  %>"
+                class="form-control <%= locals.errors && errors.descripcion ? 'is-invalid' : null %> ">
             </label>
+            <% if(locals.errors && errors.descripcion) { %>
+                <p class="text-danger"> <%= errors.descripcion.msg %> </p>
+                <% } %>
 
             <label for="imagen"  class="inp">
-                <input type="file" name="imagen" id="imagen">
+                <input type="file" name="imagen" id="imagen" > <!-- Propiedad -multiple- para subir varios Archivos -->
             </label>
+            <% if(locals.errors && errors.imagen) { %>
+                <p class="text-danger"> <%= errors.imagen.msg %> </p>
+                <% } %>
 
-            <label for="tipo"  class="inp">
-                <input type="text" name="tipo" id="tipo" placeholder="Indumentaria, calzado, accesorio...">
+
+            <label for="tipo"  class="tipo">
+                <select 
+                name="tipo" 
+                class="form-select <%= locals.errors && errors.tipo ? 'is-invalid' : null %> ">
+                    <option value="">Elegi una categoria</option>
+                    <% 
+                        let categories = ['Indumentaria', 'Calzado', 'Accesorios'];
+                    %>
+                    <% for( let oneCategory of categories ) { %>
+                        <option value="<%= oneCategory %>"
+                            <%= locals.old && old.tipo  === oneCategory ? 'selected' : null %> >
+                             <%= oneCategory %>
+                             </option>
+                    <% } %>
+                </select>
+               
+             <!--   <input type="text" name="tipo" id="tipo" placeholder="Indumentaria, calzado, accesorio..."> -->
             </label>
             <label for="precio"  class="inp">
-                <input type="number" name="precio" id="precio" placeholder="Ingrese precio">
+                <input type="number" name="precio" id="precio" placeholder="Ingrese precio"
+                value="<%=locals.old && old.precio ? old.precio : ''  %>"
+                class="form-control <%= locals.errors && errors.precio ? 'is-invalid' : null %> ">
             </label>
+            <% if(locals.errors && errors.descripcion) { %>
+                <p class="text-danger"> <%= errors.precio.msg %> </p>
+                <% } %>
+
             <label for="" class="butt">
                 <button type="submit">Enviar</button>
             </label>

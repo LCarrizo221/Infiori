@@ -44,8 +44,12 @@ form img{
     justify-content: center;
     align-items:center ;
 }
+
+ .tipo{
+    width: 50%;
+}
 .inp input{
-    width: 30%;
+    width: 50%;
     height: 1rem;
     text-align: center;
     height: 2rem;
