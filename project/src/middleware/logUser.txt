@@ -33,3 +33,11 @@ El usuario ingreso a la ruta: /detail/16
 El usuario ingreso a la ruta: /detail/16
 El usuario ingreso a la ruta: /detail/15
 El usuario ingreso a la ruta: /detail/15
+El usuario ingreso a la ruta: /detail/3
+El usuario ingreso a la ruta: /detail/13
+El usuario ingreso a la ruta: /detail/10
+El usuario ingreso a la ruta: /detail/10
+El usuario ingreso a la ruta: /detail/14
+El usuario ingreso a la ruta: /detail/2
+El usuario ingreso a la ruta: /detail/3
+El usuario ingreso a la ruta: /detail/edit
