@@ -89,3 +89,51 @@
 *STOP:
 -----> ----------------
 -------------------------------------------------------------------------------------------------------------
+
+
+///////////////////////////////////////////////RETROSPECTIVA 3///////////////////////////////////////////////
+
+
+*MORE:
+* juntadas en discord para codear juntos
+* Organizar las tareas y roles cada cierto tiempo
+* Reuniones
+* Codear
+* Practicar 
+* Leer documentos
+* Feedback entre tareas de los compañeros
+-------------------------------------------------------------------------------------------------------------
+*START:
+* Hacer issues de todo en github
+* Solicitar feedback de alguien para que vea en que podemos mejorar
+* Coment the code 
+* Branchs 
+* Juntada pa birrear y codear
+* More Reunions
+* Agregar carpeta de services
+* Documentar más el código
+* Reunirnos para coodear
+-------------------------------------------------------------------------------------------------------------
+*LESS:
+* Trabajjar solo, avisen si necesitan ayuda
+* Pushear cambios rotos o con bugs 
+* No avisar de cambios que pueden afectar a el comportamiento de otras vistas
+* No ver el PG
+* Faltar a clases
+* Estar atrasado en el PG
+* Dormir 
+* Distraerse  
+* Relajarse 
+* No avisar cuando se hará una modificación. 
+-------------------------------------------------------------------------------------------------------------
+*CONTINUE:
+* Seguir con la buena onda y la ayuda
+* Buena onda
+* Codeando como hasta el momento
+* Ayudar a los compas
+* Mantener el buen clima
+* ⁠Llevar al dia las actividades y el proyecto de Playgroud.
+-------------------------------------------------------------------------------------------------------------
+*STOP:
+-----> ----------------
+-------------------------------------------------------------------------------------------------------------
