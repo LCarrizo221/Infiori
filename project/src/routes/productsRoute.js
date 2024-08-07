@@ -6,8 +6,7 @@ const logMiddleware = require("../middleware/logMiddleware");
 const validationProduct = require("../services/validationProduct");
 
 
-//router.get("/cart", productsControl.main);
-
+router.get("/cart", productsControl.cart);
 router.get("/detail/:id",logMiddleware, productsControl.detail);
 router.get("/edit/:id",productsControl.edit);
 router.get("/upload", productsControl.upLoad);

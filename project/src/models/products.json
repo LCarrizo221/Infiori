@@ -8,14 +8,6 @@
     "precio": 14999
   },
   {
-    "id": 2,
-    "titulo": "Campera Rougue",
-    "descripcion": "En jean, corte oversize.",
-    "imagen": "/img/products/image22.jpg",
-    "tipo": "indumentaria",
-    "precio": 19999
-  },
-  {
     "id": 3,
     "titulo": "Campera The Grinch",
     "descripcion": "Puffer, impermeable con plumas de ganzo.",
@@ -72,14 +64,6 @@
     "precio": 15999
   },
   {
-    "id": 10,
-    "titulo": "Borcegos bay",
-    "descripcion": "En cuero con hebillas.",
-    "imagen": "/img/products/image2.jpg",
-    "tipo": "calzado",
-    "precio": 29999
-  },
-  {
     "id": 11,
     "titulo": "Botas hailey",
     "descripcion": "En cuero, calidad super premium.",
@@ -94,21 +78,5 @@
     "imagen": "/img/products/image9.jpg",
     "tipo": "indumentaria",
     "precio": 17999
-  },
-  {
-    "id": 13,
-    "titulo": "Botas baty",
-    "descripcion": "En cuero, altas super cómodas.",
-    "imagen": "/img/products/image10.jpg",
-    "tipo": "calzado",
-    "precio": 27999
-  },
-  {
-    "id": 14,
-    "titulo": "Camisa monique",
-    "descripcion": "Seda importada de primera calidad.",
-    "imagen": "/img/products/image18.jpg",
-    "tipo": "indumentaria",
-    "precio": 16999
   }
 ]
