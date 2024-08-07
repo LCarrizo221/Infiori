@@ -26,8 +26,12 @@ const productController = {
     }
   },
 
-  edit: (req, res) => {
-    res.render("formEdit");
+  edit: async (req, res) => {
+    let id = req.params.id;
+    let products = await datasource.load();
+		let product = products.find((prod)=> prod.id == id);
+		res.render('product-edit-form',{product});
+
   },
 
   upLoad: (req, res) => {

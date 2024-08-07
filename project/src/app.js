@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("node:path");
 const app = express();
+const session = require('express-session');
 
 //define port
 const port = 3000 || process.env.PORT;
@@ -21,7 +22,7 @@ app.set("views", path.join(__dirname, "views"));
 
 //midleware dir public
 app.use(express.static(path.join(__dirname, "..", "public")));
-
+app.use(session({secret: "secreto"}));
 //track routes
 app.use("/", homeRoute);
 app.use("/product", productsRoute);
