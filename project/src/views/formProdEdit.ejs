@@ -1,91 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/03e63e3d58.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/stylesFooter.css">
     <link rel="stylesheet" href="/css/stylesHeader.css">
     <link rel="stylesheet" href="/css/registro.css">
 </head>
+
 <body>
     <%- include('partials/header') %>
     <main>
         <form action="/product/upload/?_method=PUT" method="post" enctype="multipart/form-data">
             <h2>Cargar Producto</h2>
 
-            <!-- comprobacion de errores
+                <!-- comprobacion de errores
             <% if(locals.errors) { %>
             <% for( let oneError in errors) { %>
                <p class="feedback is-danger"> <%= errors[oneError].msg %></p> 
             <% } %>
            <% } %> -->
 
-            <img src="<%= product.imagen  %>" alt="">
+                <img src="/img/logoinfiori.png" alt="">
 
-            <label for="titulo"  class="inp">
-                <input type="text" name="titulo" id="titulo" placeholder="Ingrese el titulo del articulo" 
-                value="<%=product.titulo%>"
-                class="form-control <%= locals.errors && errors.titulo ? 'is-invalid' : null %> ">
-            </label>
-            <% if(locals.errors && errors.titulo) { %>
-                <p class="text-danger"> <%= errors.titulo.msg %> </p>
-                <% } %>
-            <label for="descripcion"  class="inp">
-                <input type="text" name="descripcion" id="descripcion" placeholder="Ingrese una breve descripcion" maxlength="100"
-                value="<%=product.descripcion %>"
-                class="form-control <%= locals.errors && errors.descripcion ? 'is-invalid' : null %> ">
-            </label>
-            <% if(locals.errors && errors.descripcion) { %>
-                <p class="text-danger"> <%= errors.descripcion.msg %> </p>
-                <% } %>
-
-            <label for="imagen"  class="inp">
-                <input type="file" name="imagen" id="imagen" > <!-- Propiedad -multiple- para subir varios Archivos -->
-            </label>
-            <% if(locals.errors && errors.imagen) { %>
-                <p class="text-danger"> <%= errors.imagen.msg %> </p>
-                <% } %>
-
-<!-- VER EL TEMA DEL TIPO
-            <label for="tipo"  class="tipo">
-                <select 
-                name="tipo" 
-                class="form-select <%= locals.errors && errors.tipo ? 'is-invalid' : null %> ">
-                    <option value="">Elegi una categoria</option>
-                    <% 
-                        let categories = ['Indumentaria', 'Calzado', 'Accesorios'];
-                    %>
-                    <% for( let oneCategory of categories ) { %>
-                        <option value="<%= product.tipo%>"
-                            <%= locals.old && old.tipo  === oneCategory ? 'selected' : null %> >
-                             <%= oneCategory %>
-                             </option>
+                <label for="titulo" class="inp">
+                    <input type="text" name="titulo" id="titulo" placeholder="Ingrese el titulo del articulo"
+                        value="<%=locals.old && old.titulo ? old.titulo : ''  %>"
+                        class="form-control <%= locals.errors && errors.titulo ? 'is-invalid' : null %> ">
+                </label>
+                <% if(locals.errors && errors.titulo) { %>
+                    <p class="text-danger">
+                        <%= errors.titulo.msg %>
+                    </p>
                     <% } %>
-                </select>
--->
-             <!--   <input type="text" name="tipo" id="tipo" placeholder="Indumentaria, calzado, accesorio..."> -->
-            </label>
-            <label for="precio"  class="inp">
-                <input type="number" name="precio" id="precio" placeholder="Ingrese precio"
-                value="<%= product.precio%>"
-                class="form-control <%= locals.errors && errors.precio ? 'is-invalid' : null %> ">
-            </label>
-            <% if(locals.errors && errors.descripcion) { %>
-                <p class="text-danger"> <%= errors.precio.msg %> </p>
-                <% } %>
+                        <label for="descripcion" class="inp">
+                            <input type="text" name="descripcion" id="descripcion"
+                                placeholder="Ingrese una breve descripcion" maxlength="100"
+                                value="<%=locals.old && old.descripcion ? old.descripcion : ''  %>"
+                                class="form-control <%= locals.errors && errors.descripcion ? 'is-invalid' : null %> ">
+                        </label>
+                        <% if(locals.errors && errors.descripcion) { %>
+                            <p class="text-danger">
+                                <%= errors.descripcion.msg %>
+                            </p>
+                            <% } %>
 
-            <label for="" class="butt">
-                <button type="submit">Enviar</button>
-            </label>
-        </form>
-    </main>
-    <%- include('partials/footer') %>
+                                <label for="imagen" class="inp">
+                                    <input type="file" name="imagen" id="imagen">
+                                    <!-- Propiedad -multiple- para subir varios Archivos -->
+                                </label>
+                                <% if(locals.errors && errors.imagen) { %>
+                                    <p class="text-danger">
+                                        <%= errors.imagen.msg %>
+                                    </p>
+                                    <% } %>
+
+
+                                        <label for="tipo" class="tipo">
+                                            <select name="tipo"
+                                                class="form-select <%= locals.errors && errors.tipo ? 'is-invalid' : null %> ">
+                                                <option value="">Elegi una categoria</option>
+                                                <% let categories=['Indumentaria', 'Calzado' , 'Accesorios' ]; %>
+                                                    <% for( let oneCategory of categories ) { %>
+                                                        <option value="<%= oneCategory %>" <%=locals.old &&
+                                                            old.tipo===oneCategory ? 'selected' : null %> >
+                                                            <%= oneCategory %>
+                                                        </option>
+                                                        <% } %>
+                                            </select>
+
+                                            <!--   <input type="text" name="tipo" id="tipo" placeholder="Indumentaria, calzado, accesorio..."> -->
+                                        </label>
+                                        <label for="precio" class="inp">
+                                            <input type="number" name="precio" id="precio" placeholder="Ingrese precio"
+                                                value="<%=locals.old && old.precio ? old.precio : ''  %>"
+                                                class="form-control <%= locals.errors && errors.precio ? 'is-invalid' : null %> ">
+                                        </label>
+                                        <% if(locals.errors && errors.descripcion) { %>
+                                            <p class="text-danger">
+                                                <%= errors.precio.msg %>
+                                            </p>
+                                            <% } %>
+
+                                                <label for="" class="butt">
+                                                    <button type="submit">Enviar</button>
+                                                </label>
+            </form>
+        </main>
+        <%- include('partials/footer') %>
 </body>
+
 </html>
