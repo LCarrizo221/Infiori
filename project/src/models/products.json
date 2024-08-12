@@ -8,6 +8,14 @@
     "precio": 14999
   },
   {
+    "id": 2,
+    "titulo": "Chaleco anashe",
+    "descripcion": "En eco-cuero forrado con corderito, de tipo pesado.",
+    "imagen": "/img/products/image7.jpg",
+    "tipo": "indumentaria",
+    "precio": 14999
+  },
+  {
     "id": 3,
     "titulo": "Campera The Grinch",
     "descripcion": "Puffer, impermeable con plumas de ganzo.",

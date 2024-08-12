@@ -30,7 +30,7 @@ const productController = {
     let id = req.params.id;
     let products = await datasource.load();
 		let product = products.find((prod)=> prod.id == id);
-		res.render('product-edit-form',{product});
+		res.render('formProdEdit',{product});
 
   },
 
@@ -48,40 +48,6 @@ const productController = {
         });
     }
 
-    /*
-    if (!errors.isEmpty() || req.file) {
-      this.products = await datasource.load();
-      try {
-        let id = this.products.length + 1;
-       // if (req.file) { //Validacion de la imagen
-          const article = {
-            id: id,
-            titulo: req.body.titulo,
-            descripcion: req.body.descripcion,
-            imagen: "/img/products/" + req.file.filename,
-            tipo: req.body.tipo,
-            precio: req.body.precio,
-          };
-          this.products.push(article);
-          await datasource.save(this.products);
-          res.redirect("/");
-       // } else {
-       //   const error = new Error("No se subio la imagen");
-        //  error.httpStatusCode = 400;
-       //  return next(error);
-        //}
-      } catch {
-        res.render('formUpload',{
-            errors: errors.array(),
-            old: req.body
-
-        });
-      }
-
-    }else{
-        res.render('formUpload',{errors: errors.array(), old: req.body});
-    }
-        */
   },
   delete: async (req, res) => {
     this.products = await datasource.load();
@@ -103,7 +69,7 @@ const productController = {
           article.titulo = req.body.titulo;
           article.descripcion = req.body.descripcion;
           article.imagen = "/img/" + req.file.filename;
-          article.tipo = req.body.tipo;
+          //article.tipo = req.body.tipo;
           article.precio = req.body.precio;
           updated = true;
         }

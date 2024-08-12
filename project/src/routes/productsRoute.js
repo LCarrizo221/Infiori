@@ -9,8 +9,9 @@ const validationProduct = require("../services/validationProduct");
 router.get("/cart", productsControl.cart);
 router.get("/detail/:id",logMiddleware, productsControl.detail);
 router.get("/edit/:id",productsControl.edit);
+router.put("/upload",productsControl.upLoadImag);
 router.get("/upload", productsControl.upLoad);
-router.post("/upload/", Fileupload.single('imagen'), validationProduct, productsControl.create);
+router.post("/upload/", validationProduct,Fileupload.single('imagen'), productsControl.create);
 
 //Implements for Lucas Carrizo 
 //router.post("/upload/", Fileupload.single('imagen'), productsControl.upLoadImag);
