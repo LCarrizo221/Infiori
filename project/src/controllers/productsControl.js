@@ -34,13 +34,12 @@ const productController = {
 
   },
 
-  upLoad: (req, res) => {
+  createProd: (req, res) => {
     res.render("formUpload");
   },
   create: async (req, res, next) => {
     let resultValidation = validationResult(req); //Validar validaciones
 
-    
     if(resultValidation.errors.length > 0){
         return res.render('formUpload',{
             errors: resultValidation.mapped(),
@@ -69,7 +68,7 @@ const productController = {
           article.titulo = req.body.titulo;
           article.descripcion = req.body.descripcion;
           article.imagen = "/img/" + req.file.filename;
-          //article.tipo = req.body.tipo;
+          article.tipo = req.body.tipo;
           article.precio = req.body.precio;
           updated = true;
         }
@@ -98,6 +97,9 @@ const productController = {
       res.status(500).send("Error al procesar la solicitud");
     }
   },
+  Prueba: (req,res)=>{
+    res.send('Si funca');
+  }
 };
 
 module.exports = productController;

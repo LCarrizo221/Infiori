@@ -41,5 +41,10 @@ res.status(404).render('not-found');
 });
 
 app.listen(port, () => {
-  console.log(`Server run: http://localhost:${port}`);
+  console.log(`\\*-------------------------*\\`);
+  console.log(`Server running in ${port} port`);
+  console.log(`Now, you can open http://localhost:${port} in your favorite browser `);
+  console.log(`Happy programming and never stop learning!`);
+  
+  console.log(`\\*-------------------------*\\`);
 });

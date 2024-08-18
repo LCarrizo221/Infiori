@@ -56,13 +56,16 @@
                         <i class="fa-solid fa-money-bill"></i>
                         <i class="fa-brands fa-cc-visa"></i>
                     </div>
+                    <div class="buttons-Art">
+                        <a href="/product/delete/<%= product.id %>/"> <button class="deleteArt">ELIMINAR </button></a>
+                        <a href="/product/edit/<%= product.id %>/"><button class="editArt"> EDITAR</button></a>
+                    </div>
                 </div>
             </div>
 
             <div class="buttons">
                 <button class="comprar">COMPRAR</button>
                 <button class="addArt">AGREGAR AL CARRITO</button>
-               <a href="/product/delete/<%= product.id %>/"> <button class="deleteArt">ELIMINAR ART</button></a>
             </div>
         </section>
 
