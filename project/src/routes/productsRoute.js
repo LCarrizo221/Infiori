@@ -5,19 +5,19 @@ const Fileupload = require("../services/fileUpload");
 const logMiddleware = require("../middleware/logMiddleware");
 const validationProduct = require("../services/validationProduct");
 
+router.post("/");
 
 router.get("/cart", productsControl.cart);
 router.get("/detail/:id",logMiddleware, productsControl.detail);
-router.get("/edit/:id",productsControl.edit);
-router.get("/upload", productsControl.upLoad);
-router.post("/upload/", Fileupload.single('imagen'), validationProduct, productsControl.create);
 
-//Implements for Lucas Carrizo 
-//router.post("/upload/", Fileupload.single('imagen'), productsControl.upLoadImag);
-router.post("/");
+router.get("/create", productsControl.createProd);
+router.post("/create/", validationProduct,Fileupload.single('imagen'), productsControl.create);
+
+router.get("/edit/:id",productsControl.edit);
+router.put("/edit/", validationProduct,productsControl.Prueba);
+
 
 router.get("/delete/:id/", productsControl.delete);
-
 
 
 module.exports = router;

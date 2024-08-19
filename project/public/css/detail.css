@@ -86,7 +86,7 @@ section .pictureMajor img{
 
 
 .comprar {
-    width: 30%;
+    width: 25%;
     height: 50px;
     border-radius: 40px;
     font-size: 0.8rem;
@@ -255,10 +255,11 @@ div.products article:hover{
     height: 100%;
     gap: 1rem;
     box-sizing: content-box;
+    align-items: center;
   }
 
   .buttons .addArt{
-    width: 30%;
+    width: 25%;
     height: 50px;
     border-radius: 40px;
     font-size: 0.6rem;
@@ -277,11 +278,11 @@ div.products article:hover{
         transition-duration: 0.5s; 
   }
 
-  .buttons .deletedArt{
-    width: 30%;
+  .buttons-Art .deleteArt{
+    width: 110%;
     height: 50px;
     border-radius: 40px;
-    font-size: 0.6rem;
+    
     font-weight: bold;
     outline: none;
     transition: .4s;
@@ -290,8 +291,28 @@ div.products article:hover{
   }
 
 
-  .buttons .deleteArt:hover{
+  .buttons-Art .deleteArt:hover{
         background-color: #ff0000;
+        color: #fff;
+        transition-property: background-color, color;
+        transition-duration: 0.5s; 
+  }
+
+  .buttons-Art .editArt{
+    width: 110%;
+    height: 50px;
+    border-radius: 40px;
+    
+    font-weight: bold;
+    outline: none;
+    transition: .4s;
+    background: white;
+    cursor: pointer;
+  }
+
+
+  .buttons-Art .editArt:hover{
+        background-color: #ffa600;
         color: #fff;
         transition-property: background-color, color;
         transition-duration: 0.5s; 
@@ -425,7 +446,7 @@ main section .pictureArt .details{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-content: center;
     flex-direction: column;
 }
