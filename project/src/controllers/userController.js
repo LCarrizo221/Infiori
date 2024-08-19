@@ -11,7 +11,28 @@ const userController = {
     processLogin: (req, res) => {
         const { userName, password } = req.body;
         console.log(`Intento de login con usuario: ${userName}`);
-        res.redirect('/');
+
+        try {
+            const usersData = fs.readFile(usersFilePath, "utf-8");
+            const users = JSON.parse(usersData);
+            const user = users.find( u => u.email === userName && u.password === password);
+
+
+            if (user){
+                req.session.userId = user.id;
+                req.session.userName = user.firstName
+                console.log(`${userName} se ha logueado correctamente.`);
+                res.redirect("/")
+            }else{
+                console.log("Credenciales invalidas.");
+                res.redirect("login.ejs")
+            }
+        } catch (error){
+            console.error("Error al procesar el login", error);
+            res.status(500).send("Error al procesar el login.");
+        }
+
+        //res.redirect('/');
     },
 
     showRegister: (req, res) => {
