@@ -21,6 +21,7 @@ const userController = {
             if (user){
                 req.session.userId = user.id;
                 req.session.userName = user.firstName
+                req.session.user = user;
                 console.log(`${userName} se ha logueado correctamente.`);
                 res.redirect("/")
             }else{
@@ -33,6 +34,35 @@ const userController = {
         }
 
         //res.redirect('/');
+    },
+
+    showProfile: (req,res) => {
+        if(!req.session.userId){
+            return res.redirect("login.ejs")
+        }
+
+        const userId = req.params.id ;
+
+        try{
+            const usersData = fs.readFile(usersFilePath, "utf8");
+            const users = JSON.parse(usersData);
+
+            const user = users.find( u => u.id === userId);
+
+            if(!user) {
+                return res.status(404).send("Usuario no encontrado")
+            }
+
+            if(req.session.userId !== user.id){
+                return res.status(403).send("Acceso denegado")
+            }
+
+            res.render("profile", {user});
+        } catch(error){
+            console.error("Error al leer el archivo de usuarios", error);
+            res.status(500).send("Error interno del servidor");
+        }
+
     },
 
     showRegister: (req, res) => {
