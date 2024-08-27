@@ -15,20 +15,20 @@ const userController = {
         try {
             const usersData = fs.readFile(usersFilePath, "utf-8");
             const users = JSON.parse(usersData);
-            const user = users.find( u => u.email === userName && u.password === password);
+            const user = users.find(u => u.email === userName && u.password === password);
 
 
-            if (user){
+            if (user) {
                 req.session.userId = user.id;
                 req.session.userName = user.firstName
                 req.session.user = user;
                 console.log(`${userName} se ha logueado correctamente.`);
                 res.redirect("/")
-            }else{
+            } else {
                 console.log("Credenciales invalidas.");
                 res.redirect("login.ejs")
             }
-        } catch (error){
+        } catch (error) {
             console.error("Error al procesar el login", error);
             res.status(500).send("Error al procesar el login.");
         }
@@ -36,29 +36,29 @@ const userController = {
         //res.redirect('/');
     },
 
-    showProfile: (req,res) => {
-        if(!req.session.userId){
+    showProfile: (req, res) => {
+        if (!req.session.userId) {
             return res.redirect("login.ejs")
         }
 
-        const userId = req.params.id ;
+        const userId = req.params.id;
 
-        try{
+        try {
             const usersData = fs.readFile(usersFilePath, "utf8");
             const users = JSON.parse(usersData);
 
-            const user = users.find( u => u.id === userId);
+            const user = users.find(u => u.id === userId);
 
-            if(!user) {
+            if (!user) {
                 return res.status(404).send("Usuario no encontrado")
             }
 
-            if(req.session.userId !== user.id){
+            if (req.session.userId !== user.id) {
                 return res.status(403).send("Acceso denegado")
             }
 
-            res.render("profile", {user});
-        } catch(error){
+            res.render("profile", { user });
+        } catch (error) {
             console.error("Error al leer el archivo de usuarios", error);
             res.status(500).send("Error interno del servidor");
         }
@@ -66,6 +66,10 @@ const userController = {
     },
 
     showRegister: (req, res) => {
+
+        if (req.session.userId) {
+            return res.redirect(`/profile/${req.session.userId}`);
+        }
         res.render("register.ejs");
     },
 
@@ -108,7 +112,7 @@ const userController = {
 
             // Redirigir al usuario después de que se haya agregado correctamente
             res.redirect('/user/login');
-            
+
         } catch (error) {
             console.error("Error en el registro:", error);
             if (!res.headersSent) {
