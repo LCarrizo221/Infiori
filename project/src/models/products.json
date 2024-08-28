@@ -65,11 +65,11 @@
   },
   {
     "id": 11,
-    "titulo": "Botas hailey",
-    "descripcion": "En cuero, calidad super premium.",
-    "imagen": "/img/products/image3.jpg",
-    "tipo": "calzado",
-    "precio": 34999
+    "titulo": "prueba",
+    "descripcion": "pruebita",
+    "imagen": "/img/products/Article-1724029843067.png",
+    "tipo": "Indumentaria",
+    "precio": "21212"
   },
   {
     "id": 12,
@@ -78,5 +78,21 @@
     "imagen": "/img/products/image9.jpg",
     "tipo": "indumentaria",
     "precio": 17999
+  },
+  {
+    "id": 13,
+    "titulo": "prueba",
+    "descripcion": "pruebitas",
+    "imagen": "/img/products/Article-1724030466680.png",
+    "tipo": "Indumentaria",
+    "precio": "11111222"
+  },
+  {
+    "id": 15,
+    "titulo": "Arqq",
+    "descripcion": "sdadssadsda",
+    "imagen": "/img/products/Article-1724031356543.png",
+    "tipo": "Indumentaria",
+    "precio": "2222"
   }
 ]
