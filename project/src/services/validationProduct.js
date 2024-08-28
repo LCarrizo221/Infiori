@@ -4,6 +4,7 @@ const { body } = require('express-validator');
 const multer = require('multer');
 const path = require('path');
 
+
 const validationProduct = [
     body('titulo').notEmpty().withMessage('Debes agregarle el titulo del articulo'),
     body('descripcion').notEmpty().withMessage('Debes agregarle una descripcion'),
