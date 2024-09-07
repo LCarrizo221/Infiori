@@ -1,3 +1,5 @@
+const bcrypt =require("bcrypt");
+const { hashSync } = require("bcryptjs");
 const fs = require("node:fs/promises");
 const path = require("path");
 
@@ -74,8 +76,22 @@ const userController = {
     },
 
     processRegister: async (req, res) => {
-        const { userName, password, nombre, apellido } = req.body;
+        const { userName, 
+            password, 
+            nombre, 
+            apellido } = req.body;
         console.log(`Intento de registro con user: ${userName}`);
+        try {
+            // Generar un hash para la contraseña
+            const salt = await bcrypt.genSalt(10); // Genera un "salt" con un factor de costo de 10
+            const hashedPassword = await bcrypt.hash(password, salt); // Hashea la contraseña usando el "salt"
+    
+            // Crear un nuevo usuario con la contraseña hasheada
+            await Usuario.create({
+                nombre,
+                email,
+                password: hashedPassword
+            });
 
         try {
             // Leer los usuarios actuales
