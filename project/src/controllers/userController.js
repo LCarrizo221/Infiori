@@ -1,4 +1,4 @@
-const bcrypt =require("bcrypt");
+
 const { hashSync } = require("bcryptjs");
 const fs = require("node:fs/promises");
 const path = require("path");
