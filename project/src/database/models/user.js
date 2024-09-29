@@ -30,9 +30,14 @@ const Usuario=sequelize.define('Usuario',{
         type: DataTypes.STRING,
         allowNull: null
     }, 
-    id_categoria:{
+    id_category:{
         type: DataTypes.INTEGER,
-        allowNull:false
+        allowNull:false,
+        references: {
+            model: categories,
+            key: 'id_categories' 
+        }
+        
     },
      tablename: 'users',
      timeStamp:false
