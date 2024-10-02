@@ -81,6 +81,7 @@ const userController = {
             nombre, 
             apellido } = req.body;
         console.log(`Intento de registro con user: ${userName}`);
+        
         try {
             // Generar un hash para la contraseña
             const salt = await bcrypt.genSalt(10); // Genera un "salt" con un factor de costo de 10
@@ -89,11 +90,10 @@ const userController = {
             // Crear un nuevo usuario con la contraseña hasheada
             await Usuario.create({
                 nombre,
-                email,
+                email: userName, // Añadido userName como email
                 password: hashedPassword
             });
-
-        try {
+    
             // Leer los usuarios actuales
             let users = [];
             try {
@@ -108,7 +108,7 @@ const userController = {
                     throw error;
                 }
             }
-
+    
             // Crear un nuevo usuario
             const newUser = {
                 id: users.length + 1,
@@ -119,16 +119,16 @@ const userController = {
                 category: "user",
                 image: ""
             };
-
+    
             users.push(newUser);
-
+    
             // Escribir los usuarios actualizados en el archivo
             await fs.writeFile(usersFilePath, JSON.stringify(users, null, 2), 'utf8');
             console.log(`${userName} se agregó correctamente`);
-
+    
             // Redirigir al usuario después de que se haya agregado correctamente
             res.redirect('/user/login');
-
+    
         } catch (error) {
             console.error("Error en el registro:", error);
             if (!res.headersSent) {
@@ -136,6 +136,6 @@ const userController = {
             }
         }
     }
-};
+}
 
 module.exports = userController;
