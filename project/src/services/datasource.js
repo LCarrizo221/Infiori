@@ -30,7 +30,7 @@ const datasource = {
         try {
             const { title, description, price, category, pictures, tallas } = productData;
             
-            // Primero, crear o encontrar la categoría
+            // para crear o encontrar la categoria
             const [category_record] = await Category.findOrCreate({
                 where: { name: category }
             });
