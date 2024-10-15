@@ -5,16 +5,17 @@ const path = require('path');
 const Sequelize = require('sequelize');
 const process = require('process');
 const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '../config/config.json')[env];
-const db = {};
 
-let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
+// Importar la instancia de Sequelize desde connection.js
+const sequelize = require('../config/connection'); 
+
+// Definir el entorno
+const env = process.env.NODE_ENV || 'development'; 
+
+// Importar la configuración correspondiente del archivo config.js
+const config = require(path.join(__dirname, '../config/config.js'))[env];
+
+const db = {};
 
 fs
   .readdirSync(__dirname)
@@ -27,16 +28,19 @@ fs
     );
   })
   .forEach(file => {
+    //para pasar la instancia de sequelize y DataTypes
     const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
     db[model.name] = model;
   });
 
+// Asociaciones entre modelos
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }
 });
 
+// agregar la instancia de sequelize y la clase Sequelize al objeto db
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 

@@ -1,4 +1,4 @@
-const articles = require("../database1/products.json")
+const articles = require("../database/products.json")
 
 
 

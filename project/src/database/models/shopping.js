@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     });
   
     Shopping.associate = (models) => {
-      Shopping.belongsTo(models.User, { foreignKey: 'id_user' });
+      Shopping.belongsTo(models.Usuario, { foreignKey: 'id_user' });
       Shopping.belongsToMany(models.ProductsTalla, { 
         through: 'PRODUCTS_SHOPPING',
         foreignKey: 'SHOPPING_id_shopping',
