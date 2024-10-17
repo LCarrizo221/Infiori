@@ -38,14 +38,42 @@ const productController = {
     res.render("formUpload");
   },
   create: async (req, res, next) => {
-    let resultValidation = validationResult(req); //Validar validaciones
+   /* let resultValidation = validationResult(req); //Validar validaciones
 
     if(resultValidation.errors.length > 0){
-        return res.render('formUpload',{
+        res.render('formUpload',{
             errors: resultValidation.mapped(),
             old: req.body,
         });
-    }
+    }else{
+      res.send("Se pasaron las pruebas");
+    } */
+      try {
+        // Cargar productos desde el datasource
+        
+        //let id = 15;
+  
+        // Crear producto
+        let Newarticle ={
+          id : 15,
+          titulo : req.body.titulo,
+          descripcion : req.body.descripcion,
+          imagen : "/img/products/" + req.file.filename,
+          tipo : req.body.tipo,
+          precio : req.body.precio,
+        };
+  
+        
+          // Guardar producto nuevo
+      this.products = await datasource.load();
+      this.products.push(Newarticle);
+      await datasource.save(this.products);
+         res.send(this.products);
+      } catch (error) {
+        console.error("Error al subir la imagen:", error);
+        res.status(500).send("Error al procesar la solicitud");
+      }
+   
 
   },
   delete: async (req, res) => {
@@ -67,7 +95,7 @@ const productController = {
         if (article.id == id) {
           article.titulo = req.body.titulo;
           article.descripcion = req.body.descripcion;
-          article.imagen = "/img/" + req.file.filename;
+          article.imagen = "/img/products/" + req.file.filename;
           article.tipo = req.body.tipo;
           article.precio = req.body.precio;
           updated = true;

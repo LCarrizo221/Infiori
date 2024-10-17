@@ -1,6 +1,6 @@
-*{
-    padding: 0px;
-    margin: 0px;
+* {
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
 }
 
@@ -13,15 +13,15 @@ main {
     align-items: center;
     background-color: #d9d9d9;
 }
+
 form h2 {
     width: 30%;
-    display: block;
-    width: 30%;
 }
+
 form {
     width: 50%;
     border-radius: 40px;
-    margin-bottom: 4rem ;
+    margin-bottom: 4rem;
     margin-top: 2rem;
     display: flex;
     flex-wrap: wrap;
@@ -32,7 +32,8 @@ form {
     background-color: white;
     padding-top: 1rem;
 }
-form img{
+
+form img {
     width: 40%;
     margin: 1rem 0;
 }
@@ -42,24 +43,21 @@ form img{
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items:center ;
+    align-items: center;
 }
 
- .tipo{
+.inp input {
     width: 50%;
-}
-.inp input{
-    width: 50%;
-    height: 1rem;
-    text-align: center;
     height: 2rem;
-    border: 0cap;
+    text-align: center;
+    border: none;
     border-radius: 10px;
     background-color: #b9b7b7;
     color: black;
 }
+
 input::placeholder {
-    color: black
+    color: black;
 }
 
 .butt {
@@ -71,7 +69,7 @@ input::placeholder {
     width: 15%;
     background-color: #b9b7b7;
     padding: 5px;
-    border: 0cap;
+    border: none;
     border-radius: 10px;
 }
 
@@ -82,3 +80,9 @@ button:hover {
     transition: 300ms;
 }
 
+/* Estilos para los mensajes de error */
+.just-validate-error {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 5px;
+}

@@ -11,10 +11,10 @@ router.get("/cart", productsControl.cart);
 router.get("/detail/:id",logMiddleware, productsControl.detail);
 
 router.get("/create", productsControl.createProd);
-router.post("/create/", validationProduct,Fileupload.single('imagen'), productsControl.create);
+router.post("/create/",Fileupload.single('imagen'), productsControl.create);
 
 router.get("/edit/:id",productsControl.edit);
-router.put("/edit/", validationProduct,productsControl.Prueba);
+router.put("/edit/", validationProduct,productsControl.upLoadImag);
 
 
 router.get("/delete/:id/", productsControl.delete);
