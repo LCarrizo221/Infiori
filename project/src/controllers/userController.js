@@ -7,7 +7,7 @@ const userController = {
     showLogin: (req, res) => {
         res.render("login.ejs");
     },
-
+ // proceso del login para guardar en session
     processLogin: (req, res) => {
         const { userName, password } = req.body;
         console.log(`Intento de login con usuario: ${userName}`);
@@ -35,7 +35,7 @@ const userController = {
 
         //res.redirect('/');
     },
-
+ // me devuelve los datos y renderiza una vista solo si laruta parametrizada coincide con el session id 
     showProfile: (req,res) => {
         if(!req.session.userId){
             return res.redirect("login.ejs")
