@@ -1,4 +1,5 @@
-
+const db = require('../database/models');
+const sequelize = db.sequelize;
 const datasource = require("../services/datasource");
 const { validationResult } = require("express-validator");
 
@@ -7,6 +8,26 @@ const productController = {
 
   cart: (req, res) => {
     res.render("carrito-compra");
+  },
+
+  viewDetail: (req,res) => {
+    const idProd = req.params.id
+    db.Product.findByPk(idProd,{
+        include: [ 
+          {
+            model: db.pictures_products,
+            where: { PICTURES_id_picture: idProd },
+            include:[
+              {
+                model: db.Picture,
+                
+              },
+            ],
+          },
+        ],
+      })
+    .then(products => res.send(products));
+
   },
 
   detail: async (req, res) => {

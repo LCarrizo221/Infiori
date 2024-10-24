@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       id_category: {
         type: DataTypes.INTEGER,
         allowNull: false
-      }
+      },
     }, {
       tableName: 'PRODUCTS',
       timestamps: false
@@ -22,14 +22,14 @@ module.exports = (sequelize, DataTypes) => {
   
     Product.associate = (models) => {
       Product.belongsTo(models.Category, { foreignKey: 'id_category' }); // recuerden que al hacer referencia "models." tiene que ser segun el nombre que le des en sequelize.define, en este caso es Category
-      Product.hasMany(models.Picture, { 
-        foreignKey: 'PRODUCTS_id_products'
-      });
+      Product.hasMany(models.pictures_products, { foreignKey: 'PRODUCTS_id_products' });
+      
       Product.belongsToMany(models.Talla, { 
         through: 'PRODUCTS_TALLA',
         foreignKey: 'id_products',
         otherKey: 'id_talla'
       });
+
     };
   
     return Product;

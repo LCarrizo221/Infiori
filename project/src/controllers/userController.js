@@ -37,15 +37,9 @@ const userController = {
 
         //res.redirect('/');
     },
-<<<<<<< HEAD
- // me devuelve los datos y renderiza una vista solo si laruta parametrizada coincide con el session id 
-    showProfile: (req,res) => {
-        if(!req.session.userId){
-=======
 
     showProfile: (req, res) => {
         if (!req.session.userId) {
->>>>>>> 11a20fda32433e1046a5b8c16273ede062df39c0
             return res.redirect("login.ejs")
         }
 

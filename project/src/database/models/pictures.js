@@ -1,3 +1,5 @@
+const pictures_products = require("./pictures_products");
+
 module.exports = (sequelize, DataTypes) => {
     const Picture = sequelize.define('Picture', {
       id_picture: {
@@ -6,11 +8,7 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true
       },
       url: {
-        type: DataTypes.STRING(45),
-        allowNull: false
-      },
-      PRODUCTS_id_products: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING(200),
         allowNull: false
       }
     }, {
@@ -19,9 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     });
   
     Picture.associate = (models) => {
-      Picture.belongsTo(models.Product, {
-        foreignKey: 'PRODUCTS_id_products'
-      });
+      Picture.hasMany(models.pictures_products, { foreignKey: 'PICTURES_id_picture' });
+      
     };
   
     return Picture;
