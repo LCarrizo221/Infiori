@@ -4,7 +4,7 @@ const UserCategory = require('./user_categories.js')(sequelize, DataTypes); // I
 
 module.exports = (sequelize) => {
 
-    const Usuario = sequelize.define('Usuario', {
+    const USERS = sequelize.define('USERS', {
         id_user: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -19,7 +19,7 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        email: {
+        mail: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
@@ -40,25 +40,25 @@ module.exports = (sequelize) => {
             }
         }
     }, {
-        tableName: 'users',
+        tableName: 'USERS',
         timestamps: false
     });
 
     // Definir las asociaciones
-    Usuario.associate = (models) => {
-        Usuario.belongsTo(models.UserCategory, { 
+    USERS.associate = (models) => {
+        USERS.belongsTo(models.UserCategory, { 
             foreignKey: 'id_categories',
             as: 'userCategory'
         });
-        Usuario.belongsToMany(models.Picture, {
+        USERS.belongsToMany(models.Picture, {
             through: 'USERS_PICTURE',
             foreignKey: 'USERS_id_user',
             otherKey: 'PICTURE_id_picture'
         });
-        Usuario.hasMany(models.Shopping, {
+        USERS.hasMany(models.Shopping, {
             foreignKey: 'id_user'
         });
     };
 
-    return Usuario;
+    return USERS;
 };

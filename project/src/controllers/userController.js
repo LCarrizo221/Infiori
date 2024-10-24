@@ -1,11 +1,17 @@
 
 const { hashSync } = require("bcryptjs");
+const db = require("../database/models");
+const sequelize = db.sequelize;
 const fs = require("node:fs/promises");
 const path = require("path");
 
 const usersFilePath = path.join(__dirname, '../models/users.json');
 
 const userController = {
+    showForein: (req,res) =>{
+        db.USERS.findAll()
+        .then(users => res.send(users));
+    },
     showLogin: (req, res) => {
         res.render("login.ejs");
     },
@@ -37,15 +43,9 @@ const userController = {
 
         //res.redirect('/');
     },
-<<<<<<< HEAD
- // me devuelve los datos y renderiza una vista solo si laruta parametrizada coincide con el session id 
-    showProfile: (req,res) => {
-        if(!req.session.userId){
-=======
 
     showProfile: (req, res) => {
         if (!req.session.userId) {
->>>>>>> 11a20fda32433e1046a5b8c16273ede062df39c0
             return res.redirect("login.ejs")
         }
 
