@@ -13,6 +13,9 @@ router.get("/detail/:id",logMiddleware, productsControl.detail);
 router.get("/create", productsControl.createProd);
 router.post("/create/",Fileupload.single('imagen'), productsControl.create);
 
+// prueba view all product
+router.get("/view/:id",productsControl.viewDetail);
+
 router.get("/edit/:id",productsControl.edit);
 router.put("/edit/", validationProduct,productsControl.upLoadImag);
 

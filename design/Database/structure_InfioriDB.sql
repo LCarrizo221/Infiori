@@ -113,7 +113,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `infiori`.`PRODUCTS_TALLA`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `products_talla` (
+CREATE TABLE IF NOT EXISTS `PRODUCTS_TALLA` (
   `id_products_talla` INT NOT NULL AUTO_INCREMENT,
   `id_products` INT NOT NULL,
   `id_talla` INT NOT NULL,
@@ -123,12 +123,12 @@ CREATE TABLE IF NOT EXISTS `products_talla` (
   UNIQUE KEY `unique_product_talla` (`id_products`, `id_talla`),  -- Asegúrate de que haya un índice único
   
   CONSTRAINT `fk_PRODUCTS_has_TALLA_PRODUCTS` FOREIGN KEY (`id_products`) 
-    REFERENCES `products` (`id_products`) 
+    REFERENCES `PRODUCTS` (`id_products`) 
     ON DELETE NO ACTION 
     ON UPDATE NO ACTION,
   
   CONSTRAINT `fk_PRODUCTS_has_TALLA_TALLA` FOREIGN KEY (`id_talla`) 
-    REFERENCES `talla` (`id_talla`) 
+    REFERENCES `TALLA` (`id_talla`) 
     ON DELETE NO ACTION 
     ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -150,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `infiori`.`SHOPPING` (
 -- -----------------------------------------------------
 -- Table `infiori`.`PRODUCTS_SHOPPING`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `products_shopping` (
+CREATE TABLE IF NOT EXISTS `PRODUCTS_SHOPPING` (
   `id_products_shopping` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `PRODUCTS_TALLA_PRODUCTS_id_products` INT NOT NULL,
   `PRODUCTS_TALLA_TALLA_id_talla` INT NOT NULL,
@@ -163,7 +163,7 @@ CREATE TABLE IF NOT EXISTS `products_shopping` (
       `PRODUCTS_TALLA_PRODUCTS_id_products`, 
       `PRODUCTS_TALLA_TALLA_id_talla`
     ) 
-    REFERENCES `products_talla` (
+    REFERENCES `PRODUCTS_TALLA` (
       `id_products`, 
       `id_talla`
     )
@@ -192,3 +192,6 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+

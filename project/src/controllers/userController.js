@@ -1,15 +1,21 @@
 
 const { hashSync } = require("bcryptjs");
+const db = require("../database/models");
+const sequelize = db.sequelize;
 const fs = require("node:fs/promises");
 const path = require("path");
 
 const usersFilePath = path.join(__dirname, '../models/users.json');
 
 const userController = {
+    showForein: (req,res) =>{
+        db.USERS.findAll()
+        .then(users => res.send(users));
+    },
     showLogin: (req, res) => {
         res.render("login.ejs");
     },
-
+ // proceso del login para guardar en session
     processLogin: (req, res) => {
         const { userName, password } = req.body;
         console.log(`Intento de login con usuario: ${userName}`);
