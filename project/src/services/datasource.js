@@ -1,5 +1,6 @@
 const { Product, Category, Picture, Talla } = require('../database/models');
 
+
 const datasource = {
     async load() {
         try {
@@ -75,5 +76,4 @@ const datasource = {
         }
     }
 };
-
 module.exports = datasource;
