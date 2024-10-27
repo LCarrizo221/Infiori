@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'PICTURES_id_picture', // Clave foránea en pictures_products que referencia PICTURES
       otherKey: 'PRODUCTS_id_products' // Clave foránea en pictures_products que referencia PRODUCTS
     });
+    Picture.hasMany(models.pictures_products, { foreignKey: 'PICTURES_id_picture' });
   };
 
   return Picture;

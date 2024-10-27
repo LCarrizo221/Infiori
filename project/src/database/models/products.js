@@ -22,20 +22,20 @@ module.exports = (sequelize, DataTypes) => {
   
     Product.associate = (models) => {
       Product.belongsTo(models.Category, { foreignKey: 'id_category' }); // recuerden que al hacer referencia "models." tiene que ser segun el nombre que le des en sequelize.define, en este caso es Category
-      
-      
+      Product.hasMany(models.pictures_products, { foreignKey: 'PRODUCTS_id_products' });
+     /* 
       Product.belongsToMany(models.Picture, {
         through: "pictures_products", //tabla intermedia
         foreignKey: "PRODUCTS_id_products", // referencia de la FK de products  PICTURES_PRODUCTS
         otherKey: "PICTURES_id_picture" // FK en PICTURES_PRODUCTS
       })
-      
+     */
       Product.belongsToMany(models.Talla, { 
         through: 'PRODUCTS_TALLA',
         foreignKey: 'id_products',
         otherKey: 'id_talla'
       });
-
+ 
     };
   
     return Product;

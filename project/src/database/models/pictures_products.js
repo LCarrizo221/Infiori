@@ -21,5 +21,11 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false
   });
 
+  
+  pictures_products.associate = (models) => {
+    // Definiendo las relaciones
+    pictures_products.hasMany(models.Product, { foreignKey: 'id_products' });
+    pictures_products.hasMany(models.Picture, { foreignKey: 'id_picture' });
+  };
   return pictures_products; 
 };
