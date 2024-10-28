@@ -13,8 +13,12 @@ router.get("/detail/:id",logMiddleware, productsControl.detail);
 router.get("/create", productsControl.createProd);
 router.post("/create/",Fileupload.single('imagen'), productsControl.create);
 
-// prueba view all product
+// prueba view products
+// for 1
 router.get("/view/:id",productsControl.viewDetail);
+//for all
+router.get("/viewsProducts",productsControl.viewAllProducts);
+
 
 router.get("/edit/:id",productsControl.edit);
 router.put("/edit/", validationProduct,productsControl.upLoadImag);

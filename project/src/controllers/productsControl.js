@@ -10,7 +10,7 @@ const productController = {
     res.render("carrito-compra");
   },
 
-  viewDetail: (req,res) => {
+  viewDetail: (req,res) => { //Config para mostrar 1 solo art.
     const idProd = req.params.id
     db.Product.findByPk(idProd,{
         include: [ 
@@ -27,7 +27,25 @@ const productController = {
         ],
       })
     .then(products => //res.send(products));
-      res.render("detailExam",{ products }));
+      res.render("detailExam",{ products , idProd}));
+
+  },
+  
+  viewAllProducts: (req,res) =>{
+    db.Product.findAll({
+      include: [ 
+        {
+          model: db.pictures_products,
+          include:[
+            {
+              model: db.Picture,
+              
+            },
+          ],
+        },
+      ],
+    }). then(products =>  //res.send(products));
+     res.render("homeforDB", {products}));
 
   },
 
