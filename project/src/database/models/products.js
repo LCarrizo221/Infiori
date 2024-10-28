@@ -29,6 +29,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "PRODUCTS_id_products", // referencia de la FK de products  PICTURES_PRODUCTS
         otherKey: "PICTURES_id_picture" // FK en PICTURES_PRODUCTS
       })
+        SETEOO 
      */
       Product.belongsToMany(models.Talla, { 
         through: 'PRODUCTS_TALLA',
