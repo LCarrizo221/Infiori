@@ -26,7 +26,8 @@ const productController = {
           },
         ],
       })
-    .then(products => res.send(products));
+    .then(products => //res.send(products));
+      res.render("detailExam",{ products }));
 
   },
 
