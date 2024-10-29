@@ -4,6 +4,7 @@ const db = require("../database/models");
 const sequelize = db.sequelize;
 const fs = require("node:fs/promises");
 const path = require("path");
+const { validationResult } = require("express-validator");
 
 const usersFilePath = path.join(__dirname, '../models/users.json');
 
@@ -82,10 +83,7 @@ const userController = {
     },
 
     processRegister: async (req, res) => {
-        const { userName, 
-            password, 
-            nombre, 
-            apellido } = req.body;
+        const { userName, password, repassword } = req.body;
         console.log(`Intento de registro con user: ${userName}`);
         
         try {

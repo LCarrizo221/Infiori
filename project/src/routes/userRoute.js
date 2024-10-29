@@ -8,6 +8,6 @@ router.get("/login", userController.showLogin);
 router.get("/profile/:id", userController.showProfile);
 
 router.post("/login", userController.processLogin);
-router.post("/register", userController.processRegister);
+router.post("/register",userValidations, userController.processRegister);
 router.get("/test", userController.showForein );
 module.exports = router;
