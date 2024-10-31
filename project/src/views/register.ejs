@@ -32,6 +32,10 @@
         <label for="password" class="inp">
             <input type="password" name="password" id="password" placeholder="Ingrese una contraseña.">
         </label>
+        
+        <span>
+            <%= errors.find(error => error.param === 'password')?.msg %>
+        </span>
 
         <label for="repassword" class="inp">
             <input type="password" name="repassword" id="repassword" placeholder="Repita contraseña.">
