@@ -27,7 +27,7 @@ const productController = {
         ],
       })
     .then(products => //res.send(products));
-      res.render("detailExam",{ products , idProd}));
+      res.render("detailExam",{ products , idProd : idProd-1}));
 
   },
   
@@ -44,8 +44,8 @@ const productController = {
           ],
         },
       ],
-    }). then(products =>  //res.send(products));
-     res.render("homeforDB", {products}));
+    }). then(products =>  res.send(products));
+    // res.render("homeforDB", {products}));
 
   },
 
