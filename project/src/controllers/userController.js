@@ -79,11 +79,19 @@ const userController = {
         if (req.session.userId) {
             return res.redirect(`/profile/${req.session.userId}`);
         }
-        res.render("register.ejs");
+        res.render("register.ejs", { errors: [], oldData: {} });
     },
 
     processRegister: async (req, res) => {
         const { userName, password, repassword } = req.body;
+
+        const errors = validationResult(req);
+        if(!errors.isEmpty()){
+            return res.render("register", {
+                errors: errors.array(),
+                oldData: req.body
+            })
+        }
         console.log(`Intento de registro con user: ${userName}`);
         
         try {
