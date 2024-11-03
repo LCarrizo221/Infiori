@@ -44,8 +44,8 @@ const productController = {
           ],
         },
       ],
-    }). then(products =>  res.send(products));
-    // res.render("homeforDB", {products}));
+    }). then(products =>  //res.send(products));
+   res.render("homeforDB", {products}));
 
   },
 

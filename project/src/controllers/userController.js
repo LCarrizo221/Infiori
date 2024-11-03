@@ -79,13 +79,32 @@ const userController = {
         if (req.session.userId) {
             return res.redirect(`/profile/${req.session.userId}`);
         }
-        res.render("register.ejs");
+        res.render("register.ejs", {
+            errors: [],
+            oldData: {}
+        });
     },
 
     processRegister: async (req, res) => {
+        const errors = validationResult(req);
+        if(!errors.isEmpty()){
+            return res.render("register",{
+                errors: errors.array(),
+                oldData: req.body
+            })
+        }  else {
+            // Si no hay errores, aún enviamos errors como un array vacío
+            return res.render('register', {
+                errors: [],
+                oldData: {}
+            });
+        }
+
         const { userName, password, repassword } = req.body;
         console.log(`Intento de registro con user: ${userName}`);
-        
+
+
+
         try {
             // Generar un hash para la contraseña
             const salt = await bcrypt.genSalt(10); // Genera un "salt" con un factor de costo de 10
