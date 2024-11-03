@@ -35,10 +35,9 @@ CREATE TABLE IF NOT EXISTS `infiori`.`PRODUCTS` (
   `title` VARCHAR(45) NOT NULL,
   `description` VARCHAR(200) NULL,
   `price` VARCHAR(45) NULL,
+  
   `id_category` INT NOT NULL, CONSTRAINT `fk_PRODUCTS_CATEGORY` FOREIGN KEY (`id_category`) REFERENCES `infiori`.`CATEGORY` (`id_category`),
   PRIMARY KEY (`id_products`))ENGINE = InnoDB;
-
-
 
 
 -- -----------------------------------------------------
@@ -47,11 +46,12 @@ CREATE TABLE IF NOT EXISTS `infiori`.`PRODUCTS` (
 CREATE TABLE IF NOT EXISTS `infiori`.`PICTURES` (
   `id_picture` INT NOT NULL AUTO_INCREMENT,
   `url` VARCHAR(45) NOT NULL,
+   `id_producto` INT,
+FOREIGN KEY (`id_producto`) REFERENCES `infiori`.`PRODUCTS`(`id_products`) ON DELETE CASCADE,
   PRIMARY KEY (`id_picture`))
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
+--------------------------------------------------
 -- Table `infiori`.`CATEGORIES`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `infiori`.`CATEGORIES` (
@@ -78,22 +78,14 @@ CREATE TABLE IF NOT EXISTS `infiori`.`USERS` (
 -- -----------------------------------------------------
 -- Table `infiori`.`PICTURE`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `infiori`.`PICTURE` (
+CREATE TABLE IF NOT EXISTS `infiori`.`PIC_USER` (
   `id_picture` INT NOT NULL AUTO_INCREMENT,
   `url` VARCHAR(45) NOT NULL,
+   `id_user` INT,
+FOREIGN KEY (`id_user`) REFERENCES `USERS`(`id_user`) ON DELETE CASCADE,
   PRIMARY KEY (`id_picture`))
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `infiori`.`USERS_PICTURE`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `infiori`.`USERS_PICTURE` (
-  `USERS_id_user` INT NOT NULL,
-  `PICTURE_id_picture` INT  NOT NULL,
-  CONSTRAINT `fk_USERS_has_PICTURE_USERS` FOREIGN KEY (`USERS_id_user`) REFERENCES `infiori`.`USERS` (`id_user`),
-  CONSTRAINT `fk_USERS_has_PICTURE_PICTURE` FOREIGN KEY (`PICTURE_id_picture`) REFERENCES `infiori`.`PICTURE` (`id_picture`))
-ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -177,16 +169,7 @@ CREATE TABLE IF NOT EXISTS `PRODUCTS_SHOPPING` (
     ON DELETE CASCADE
     ON UPDATE CASCADE
 ) ENGINE=InnoDB;
--- -----------------------------------------------------
--- Table `infiori`.`PICTURES_PRODUCTS`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `infiori`.`PICTURES_PRODUCTS` (
-  `PICTURES_id_picture` INT NOT NULL,
-  `PRODUCTS_id_products` INT NOT NULL,
-  PRIMARY KEY (`PICTURES_id_picture`, `PRODUCTS_id_products`),
-CONSTRAINT `fk_PICTURES_has_PRODUCTS_PICTURES` FOREIGN KEY (`PICTURES_id_picture`) REFERENCES `infiori`.`PICTURES` (`id_picture`),
-CONSTRAINT `fk_PICTURES_has_PRODUCTS_PRODUCTS` FOREIGN KEY (`PRODUCTS_id_products`)REFERENCES `infiori`.`PRODUCTS` (`id_products`))
-ENGINE = InnoDB;
+
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
