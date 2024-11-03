@@ -50,16 +50,21 @@ select * from TALLA;
 INSERT INTO `infiori`.`PRODUCTS`
 (`title`,`description`,`price`,`id_category`) VALUES('Vestido Floral Primavera', 'Hermoso vestido con estampado floral, ideal para la temporada primavera-verano.', 24999, 1);
 
+INSERT INTO `PRODUCTS` (`title`, `description`, `price`, `id_category`) VALUES ('Vestido Floral Primavera', 'Hermoso vestido con estampado floral, ideal para la temporada primavera-verano.', 24999, 1);
+
+SELECT * FROM PRODUCTS;
+
+
 -- 7 Insertar la imagen del producto
 INSERT INTO `infiori`.`PICTURES` (`url`) VALUES ('/img/products/vestido-floral-1.jpg');
-INSERT INTO `infiori`.`pictures` (`url`) VALUES ('/img/products/vestido-floral-2.jpg');
-INSERT INTO `infiori`.`pictures` (`url`) VALUES ('/img/products/vestido-floral-3.jpg');
+INSERT INTO `PICTURES` (`url`, `id_producto`) VALUES ('/img/products/vestido-floral-1.jpg', LAST_INSERT_ID());
+INSERT INTO `PICTURES` (`url`, `id_producto`) VALUES ('/img/products/vestido-floral-2.jpg', LAST_INSERT_ID());
 
--- 8 Insertar la relacion producto - imagen en la tabla pivot 
-INSERT INTO `infiori`.`PICTURES_PRODUCTS` (`PRODUCTS_id_products`, `PICTURES_id_picture`)
-VALUES(1, 1), (1, 2), (1, 3); 
+SELECT * FROM PICTURES;
 
--- 9 insertar la relacion producto - talla
+
+
+-- 8 insertar la relacion producto - talla
 INSERT INTO `infiori`.`PRODUCTS_TALLA`
 (`id_products`,`id_talla`,`stock`)
 VALUES 
@@ -69,7 +74,4 @@ VALUES
 (1, 4, 8);  -- 8 unidades talla XL
 
 select * from products_talla;
-DESCRIBE products_talla
-
-SELECT * FROM `infiori`.`PRODUCTS` WHERE `id_products` = 1;
 
