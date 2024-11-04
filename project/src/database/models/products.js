@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
 
     // Asociación con el modelo Picture
     Product.hasMany(models.Picture, {
-      foreignKey: 'id_producto',
+      foreignKey: 'id_product',
       onDelete: 'CASCADE', // Para eliminar imágenes al eliminar el producto
     });
   };
