@@ -18,21 +18,7 @@ const productController = {
         model: db.Picture, // Asegúrate de que 'Picture' esté correctamente definido y exportado
         as: 'Pictures'  // Este debe coincidir con el alias utilizado en Product.associate
     }]
-}
-      /*
-        include: [ 
-          {
-            model: db.pictures_products,
-            where: { PICTURES_id_picture: idProd },
-            include:[
-              {
-                model: db.Picture,
-                
-              },
-            ],
-          },
-        ]*/,
-      )
+})
     .then(products =>  //res.send(products));
      res.render("detailExam",{ products }));
 
