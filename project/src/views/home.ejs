@@ -44,16 +44,22 @@
     </header>
     <main>
         <section>
-            <% articles.forEach(item => {%>
+            <% products.forEach(product => { %>
                 <article>
-                    <img src=<%= item.imagen %> alt="">
+                    <div class="image-gallery">
+                        <% if (product.Pictures && product.Pictures.length > 0) { %>
+                            <img src="<%= product.Pictures[0].url %>" alt="Imagen de <%= product.title %>" style="width: 100%; max-width: 300px;">
+                        <% } else { %>
+                            <p>No hay imágenes disponibles para este producto.</p>
+                        <% } %>
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title"><%= item.titulo %></h5>
-                        <p class="card-text"><%= item.descripcion %></p>
-                        <a href="/product/detail/<%=item.id  %>">Ir a...</a>
+                        <h5 class="card-title"><%= product.title %></h5>
+                        <p class="card-text"><%= product.description %></p>
+                        <a href="/product/view/<%= product.id_products %>">Ir a...</a>
                     </div>
                 </article>
-            <%}); %>
+            <% }) %>
         </section>
     </main>
     <%- include("partials/footer") %>

@@ -15,9 +15,10 @@ const productController = {
     const idProd = req.params.id
     db.Product.findByPk(idProd,{
       include: [{
-        model: db.pictures,
-        as: 'pictures', // Debe coincidir con el alias definido en el modelo Product
-      }]
+        model: db.Picture, // Asegúrate de que 'Picture' esté correctamente definido y exportado
+        as: 'Pictures'  // Este debe coincidir con el alias utilizado en Product.associate
+    }]
+}
       /*
         include: [ 
           {
@@ -31,9 +32,9 @@ const productController = {
             ],
           },
         ]*/,
-      })
-    .then(products => res.send(products));
-      //res.render("detailExam",{ products , idProd : idProd-1}));
+      )
+    .then(products =>  //res.send(products));
+     res.render("detailExam",{ products }));
 
   },
   
@@ -44,7 +45,7 @@ const productController = {
        // as: 'pictures', // Debe coincidir con el alias definido en el modelo Product
       }],
     }). then(products =>  //res.send(products));
-   res.render("homeforDB", {products}));
+   res.render("home", {products}));
 
   },
 
