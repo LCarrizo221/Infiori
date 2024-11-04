@@ -65,8 +65,23 @@ const userController = {
         }
 
 
-    },
+    }, 
+    showProfile2: async (req, res) => {
+        if(!req.session.userId){
+            return res.redirect("/user/login")
+        }
+        try {
+            const user = await db.User.findByPk(req.session.userId);
+            if (!user) {
+                return res.status(404).send("Usuario no encontrado");
+            }
+            res.render("profile", {user})
+        }catch(error) {
+            console.error("Error al obtener el perfil del usuario", error)
+            res.status(500).send("Error interno en el servidor");
+        }
 
+    },
 
     showProfile: (req, res) => {
         if (!req.session.userId) {
@@ -185,3 +200,54 @@ const userController = {
 }
 
 module.exports = userController;
+
+
+
+/*  processRegister: async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.render("register", {
+                errors: errors.array(),
+                oldData: req.body
+            });
+        }
+
+        const { userName, password, repassword, firstName, lastName, id_categories } = req.body;
+        console.log(`Intento de registro con user: ${userName}`);
+
+        try {
+            // Verificamos si el usuario ya existe
+            const existingUser = await db.User.findOne({ where: { email: userName } });
+            if (existingUser) {
+                return res.render("register", {
+                    errors: [{ msg: "El correo ya está registrado." }],
+                    oldData: req.body
+                });
+            }
+
+            // Generar un hash para la contraseña
+            const salt = await bcrypt.genSalt(10); // Genera un "salt" con un factor de costo de 10
+            const hashedPassword = await bcrypt.hash(password, salt); // Hashea la contraseña usando el "salt"
+
+            // Crear un nuevo usuario en la base de datos
+            const newUser = await db.User.create({
+                firstName: firstName, // Nombre del usuario
+                lastName: lastName, // Apellido del usuario
+                email: userName,
+                password: hashedPassword,
+                id_categories: id_categories // Asumiendo que tienes esta columna en tu modelo User
+            });
+
+            console.log(`${userName} se agregó correctamente`);
+
+            // Redirigir al usuario después de que se haya agregado correctamente
+            res.redirect('/user/login');
+
+        } catch (error) {
+            console.error("Error en el registro:", error);
+            res.status(500).send("Error al registrar el usuario");
+        }
+    }
+}
+
+module.exports = userController;*/
