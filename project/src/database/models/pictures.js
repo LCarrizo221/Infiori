@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    id_producto: {
+    id_product: {
       type: DataTypes.INTEGER,
       references: {
         model: 'PRODUCTS',
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Picture.associate = (models) => {
     Picture.belongsTo(models.Product, {
-      foreignKey: 'id_producto',
+      foreignKey: 'id_product',
     });
   };
 

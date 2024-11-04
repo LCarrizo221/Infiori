@@ -1,4 +1,5 @@
 const db = require('../database/models');
+const pictures = require('../database/models/pictures');
 const sequelize = db.sequelize;
 const datasource = require("../services/datasource");
 const { validationResult } = require("express-validator");
@@ -13,6 +14,11 @@ const productController = {
   viewDetail: (req,res) => { //Config para mostrar 1 solo art.
     const idProd = req.params.id
     db.Product.findByPk(idProd,{
+      include: [{
+        model: db.pictures,
+        as: 'pictures', // Debe coincidir con el alias definido en el modelo Product
+      }]
+      /*
         include: [ 
           {
             model: db.pictures_products,
@@ -24,26 +30,19 @@ const productController = {
               },
             ],
           },
-        ],
+        ]*/,
       })
-    .then(products => //res.send(products));
-      res.render("detailExam",{ products , idProd : idProd-1}));
+    .then(products => res.send(products));
+      //res.render("detailExam",{ products , idProd : idProd-1}));
 
   },
   
   viewAllProducts: (req,res) =>{
     db.Product.findAll({
-      include: [ 
-        {
-          model: db.pictures_products,
-          include:[
-            {
-              model: db.Picture,
-              
-            },
-          ],
-        },
-      ],
+      include: [{
+        model: db.Picture,
+       // as: 'pictures', // Debe coincidir con el alias definido en el modelo Product
+      }],
     }). then(products =>  //res.send(products));
    res.render("homeforDB", {products}));
 

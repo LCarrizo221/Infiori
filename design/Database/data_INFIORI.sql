@@ -20,12 +20,9 @@ INSERT INTO `infiori`.`USERS` (name, firstname, mail, password, id_categories) V
 select * from users;
 -- --------------------------------------------------------------------
 -- 3 insertar las imagenes para el user
-INSERT INTO `infiori`.`picture` (`url`) VALUES ("img/user/user_Prueba");
+INSERT INTO `infiori`.`PIC_USER` (`url`,`id_user`) VALUES ("img/user/user_Prueba",1);
 
--- 4 insertar la relacion en la tabla pivot 
-INSERT INTO `infiori`.`USERS_PICTURE` (`USERS_id_user`, `PICTURE_id_picture`) VALUE(1,1);
 
-select * from users_picture;
 -- -----------------------------------------------------------------------
 
 -- CARGA PRODUCTOS
