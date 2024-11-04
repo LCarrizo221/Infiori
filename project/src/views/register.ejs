@@ -99,6 +99,11 @@
                     rule: 'isEqual',
                     compareTo: '#password',
                     errorMessage: 'Las contraseñas no coinciden.'
+                },
+                {
+                    rule: "equal",
+                    compareTo: "#password",
+                    errorMessage: "Las contraseñas deben coincidir"
                 }
             ])
             .addField('input[type="file"]', [
