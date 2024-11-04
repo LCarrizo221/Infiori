@@ -4,6 +4,7 @@ const db = require("../database/models");
 const sequelize = db.sequelize;
 const fs = require("node:fs/promises");
 const path = require("path");
+const bcrypt = require("bcryptjs")
 const { validationResult } = require("express-validator");
 
 const usersFilePath = path.join(__dirname, '../models/users.json');
@@ -44,6 +45,28 @@ const userController = {
 
         //res.redirect('/');
     },
+    processLogin2: async (req, res) => {
+        const {userName, password} = req.body;
+        try {
+            const user = await db.User.FindOne({ where: { email: userName}})
+
+            if (user && await bcrypt.compare(password, user.password)) {
+                req.session.userId = user.id;
+                req.session.userName = user.firstName;
+                req.session.user = user ;
+                return res.redirect("/")
+            }else{
+                console.log("Credenciales invalidas");
+                return res.redirect("/user/login")
+            }
+        } catch{
+            console.error("Erro al procesar el login:", error);
+            res.status(500).send("Error al procesar el login.");
+        }
+
+
+    },
+
 
     showProfile: (req, res) => {
         if (!req.session.userId) {
