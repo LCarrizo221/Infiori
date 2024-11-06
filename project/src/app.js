@@ -16,7 +16,7 @@ app.use(express.json());
 
 // Importar rutas
 const productsRoute = require("./routes/productsRoute");
-const userRoute = require("./routes/userRoute");
+/* const userRoute = require("./routes/userRoute"); */ // SACAR DESPUES ---------------------------------------------------------------------------
 
 //define templates engine
 app.set("view engine", "ejs");
@@ -29,7 +29,7 @@ app.use(session({secret: "secreto"}));
 //track routes
 app.use("/", productsRoute);   // La ruta home ahora está dentro de productsRoute
 app.use("/product", productsRoute);
-app.use("/user", userRoute);
+/* app.use("/user", userRoute); */ //SACAR DESPUES---------------------------------------------------------------------------
 app.use("/cart", productsRoute)
 
 //Configuration petitions user the method PUT and DELETE

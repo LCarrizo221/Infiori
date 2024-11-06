@@ -41,15 +41,5 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false
     });
 
-    USERS.associate = (models) => {
-      
-        
-        if (models.Shopping) {
-            USERS.hasMany(models.Shopping, {
-                foreignKey: 'id_user'
-            });
-        }
-    };
-
     return USERS;
 };
