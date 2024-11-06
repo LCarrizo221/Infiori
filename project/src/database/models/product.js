@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-  const ProductPrueba = sequelize.define('ProductPrueba', {
+  const Product = sequelize.define('Product', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -36,9 +36,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     }
   }, {
-    tableName: 'ProductPrueba',
+    tableName: 'Product',
     timestamps: false,
   });
 
-  return ProductPrueba;
+  return Product;
 };
