@@ -35,22 +35,6 @@ const productController = {
 
   },
 
-  detail: async (req, res) => {
-    try {
-      // Cargar productos desde el datasource
-      let products = await datasource.load();
-      // Buscar el producto con el ID especificado
-      let product = products.find((product) => product.id == req.params.id);
-      if (product) {
-        res.render("detail", { product });
-      } else {
-        res.status(404).send("Producto no encontrado");
-      }
-    } catch (error) {
-      console.error("Error al cargar el detalle del producto:", error);
-      res.status(500).send("Error al procesar la solicitud");
-    }
-  },
 
   edit: async (req, res) => {
     let id = req.params.id;
@@ -105,7 +89,6 @@ const productController = {
         console.error("Error al subir la imagen:", error);
         res.status(500).send("Error al procesar la solicitud");
       }
-   
 
   },
   delete: async (req, res) => {
@@ -115,6 +98,8 @@ const productController = {
     datasource.save(artDel);
     res.redirect("/");
   },
+
+
   upLoadImag: async (req, res) => {
     try {
       let updated = false;
@@ -148,18 +133,81 @@ const productController = {
     }
   },
 
-  showAllProducts: async (req, res) => {
+  //CRUD con BASE DE DATOS
+  createNewProduct: async (req,res)=>{
+    const {title, description, category, price, stock,talla, imagen } = req.body
+
     try {
-      this.products = await datasource.load();
-      res.render("allProducts", { products: this.products });
+      
+      const newProduct = await db.products.create({
+        title,
+        description,
+        category,
+        price,
+        //img_url
+        stock,
+        talla
+      });
+
+      //ver si se creo el nuevo producto
+      res.status(500).json(newProduct) //el que definimos recien
     } catch (error) {
-      console.error("Error al cargar todos los productos:", error);
-      res.status(500).send("Error al procesar la solicitud");
+      res.status(400).json({error: "Error al crear producto ", error})
     }
   },
-  Prueba: (req,res)=>{
-    res.send('Si funca');
+  // 5. Actualizar un producto
+  updateProduct: async (req, res) => {
+    const { id } = req.params; // El ID del producto que viene de la URL
+    const { title, description, category, price, img_url } = req.body; // Los datos para actualizar
+
+    try {
+      // Buscar el producto por su ID
+      const product = await ProductPrueba.findByPk(id);
+
+      if (!product) {
+        return res.status(404).json({ message: 'Producto no encontrado' });
+      }
+
+      // Actualizar los detalles del producto
+      product.title = title || product.title;
+      product.description = description || product.description;
+      product.category = category || product.category;
+      product.price = price || product.price;
+      product.img_url = img_url || product.img_url;
+
+      await product.save(); // Guardar los cambios en la base de datos
+
+      res.json(product); // Enviar el producto actualizado como respuesta
+    } catch (error) {
+      console.error('Error al actualizar el producto:', error);
+      res.status(500).json({ error: 'Error al actualizar el producto' });
+    }
+  },
+
+  // 6. Eliminar un producto
+  deleteProduct: async (req, res) => {
+    const { id } = req.params; // El ID del producto que viene de la URL
+
+    try {
+      // Buscar el producto por su ID
+      const product = await ProductPrueba.findByPk(id);
+
+      if (!product) {
+        return res.status(404).json({ message: 'Producto no encontrado' });
+      }
+
+      // Eliminar el producto de la base de datos
+      await product.destroy();
+
+      res.json({ message: 'Producto eliminado exitosamente' }); // Responder con un mensaje de éxito
+    } catch (error) {
+      console.error('Error al eliminar el producto:', error);
+      res.status(500).json({ error: 'Error al eliminar el producto' });
+    }
   }
+
+
+
 };
 
 module.exports = productController;
