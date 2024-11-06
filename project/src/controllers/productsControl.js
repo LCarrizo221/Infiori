@@ -73,7 +73,7 @@ module.exports = {
     }
   },
   createNewProduct: async (req,res)=>{
-    const {title, description, category, price, img_url } = req.body
+    const {title, description, category, price,stock, imagen } = req.body
 
     try {
       
@@ -82,7 +82,8 @@ module.exports = {
         description,
         category,
         price,
-        img_url
+        stock,
+        img_url : imagen
       });
 
       //ver si se creo el nuevo producto
