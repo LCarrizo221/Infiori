@@ -46,14 +46,14 @@
                 <% } %>
 
             <label for="imagen"  class="inp">
-                <input type="file" name="imagen" id="imagen" > <!-- Propiedad -multiple- para subir varios Archivos -->
+                <input type="file" name="img_url" id="img_url" > <!-- Propiedad -multiple- para subir varios Archivos -->
             </label>
             <% if(locals.errors && errors.imagen) { %>
                 <p class="text-danger"> <%= errors.imagen.msg %> </p>
                 <% } %>
 
 
-            <label for="tipo"  class="tipo">
+            <label for="category"  class="tipo">
                 <select 
                 name="category" 
                 class="form-select <%= locals.errors && errors.tipo ? 'is-invalid' : null %> ">
@@ -79,20 +79,17 @@
             <% if(locals.errors && errors.descripcion) { %>
                 <p class="text-danger"> <%= errors.precio.msg %> </p>
                 <% } %>
-            <label for="stock" class="inp">
-                <input type="number" name="stock" id="stock" placeholder="Ingrese el stock">
-            </label>
 
-            <label for="talla" class="inp">
-                <select name="talla" id="talla">
-                    <option value="">Elegi una Talla</option>
+            <label for="stock" class="inp">
+                <select name="stock" id="talla">
+                    <option value="">Hay Stock?</option>
                     <% 
-                        let tallas = ['S', 'M', 'L'];
+                        let stock = ['Y', 'N'];
                     %>
-                    <% for( let oneTalla of tallas ) { %>
-                        <option value="<%= oneTalla %>"
-                            <%= locals.old && old.tipo  === oneTalla ? 'selected' : null %> >
-                             <%= oneTalla %>
+                    <% for( let onStock of stock ) { %>
+                        <option value="<%= onStock %>"
+                            <%= locals.old && old.tipo  === onStock ? 'selected' : null %> >
+                             <%= onStock %>
                              </option>
                     <% } %>
                 </select>

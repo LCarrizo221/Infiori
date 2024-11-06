@@ -73,22 +73,25 @@ module.exports = {
       res.status(500).json({ error: 'Error al obtener productos por categoría' });
     }
   },
+
+  formCreate: (req,res) => {
+    res.render("formUpload");
+  },
   createNewProduct: async (req,res)=>{
-    const {title, description, category, price,stock, imagen } = req.body
+    const {title, description, category, price,stock, img_url } = req.body
 
     try {
-      
-      const newProduct = await ProductPrueba.create({
+      const newProduct = await db.ProductPrueba.create({
         title,
         description,
         category,
         price,
         stock,
-        img_url : imagen
-      });
+        img_url
+      }).then(res.send("PRODUCTO CREADO"+ newProduct));
 
       //ver si se creo el nuevo producto
-      res.status(500).json(newProduct) //el que definimos recien
+      //res.status(500).json(newProduct) //el que definimos recien
     } catch (error) {
       res.status(400).json({error: "Error al crear producto ", error})
     }

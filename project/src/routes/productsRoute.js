@@ -13,13 +13,15 @@ router.post("/");
 // rutas de desarrollo
 router.get("/viewAll",productsControl.viewAllProducts);
 router.get("/view/:id",productsControl.viewDetail);
+
+
 router.get("/cart", productsControl.renderCart);
 //rutas para detail--------------------------------------------------
 router.get("/detail/:id",logMiddleware, productsControl.renderViewDetail); // MUESTRA SOLO 1 OBJETO
 
-/* router.get("/create", productsControl.createNewProduct);
-router.post("/create/",Fileupload.single('imagen'), productsControl.createNewProduct);
-
+router.get("/create", productsControl.formCreate);
+router.post("/create/",Fileupload.single('img_url'), productsControl.createNewProduct);
+/*
 router.get("/edit/:id",productsControl.edit);
 router.put("/edit/", validationProduct,productsControl.upLoadImag);
 
