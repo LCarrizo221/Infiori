@@ -63,6 +63,10 @@ const productController = {
   createProd: (req, res) => {
     res.render("formUpload");
   },
+
+
+
+  
   create: async (req, res, next) => {
    /* let resultValidation = validationResult(req); //Validar validaciones
 
@@ -87,6 +91,8 @@ const productController = {
           imagen : "/img/products/" + req.file.filename,
           tipo : req.body.tipo,
           precio : req.body.precio,
+          category: req.body.category,
+          
         };
   
         
