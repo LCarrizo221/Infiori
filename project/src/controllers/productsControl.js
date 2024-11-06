@@ -1,5 +1,5 @@
 const { where } = require('sequelize');
-const { product } = require('../database/models'); //MODELO PRINCIPAL DE PRODUCT
+//const { product } = require('../database/models'); //MODELO PRINCIPAL DE PRODUCT
 const { validationResult } = require("express-validator");
 const db = require('../database/models');
 const sequelize = db.sequelize;
@@ -142,18 +142,7 @@ module.exports = {
     }
   },
   viewAllProducts: (req,res) =>{
-    db.Product.findAll({
-      include: [ 
-        {
-          model: db.pictures_products,
-          include:[
-            {
-              model: db.Picture
-              
-            },
-          ],
-        },
-      ],
+    db.PRODUCT.findAll({
     }). then(products =>  //res.send(products));
      res.render("homeforDB", {products}));
 
