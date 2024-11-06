@@ -1,6 +1,8 @@
 const { where } = require('sequelize');
 const { product } = require('../database/models'); //MODELO PRINCIPAL DE PRODUCT
 const { validationResult } = require("express-validator");
+const db = require('../database/models');
+const sequelize = db.sequelize;
 
 module.exports = {
   // 1. Ver productos
@@ -10,7 +12,7 @@ module.exports = {
   },
   getAllProducts: async (req, res) => {
     try {
-      const products = await ProductPrueba.findAll(); //SE DEFINE PRODUCTS
+      const products = await db.product.findAll(); //SE DEFINE PRODUCTS
       res.json(products); // Responde en JSON para la API
     } catch (error) {
       res.status(500).json({ error: "Error al cargar productos" });
@@ -19,7 +21,7 @@ module.exports = {
   
   renderHomePage: async (req, res) => { //render para la pagina principal
     try {
-      const products = await product.findAll();
+      const products = await db.product.findAll();
       res.render('home', { products }); // Renderiza la vista para la página principal
     } catch (error) {
       console.error("Error al cargar productos para la vista de inicio:", error);
@@ -138,5 +140,23 @@ module.exports = {
       console.error('Error al eliminar el producto:', error);
       res.status(500).json({ error: 'Error al eliminar el producto' });
     }
-  }
+  },
+  viewAllProducts: (req,res) =>{
+    db.Product.findAll({
+      include: [ 
+        {
+          model: db.pictures_products,
+          include:[
+            {
+              model: db.Picture
+              
+            },
+          ],
+        },
+      ],
+    }). then(products =>  //res.send(products));
+     res.render("homeforDB", {products}));
+
+  },
+
 }
