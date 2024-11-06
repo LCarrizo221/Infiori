@@ -79,9 +79,25 @@
             <% if(locals.errors && errors.descripcion) { %>
                 <p class="text-danger"> <%= errors.precio.msg %> </p>
                 <% } %>
+            <label for="stock" class="inp">
+                <input type="number" name="stock" id="stock" placeholder="Ingrese el stock">
+            </label>
 
             <label for="stock" class="inp">
                 <input type="number" name="stock" id="stock"  placeholder="Ingrese la cant. de Stock">
+            <label for="talla" class="inp">
+                <select name="talla" id="talla">
+                    <option value="">Elegi una Talla</option>
+                    <% 
+                        let tallas = ['S', 'M', 'L'];
+                    %>
+                    <% for( let oneTalla of tallas ) { %>
+                        <option value="<%= oneTalla %>"
+                            <%= locals.old && old.tipo  === oneTalla ? 'selected' : null %> >
+                             <%= oneTalla %>
+                             </option>
+                    <% } %>
+                </select>
             </label>
             <label for="" class="butt">
                 <button type="submit">Enviar</button>

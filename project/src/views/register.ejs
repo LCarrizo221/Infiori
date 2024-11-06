@@ -29,6 +29,22 @@
             <input type="text" name="name" id="name" placeholder="Ingrese nombre y apellido.">
         </label>
 
+        <label for="tipo"  class="tipo">
+            <select 
+            name="tipo" 
+            class="form-select <%= locals.errors && errors.tipo ? 'is-invalid' : null %> ">
+                <option value="">Elegi una categoria</option>
+                <% 
+                    let categories = ['Administrador', 'Usuario'];
+                %>
+                <% for( let oneCategory of categories ) { %>
+                    <option value="<%= oneCategory %>"
+                        <%= locals.old && old.tipo  === oneCategory ? 'selected' : null %> >
+                         <%= oneCategory %>
+                         </option>
+                <% } %>
+            </select>
+
         <label for="password" class="inp">
             <input type="password" name="password" id="password" placeholder="Ingrese una contraseña.">
         </label>
