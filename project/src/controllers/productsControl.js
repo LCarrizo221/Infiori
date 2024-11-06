@@ -2,7 +2,6 @@
 const { Product } = require('../database/models'); //MODELO PRINCIPAL DE PRODUCT
 const { validationResult } = require("express-validator");
 const db = require('../database/models');
-const products = require('../database/models/products');
 const sequelize = db.sequelize;
 
 module.exports = {
@@ -13,10 +12,10 @@ module.exports = {
   },
   getAllProducts: async (req, res) => {
     try {
-      const products = await db.product.findAll(); //SE DEFINE PRODUCTS
+      const products = await db.ProductPrueba.findAll(); //SE DEFINE PRODUCTS
       res.json(products); // Responde en JSON para la API
     } catch (error) {
-      res.status(500).json({ error: "Error al cargar productos" });
+      res.status(500).json({ error: "Error al cargar productos"});
     }
   },
   
@@ -35,7 +34,7 @@ module.exports = {
 
   getProductById: async (req, res)=>{
     try {
-      const product = await ProductPrueba.findByPk(req.params.id);
+      const product = await db.ProductPrueba.findByPk(req.params.id);
       if (!product) {
         return res.status(404).json({error: "producto no encontrado"})
       }
@@ -43,7 +42,7 @@ module.exports = {
       res.json(product); //responde con el producto encontrado por id
 
     } catch (error) {
-      res.status(500).json({error: "Error al cargar productos", error})
+      res.status(500).json({error: "Error al cargar productos",})
     }
   },
   renderViewDetail: async (req,res)=>{
@@ -60,7 +59,7 @@ module.exports = {
   // OBTENER PRODUCTOS POR CATEGORIA
   getProductsByCategory : async (req, res) => {
     try {
-      const products = await ProductPrueba.findAll({
+      const products = await db.ProductPrueba.findAll({
         where: { category: req.params.category } //ATENCION este es el metodo para buscar por categoria, yo lo puse por req.params pero puede ser cualquier otro metodo 
       });
   
