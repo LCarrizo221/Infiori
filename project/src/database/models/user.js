@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/connection.js');
-const UserCategory = require('./user_categories.js')(sequelize, DataTypes); // Importar y ejecutar UserCategory
+
 
 module.exports = (sequelize) => {
 
@@ -31,14 +31,8 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: null
         },
-        id_category: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: UserCategory,
-                key: 'id_categories'
-            }
-        }
+       
+        
     }, {
         tableName: 'USERS',
         timestamps: false
@@ -46,10 +40,7 @@ module.exports = (sequelize) => {
 
     // Definir las asociaciones
     USERS.associate = (models) => {
-        USERS.belongsTo(models.UserCategory, { 
-            foreignKey: 'id_categories',
-            as: 'userCategory'
-        });
+     
         USERS.belongsToMany(models.Picture, {
             through: 'USERS_PICTURE',
             foreignKey: 'USERS_id_user',

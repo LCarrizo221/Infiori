@@ -12,24 +12,15 @@ module.exports = (sequelize, DataTypes) => {
     },
     description: DataTypes.STRING(200),
     price: DataTypes.STRING(45),
-    id_category: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
+    category: DataTypes.STRING(45),
+    talla: DataTypes.STRING(45),
+    stock: DataTypes.INTEGER
   }, {
     tableName: 'PRODUCTS',
     timestamps: false,
   });
 
   Product.associate = (models) => {
-    Product.belongsTo(models.Category, { foreignKey: 'id_category' });
-
-    Product.belongsToMany(models.Talla, { 
-      through: 'PRODUCTS_TALLA',
-      foreignKey: 'id_products',
-      otherKey: 'id_talla',
-    });
-
     // Asociación con el modelo Picture
     Product.hasMany(models.Picture, {
       foreignKey: 'id_product',
