@@ -10,7 +10,9 @@ const validationProduct = require("../services/validationProduct");
 //rutas para el home------------------------------------------------
 router.get("/", productsControl.renderHomePage) //muestra todos los objetos en el HOME
 router.post("/");
+// rutas de desarrollo
 router.get("/viewAll",productsControl.viewAllProducts);
+router.get("/view/:id",productsControl.viewDetail);
 router.get("/cart", productsControl.renderCart);
 //rutas para detail--------------------------------------------------
 router.get("/detail/:id",logMiddleware, productsControl.renderViewDetail); // MUESTRA SOLO 1 OBJETO

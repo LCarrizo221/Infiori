@@ -1,7 +1,8 @@
-const { where } = require('sequelize');
-//const { product } = require('../database/models'); //MODELO PRINCIPAL DE PRODUCT
+//const { where } = require('sequelize');
+const { Product } = require('../database/models'); //MODELO PRINCIPAL DE PRODUCT
 const { validationResult } = require("express-validator");
 const db = require('../database/models');
+const products = require('../database/models/products');
 const sequelize = db.sequelize;
 
 module.exports = {
@@ -21,7 +22,7 @@ module.exports = {
   
   renderHomePage: async (req, res) => { //render para la pagina principal
     try {
-      const products = await db.product.findAll();
+      const products = await db.ProductPrueba.findAll();
       res.render('home', { products }); // Renderiza la vista para la página principal
     } catch (error) {
       console.error("Error al cargar productos para la vista de inicio:", error);
@@ -47,7 +48,7 @@ module.exports = {
   },
   renderViewDetail: async (req,res)=>{
     try {
-      const product = await ProductPrueba.findByPk(req.params.id);
+      const product = await db.ProductPrueba.findByPk(req.params.id);
       if (!product){
         return res.status(404).json({error: "producto no encontrado"})
       }
@@ -142,9 +143,18 @@ module.exports = {
     }
   },
   viewAllProducts: (req,res) =>{
-    db.PRODUCT.findAll({
+    db.ProductPrueba.findAll({
     }). then(products =>  //res.send(products));
      res.render("homeforDB", {products}));
+
+  },
+
+  viewDetail: (req,res) => { //Config para mostrar 1 solo art.
+    const idProd = req.params.id
+    db.ProductPrueba.findByPk(idProd,{
+      })
+    .then(products => //res.send(products));
+      res.render("detailExam",{ products , idProd }));
 
   },
 

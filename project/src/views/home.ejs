@@ -47,11 +47,14 @@
             <% products.forEach(product => { %>
                 <article>
                     <div class="image-gallery">
+                        <img src="<%= product.img_url %>" alt="Imagen de <%= product.title %>" style="width: 100%; max-width: 300px;">
+                     <!-- Para Implementar a futuro con 2 tablas
                         <% if (product.Pictures && product.Pictures.length > 0) { %>
                             <img src="<%= product.Pictures[0].url %>" alt="Imagen de <%= product.title %>" style="width: 100%; max-width: 300px;">
                         <% } else { %>
                             <p>No hay imágenes disponibles para este producto.</p>
                         <% } %>
+                        -->
                     </div>
                     <div class="card-body">
                         <h5 class="card-title"><%= product.title %></h5>

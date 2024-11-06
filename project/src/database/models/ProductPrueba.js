@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-  const ProductPrueba = sequelize.define('ProductPrueba', {
-    id: {
+  const Product = sequelize.define('Product', {
+    id_products: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
@@ -31,14 +31,16 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(3),
       allowNull: true,
     },
+   /* Implentar a futuro la talla
     talla: {
       type: DataTypes.STRING(15),
       allowNull: true,
     }
+    */
   }, {
-    tableName: 'ProductPrueba',
+    tableName: 'PRODUCTS',
     timestamps: false,
   });
 
-  return ProductPrueba;
+  return Product;
 };
