@@ -1,4 +1,4 @@
-'use strict';
+/* 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
     const UserCategory = sequelize.define('UserCategory', {
@@ -26,4 +26,4 @@ module.exports = (sequelize, DataTypes) => {
     };
   
     return UserCategory;
-};
+}; */
