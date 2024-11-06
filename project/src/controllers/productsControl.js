@@ -1,5 +1,5 @@
 const { where } = require('sequelize');
-const { ProductPrueba } = require('../database/models'); //MODELO PRINCIPAL DE PRODUCT
+const { product } = require('../database/models'); //MODELO PRINCIPAL DE PRODUCT
 const { validationResult } = require("express-validator");
 
 module.exports = {
@@ -19,7 +19,7 @@ module.exports = {
   
   renderHomePage: async (req, res) => { //render para la pagina principal
     try {
-      const products = await ProductPrueba.findAll();
+      const products = await product.findAll();
       res.render('home', { products }); // Renderiza la vista para la página principal
     } catch (error) {
       console.error("Error al cargar productos para la vista de inicio:", error);
