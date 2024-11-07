@@ -35,13 +35,20 @@
             </div>
            <div class="pictureArt">
                 <div class="plusPictures">
+<<<<<<< HEAD
                  <img src=<%=products.pictures_products[0].Pictures[0].url %> />
                     
+=======
+                
+                 <img src=<%= products.img_url %> />
+                 
+>>>>>>> de955f8928e7d01d082bc0cb48db90183e0f7c53
                 </div>
 
                
 
                 <div class="details">
+                    <h3> <%= products.category %></h3>
                     <h3 class="price">
                        $ <%= products.price %>
                     </h3>
@@ -53,6 +60,7 @@
                         <i class="fa-solid fa-money-bill"></i>
                         <i class="fa-brands fa-cc-visa"></i>
                     </div>
+                    <h6> STOCK? <%= products.stock %></h6>
                    
                 </div>
             </div> 

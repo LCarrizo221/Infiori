@@ -62,3 +62,20 @@ El usuario ingreso a la ruta: /detail/11
 El usuario ingreso a la ruta: /detail/11
 El usuario ingreso a la ruta: /detail/13
 El usuario ingreso a la ruta: /detail/1
+<<<<<<< HEAD
+=======
+El usuario ingreso a la ruta: /detail/11
+El usuario ingreso a la ruta: /detail/15
+El usuario ingreso a la ruta: /detail/13
+El usuario ingreso a la ruta: /detail/11
+El usuario ingreso a la ruta: /detail/1
+El usuario ingreso a la ruta: /detail/3
+El usuario ingreso a la ruta: /detail/11
+El usuario ingreso a la ruta: /detail/13
+El usuario ingreso a la ruta: /detail/15
+El usuario ingreso a la ruta: /detail/6
+El usuario ingreso a la ruta: /detail/1
+El usuario ingreso a la ruta: /detail/1
+El usuario ingreso a la ruta: /detail/1
+El usuario ingreso a la ruta: /detail/1
+>>>>>>> de955f8928e7d01d082bc0cb48db90183e0f7c53

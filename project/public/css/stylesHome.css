@@ -32,11 +32,13 @@ article {
     background-color: #DDADB9;
     padding: 1rem;
     border-radius: 20px;
+    
 }
 article img{
-    width: 80%;
-    border-radius: 20px;
-    flex-grow: 0.7;
+    width: 100%; 
+    height: 200px; 
+    object-fit: cover; 
+    
 
 }
 .card-body{

@@ -1,9 +1,6 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/connection.js');
-const UserCategory = require('./user_categories.js')(sequelize, DataTypes); // Importar y ejecutar UserCategory
+'use strict';
 
-module.exports = (sequelize) => {
-
+module.exports = (sequelize, DataTypes) => {
     const USERS = sequelize.define('USERS', {
         id_user: {
             type: DataTypes.INTEGER,
@@ -13,7 +10,7 @@ module.exports = (sequelize) => {
         },
         name: {
             type: DataTypes.STRING,
-            allowNull: null
+            allowNull: true
         },
         firstname: {
             type: DataTypes.STRING,
@@ -29,36 +26,20 @@ module.exports = (sequelize) => {
         },
         password: {
             type: DataTypes.STRING,
-            allowNull: null
+            allowNull: true
         },
-        id_category: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: UserCategory,
-                key: 'id_categories'
-            }
-        }
+        category: {  // Asegúrate de que este nombre coincida con tu columna en la base de datos
+            type: DataTypes.STRING(45),
+            allowNull: false
+        },
+        img_url: {
+            type: DataTypes.STRING,
+            allowNull: true,
+          },
     }, {
         tableName: 'USERS',
         timestamps: false
     });
-
-    // Definir las asociaciones
-    USERS.associate = (models) => {
-        USERS.belongsTo(models.UserCategory, { 
-            foreignKey: 'id_categories',
-            as: 'userCategory'
-        });
-        USERS.belongsToMany(models.Picture, {
-            through: 'USERS_PICTURE',
-            foreignKey: 'USERS_id_user',
-            otherKey: 'PICTURE_id_picture'
-        });
-        USERS.hasMany(models.Shopping, {
-            foreignKey: 'id_user'
-        });
-    };
 
     return USERS;
 };

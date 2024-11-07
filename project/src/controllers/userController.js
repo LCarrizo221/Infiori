@@ -1,75 +1,65 @@
-
-const { hashSync } = require("bcryptjs");
-const db = require("../database/models");
-const sequelize = db.sequelize;
-const fs = require("node:fs/promises");
-const path = require("path");
+const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
-
-const usersFilePath = path.join(__dirname, '../models/users.json');
+const db = require("../database/models");
 
 const userController = {
-    showForein: (req,res) =>{
-        db.USERS.findAll()
-        .then(users => res.send(users));
-    },
-    showLogin: (req, res) => {
-        res.render("login.ejs");
-    },
- // proceso del login para guardar en session
-    processLogin: (req, res) => {
-        const { userName, password } = req.body;
-        console.log(`Intento de login con usuario: ${userName}`);
-
+    // Obtiene todos los usuarios en formato JSON
+    getAllUsers: async (req, res) => {
         try {
-            const usersData = fs.readFile(usersFilePath, "utf-8");
-            const users = JSON.parse(usersData);
-            const user = users.find(u => u.email === userName && u.password === password);
+            const users = await db.USERS.findAll();
+            res.json(users);
+        } catch (error) {
+            console.error("Error al obtener todos los usuarios:", error);
+            res.status(500).send("Error al obtener los usuarios.");
+        }
+    },
 
-
+    // Obtiene un usuario específico por su ID
+    getUserById: async (req, res) => {
+        try {
+            const user = await db.USERS.findByPk(req.params.id);
             if (user) {
-                req.session.userId = user.id;
-                req.session.userName = user.firstName
-                req.session.user = user;
-                console.log(`${userName} se ha logueado correctamente.`);
-                res.redirect("/")
+                res.json(user);
             } else {
-                console.log("Credenciales invalidas.");
-                res.redirect("login.ejs")
+                res.status(404).send("Usuario no encontrado.");
             }
         } catch (error) {
-            console.error("Error al procesar el login", error);
-            res.status(500).send("Error al procesar el login.");
+            console.error("Error al obtener el usuario:", error);
+            res.status(500).send("Error al obtener el usuario.");
         }
-
-        //res.redirect('/');
     },
 
-    showProfile: (req, res) => {
-        if (!req.session.userId) {
-            return res.redirect("login.ejs")
+    // Crea un nuevo usuario
+    createUser: async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
         }
 
-        const userId = req.params.id;
+        const { userName, password, firstname, category } = req.body;
 
         try {
-            const usersData = fs.readFile(usersFilePath, "utf8");
-            const users = JSON.parse(usersData);
-
-            const user = users.find(u => u.id === userId);
-
-            if (!user) {
-                return res.status(404).send("Usuario no encontrado")
+            // Verifica si el usuario ya existe
+            const existingUser = await db.USERS.findOne({ where: { mail: userName } });
+            if (existingUser) {
+                return res.status(400).json({ error: "El correo ya está registrado." });
             }
 
-            if (req.session.userId !== user.id) {
-                return res.status(403).send("Acceso denegado")
-            }
+            const hashedPassword = await bcrypt.hash(password, 10);
 
-            res.render("profile", { user });
+            const newUser = await db.USERS.create({
+                name: userName,
+                firstname,
+                mail: userName,
+                password: hashedPassword,
+                category
+            });
+
+            res.status(201).json(newUser);
+
         } catch (error) {
-            console.error("Error al leer el archivo de usuarios", error);
-            res.status(500).send("Error interno del servidor");
+            console.error("Error al crear el usuario:", error);
+            res.status(500).send("Error al crear el usuario.");
         }
 
     },
@@ -79,19 +69,11 @@ const userController = {
         if (req.session.userId) {
             return res.redirect(`/profile/${req.session.userId}`);
         }
-        res.render("register.ejs", { errors: [], oldData: {} });
+        res.render("register.ejs");
     },
 
     processRegister: async (req, res) => {
         const { userName, password, repassword } = req.body;
-
-        const errors = validationResult(req);
-        if(!errors.isEmpty()){
-            return res.render("register", {
-                errors: errors.array(),
-                oldData: req.body
-            })
-        }
         console.log(`Intento de registro con user: ${userName}`);
         
         try {
@@ -142,12 +124,10 @@ const userController = {
             res.redirect('/user/login');
     
         } catch (error) {
-            console.error("Error en el registro:", error);
-            if (!res.headersSent) {
-                res.status(500).send("Error al registrar el usuario");
-            }
+            console.error("Error al eliminar el usuario:", error);
+            res.status(500).send("Error al eliminar el usuario.");
         }
     }
-}
+};
 
 module.exports = userController;

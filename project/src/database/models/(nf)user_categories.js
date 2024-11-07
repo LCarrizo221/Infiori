@@ -1,3 +1,5 @@
+/* 'use strict';
+
 module.exports = (sequelize, DataTypes) => {
     const UserCategory = sequelize.define('UserCategory', {
       id_categories: {
@@ -11,16 +13,17 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false
       }
     }, {
-      tableName: 'categories', //recordar cambiar el nombre a user_categories a la base de datos para que despues para que funcionen las relaciones
+      tableName: 'categories',
       timestamps: false
     });
   
     UserCategory.associate = (models) => {
       UserCategory.hasMany(models.USERS, {
-        foreignKey: 'id_categories',
+        foreignKey: 'id_category',  // Debe coincidir con el campo en la tabla USERS
+        sourceKey: 'id_categories', // La clave primaria de UserCategory
         as: 'Usuario'
       });
     };
   
     return UserCategory;
-  };
+}; */

@@ -489,6 +489,11 @@ section div.products article {
 
 @media (min-width: 1024px){ /* DESKTOP SCREEN */
 
+    .h1, h1{
+        font-size: 4.5rem;
+        font-weight: bold;
+    }
+
     main section .pictureArt{
         display: flex;
         flex-direction: row;
