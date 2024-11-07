@@ -13,6 +13,27 @@ const userController = {
             res.status(500).send("Error al obtener los usuarios.");
         }
     },
+    getAllUsers2: async (req, res) => {
+        try {
+            const users = await db.USERS.findAll();
+            res.json(users);
+        } catch (error) {
+            console.error("Error al obtener todos los usuarios:", error);
+            res.status(500).send("Error al obtener los usuarios.");
+        }
+    },getUserById2: async (req, res) => {
+        try {
+            const user = await db.USERS.findByPk(req.params.id);
+            if (user) {
+                res.json(user);
+            } else {
+                res.status(404).send("Usuario no encontrado.");
+            }
+        } catch (error) {
+            console.error("Error al obtener el usuario:", error);
+            res.status(500).send("Error al obtener el usuario.");
+        }
+    },
 
     // Obtiene un usuario específico por su ID
     getUserById: async (req, res) => {
@@ -63,15 +84,46 @@ const userController = {
         }
 
     },
+    // Crear un nuevo usuario
+createUser2: async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
+    const { userName, password, firstname, category } = req.body;
+
+    try {
+        const existingUser = await db.USERS.findOne({ where: { mail: userName } });
+        if (existingUser) {
+            return res.status(400).json({ error: "El correo ya está registrado." });
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const newUser = await db.USERS.create({
+            name: userName,
+            firstname,
+            mail: userName,
+            password: hashedPassword,
+            category
+        });
+        res.redirect("/")
+
+        res.status(201).json(newUser);
+    } catch (error) {
+        console.error("Error al crear el usuario:", error);
+        res.status(500).send("Error al crear el usuario.");
+    }
+},
 
     showRegister: (req, res) => {
-
-        if (req.session.userId) {
-            return res.redirect(`/profile/${req.session.userId}`);
-        }
-        res.render("register.ejs");
+        res.render("register.ejs", { errors: [], oldData: {} });
     },
-
+    
+    /*         if (req.session.userId) {
+                return res.redirect(`/profile/${req.session.userId}`);
+            } */
     processRegister: async (req, res) => {
         const { userName, password, repassword } = req.body;
         console.log(`Intento de registro con user: ${userName}`);
