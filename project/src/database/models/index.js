@@ -15,7 +15,6 @@ const db = {};
 // Importar todos los modelos
 db.ProductPrueba = require('./ProductPrueba')(sequelize, Sequelize.DataTypes);
 db.USERS = require('./user')(sequelize, Sequelize.DataTypes);
-
 //db.UserCategory = require('./user_categories')(sequelize, Sequelize.DataTypes);
 
 // Configurar asociaciones
