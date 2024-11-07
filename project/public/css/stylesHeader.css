@@ -24,7 +24,6 @@ nav{
     justify-content: center;
     align-items: center;
     column-gap: 0.5rem;
-
     background-color: #FFFDFD;
 }
 
@@ -82,7 +81,6 @@ nav{
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
-        
         column-gap: 1rem;
         padding-right: 1rem;
     }
@@ -99,10 +97,8 @@ nav{
         flex-wrap: wrap;
         justify-content: center;
         align-items: flex-end;
-        align-items: flex-start;
-        
         position: relative;
-        top: 2rem;
+        top: 3rem;
         right: 3rem
     }
     .divUl ul{
