@@ -7,7 +7,7 @@ const sequelize = db.sequelize;
 module.exports = {
   // 1. Ver productos
 
-  renderCart: async (req, res) => {
+  renderCart: async (req,res)=>{
     res.render("carrito-compra")
   },
   getAllProducts: async (req, res) => {
@@ -15,10 +15,10 @@ module.exports = {
       const products = await db.ProductPrueba.findAll(); //SE DEFINE PRODUCTS
       res.json(products); // Responde en JSON para la API
     } catch (error) {
-      res.status(500).json({ error: "Error al cargar productos" });
+      res.status(500).json({ error: "Error al cargar productos"});
     }
   },
-
+  
   renderHomePage: async (req, res) => { //render para la pagina principal
     try {
       const products = await db.ProductPrueba.findAll();
@@ -32,52 +32,52 @@ module.exports = {
   // 2. ver products por id
 
 
-  getProductById: async (req, res) => {
+  getProductById: async (req, res)=>{
     try {
       const product = await db.ProductPrueba.findByPk(req.params.id);
       if (!product) {
-        return res.status(404).json({ error: "producto no encontrado" })
+        return res.status(404).json({error: "producto no encontrado"})
       }
 
       res.json(product); //responde con el producto encontrado por id
 
     } catch (error) {
-      res.status(500).json({ error: "Error al cargar productos", })
+      res.status(500).json({error: "Error al cargar productos",})
     }
   },
-  renderViewDetail: async (req, res) => {
+  renderViewDetail: async (req,res)=>{
     try {
       const product = await db.ProductPrueba.findByPk(req.params.id);
-      if (!product) {
-        return res.status(404).json({ error: "producto no encontrado" })
+      if (!product){
+        return res.status(404).json({error: "producto no encontrado"})
       }
-      return res.render("detailExam", { product });
+      return res.render("detailExam", {product}); 
     } catch (error) {
-      res.status(404).json({ error: "Error en ver la vista", error })
+      res.status(404).json({error: "Error en ver la vista", error})
     }
   },
   // OBTENER PRODUCTOS POR CATEGORIA
-  getProductsByCategory: async (req, res) => {
+  getProductsByCategory : async (req, res) => {
     try {
       const products = await db.ProductPrueba.findAll({
         where: { category: req.params.category } //ATENCION este es el metodo para buscar por categoria, yo lo puse por req.params pero puede ser cualquier otro metodo 
       });
-
+  
       if (products.length === 0) {
         return res.status(404).json({ error: 'No se encontraron productos en esta categoría' });
       }
-
+  
       res.json(products); // Responder con los productos encontrados
     } catch (error) {
       res.status(500).json({ error: 'Error al obtener productos por categoría' });
     }
   },
 
-  formCreate: (req, res) => {
+  formCreate: (req,res) => {
     res.render("formUpload");
   },
-  createNewProduct: async (req, res) => {
-    const { title, description, category, price, stock, img_url } = req.body
+  createNewProduct: async (req,res)=>{
+    const {title, description, category, price,stock, img_url } = req.body
 
     try {
       const newProduct = await db.ProductPrueba.create({
@@ -87,12 +87,12 @@ module.exports = {
         price,
         stock,
         img_url
-      }).then(res.send("PRODUCTO CREADO" + newProduct));
+      }).then(res.send("PRODUCTO CREADO"+ newProduct));
 
       //ver si se creo el nuevo producto
       //res.status(500).json(newProduct) //el que definimos recien
     } catch (error) {
-      res.status(400).json({ error: "Error al crear producto ", error })
+      res.status(400).json({error: "Error al crear producto ", error})
     }
   },
   // 5. Actualizar un producto
@@ -145,19 +145,23 @@ module.exports = {
       res.status(500).json({ error: 'Error al eliminar el producto' });
     }
   },
-  viewAllProducts: (req, res) => {
+  viewAllProducts: (req,res) =>{
     db.ProductPrueba.findAll({
-    }).then(products =>  //res.send(products));
-      res.render("homeforDB", { products }));
+    }). then(products =>  //res.send(products));
+     res.render("homeforDB", {products}));
 
   },
 
-  viewDetail: (req, res) => {
+  viewDetail: (req,res) => {
     const idProd = req.params.id
-    db.ProductPrueba.findByPk(idProd, {
-    })
-      .then(products => //res.send(products));
-        res.render("detailExam", { products, idProd }));
+    db.ProductPrueba.findByPk(idProd,{
+      })
+    .then(products => //res.send(products));
+<<<<<<< HEAD
+      res.render("detailExam",{ products }));
+=======
+      res.render("detailExam",{ products , idProd }));
+>>>>>>> de955f8928e7d01d082bc0cb48db90183e0f7c53
 
   },
 
