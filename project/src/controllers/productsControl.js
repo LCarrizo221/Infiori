@@ -154,11 +154,7 @@ module.exports = {
     db.ProductPrueba.findByPk(idProd,{
       })
     .then(products => //res.send(products));
-<<<<<<< HEAD
-      res.render("detailExam",{ products }));
-=======
       res.render("detailExam",{ products , idProd }));
->>>>>>> de955f8928e7d01d082bc0cb48db90183e0f7c53
 
   },
 
