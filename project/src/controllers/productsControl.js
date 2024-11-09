@@ -1,8 +1,12 @@
 //const { where } = require('sequelize');
-const { Product } = require('../database/models'); //MODELO PRINCIPAL DE PRODUCT
+//const { Product } = require('../database/models'); //MODELO PRINCIPAL DE PRODUCT
+const express = require("express");
+const path = require("node:path");
+const app = express();
 const { validationResult } = require("express-validator");
 const db = require('../database/models');
 const sequelize = db.sequelize;
+const { productDB } = require('../database/models/');
 
 module.exports = {
   // 1. Ver productos
@@ -21,7 +25,7 @@ module.exports = {
   
   renderHomePage: async (req, res) => { //render para la pagina principal
     try {
-      const products = await db.ProductPrueba.findAll();
+      const products = await db.productDB.findAll();
       res.render('home', { products }); // Renderiza la vista para la página principal
     } catch (error) {
       console.error("Error al cargar productos para la vista de inicio:", error);
@@ -34,7 +38,7 @@ module.exports = {
 
   getProductById: async (req, res)=>{
     try {
-      const product = await db.ProductPrueba.findByPk(req.params.id);
+      const product = await db.productDB.findByPk(req.params.id);
       if (!product) {
         return res.status(404).json({error: "producto no encontrado"})
       }
@@ -47,7 +51,7 @@ module.exports = {
   },
   renderViewDetail: async (req,res)=>{
     try {
-      const product = await db.ProductPrueba.findByPk(req.params.id);
+      const product = await db.productDB.findByPk(req.params.id);
       if (!product){
         return res.status(404).json({error: "producto no encontrado"})
       }
@@ -59,7 +63,7 @@ module.exports = {
   // OBTENER PRODUCTOS POR CATEGORIA
   getProductsByCategory : async (req, res) => {
     try {
-      const products = await db.ProductPrueba.findAll({
+      const products = await db.productDB.findAll({
         where: { category: req.params.category } //ATENCION este es el metodo para buscar por categoria, yo lo puse por req.params pero puede ser cualquier otro metodo 
       });
   
@@ -72,24 +76,30 @@ module.exports = {
       res.status(500).json({ error: 'Error al obtener productos por categoría' });
     }
   },
+  create: (req,res) => {
+    res.render("formUpload");
+  },
+
   createNewProduct: async (req,res)=>{
-    const {title, description, category, price,stock, imagen } = req.body
+    
+    
+    const {title, description, category, price, stock } = req.body
 
     try {
       
-      const newProduct = await ProductPrueba.create({
+      const products = await db.ProductPrueba.create({
         title,
         description,
-        category,
         price,
-        stock,
-        img_url : imagen
+        category,
+        img_url : "img/products" + req.file.filename,
+        stock
+        
       });
-
       //ver si se creo el nuevo producto
-      res.status(500).json(newProduct) //el que definimos recien
-    } catch (error) {
-      res.status(400).json({error: "Error al crear producto ", error})
+   res.status(500).json(products) //el que definimos recien
+   } catch (error) {
+   res.status(400).json({error: "Error al crear producto ", error})
     }
   },
   // 5. Actualizar un producto
@@ -151,11 +161,42 @@ module.exports = {
 
   viewDetail: (req,res) => {
     const idProd = req.params.id
-    db.ProductPrueba.findByPk(idProd,{
+    db.productDB.findByPk(idProd,{
       })
     .then(products => //res.send(products));
       res.render("detailExam",{ products , idProd }));
 
   },
+  upLoadImag: async (req, res) => {
+    try {
+      let updated = false;
+      // Cargar productos desde el datasource
+      let products = await datasource.load();
+      let id = products.length + 1;
 
+      // Actualizar producto
+      let articleUpd = products.map((article) => {
+        if (article.id == id) {
+          article.titulo = req.body.titulo;
+          article.descripcion = req.body.descripcion;
+          article.imagen = "/img/products/" + req.file.filename;
+          article.tipo = req.body.tipo;
+          article.precio = req.body.precio;
+          updated = true;
+        }
+        return article;
+      });
+
+      if (updated) {
+        // Guardar los productos actualizados
+        await datasource.save(articleUpd);
+        res.send("Archivo subido correctamente");
+      } else {
+        res.send("Producto no encontrado");
+      }
+    } catch (error) {
+      console.error("Error al subir la imagen:", error);
+      res.status(500).send("Error al procesar la solicitud");
+    }
+  },
 }

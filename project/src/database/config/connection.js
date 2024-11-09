@@ -1,4 +1,4 @@
-/* CONFIGURACION PARA EL ENTORNO LOCAL
+ //CONFIGURACION PARA EL ENTORNO LOCAL
 // config/connection.js
 const Sequelize = require('sequelize');
 
@@ -19,7 +19,7 @@ sequelize.authenticate()
   });
 
 module.exports = sequelize;
-*/ 
+/*
 // CONFIGURACION PARA LA DB EN LA NUBE
 
 const { Sequelize } = require("sequelize")
@@ -45,3 +45,4 @@ const testConnection = async () =>{
 
 testConnection();
 module.exports = sequelize;
+*/ 

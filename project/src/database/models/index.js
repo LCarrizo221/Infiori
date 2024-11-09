@@ -13,8 +13,9 @@ const config = require(path.join(__dirname, '../config/config.js'))[env];
 const db = {};
 
 // Importar todos los modelos
-db.ProductPrueba = require('./ProductPrueba')(sequelize, Sequelize.DataTypes);
+//db.ProductPrueba = require('./ProductPrueba')(sequelize, Sequelize.DataTypes);
 db.USERS = require('./user')(sequelize, Sequelize.DataTypes);
+db.productDB = require("./productDB")(sequelize,Sequelize.DataTypes);
 //db.UserCategory = require('./user_categories')(sequelize, Sequelize.DataTypes);
 
 // Configurar asociaciones

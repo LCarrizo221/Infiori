@@ -1,6 +1,6 @@
 
 module.exports = (sequelize, DataTypes) => {
-  const PRODUCTS = sequelize.define('PRODUCTS', {
+  const Product = sequelize.define('Product', {
     id_products: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -14,11 +14,15 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: true,
     },
+    category: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     price: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
     },
-    category: {
+    img_url: {
       type: DataTypes.STRING,
       allowNull: true,
     },
@@ -26,10 +30,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(3),
       allowNull: true,
     },
-    img_url: {
-      type: DataTypes.STRING(255),
-
-    }
    /* Implentar a futuro la talla
     talla: {
       type: DataTypes.STRING(15),
@@ -41,5 +41,5 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false,
   });
 
-  return PRODUCTS;
+  return Product;
 };
