@@ -128,7 +128,8 @@ nav{
     .inputNavDesk {
         display: flex;
         flex-wrap: wrap;
-        flex-direction: column;
+        flex-direction: column-reverse;
+
         row-gap: 2rem;
         
     }

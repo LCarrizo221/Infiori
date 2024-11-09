@@ -11,18 +11,18 @@ const { productDB } = require('../database/models/');
 module.exports = {
   // 1. Ver productos
 
-  renderCart: async (req,res)=>{
+  renderCart: async (req, res) => {
     res.render("carrito-compra")
   },
   getAllProducts: async (req, res) => {
     try {
-      const products = await db.ProductPrueba.findAll(); //SE DEFINE PRODUCTS
+      const products = await db.productDB.findAll(); //SE DEFINE PRODUCTS
       res.json(products); // Responde en JSON para la API
     } catch (error) {
-      res.status(500).json({ error: "Error al cargar productos"});
+      res.status(500).json({ error: "Error al cargar productos" });
     }
   },
-  
+
   renderHomePage: async (req, res) => { //render para la pagina principal
     try {
       const products = await db.productDB.findAll();
@@ -36,41 +36,41 @@ module.exports = {
   // 2. ver products por id
 
 
-  getProductById: async (req, res)=>{
+  getProductById: async (req, res) => {
     try {
       const product = await db.productDB.findByPk(req.params.id);
       if (!product) {
-        return res.status(404).json({error: "producto no encontrado"})
+        return res.status(404).json({ error: "producto no encontrado" })
       }
 
       res.json(product); //responde con el producto encontrado por id
 
     } catch (error) {
-      res.status(500).json({error: "Error al cargar productos",})
+      res.status(500).json({ error: "Error al cargar productos", })
     }
   },
-  renderViewDetail: async (req,res)=>{
+  renderViewDetail: async (req, res) => {
     try {
       const product = await db.productDB.findByPk(req.params.id);
       if (!product){
         return res.status(404).json({error: "producto no encontrado"})
       }
-      return res.render("detailExam", {product}); 
+      return res.render("detailExam", { product });
     } catch (error) {
-      res.status(404).json({error: "Error en ver la vista", error})
+      res.status(404).json({ error: "Error en ver la vista", error })
     }
   },
   // OBTENER PRODUCTOS POR CATEGORIA
-  getProductsByCategory : async (req, res) => {
+  getProductsByCategory: async (req, res) => {
     try {
       const products = await db.productDB.findAll({
         where: { category: req.params.category } //ATENCION este es el metodo para buscar por categoria, yo lo puse por req.params pero puede ser cualquier otro metodo 
       });
-  
+
       if (products.length === 0) {
         return res.status(404).json({ error: 'No se encontraron productos en esta categoría' });
       }
-  
+
       res.json(products); // Responder con los productos encontrados
     } catch (error) {
       res.status(500).json({ error: 'Error al obtener productos por categoría' });
@@ -152,14 +152,14 @@ module.exports = {
       res.status(500).json({ error: 'Error al eliminar el producto' });
     }
   },
-  viewAllProducts: (req,res) =>{
+  viewAllProducts: (req, res) => {
     db.ProductPrueba.findAll({
-    }). then(products =>  //res.send(products));
-     res.render("homeforDB", {products}));
+    }).then(products =>  //res.send(products));
+      res.render("homeforDB", { products }));
 
   },
 
-  viewDetail: (req,res) => {
+  viewDetail: (req, res) => {
     const idProd = req.params.id
     db.productDB.findByPk(idProd,{
       })
