@@ -3,17 +3,14 @@
 const express = require("express");
 const path = require("node:path");
 const app = express();
-const { validationResult } = require("express-validator");
+const { check, body, validationResult } = require('express-validator');
+
 const db = require('../database/models');
 const sequelize = db.sequelize;
 const { productDB } = require('../database/models/');
 
 module.exports = {
-  // 1. Ver productos
 
-  renderCart: async (req, res) => {
-    res.render("carrito-compra")
-  },
   getAllProducts: async (req, res) => {
     try {
       const products = await db.productDB.findAll(); //SE DEFINE PRODUCTS
@@ -22,20 +19,6 @@ module.exports = {
       res.status(500).json({ error: "Error al cargar productos" });
     }
   },
-
-  renderHomePage: async (req, res) => { //render para la pagina principal
-    try {
-      const products = await db.productDB.findAll();
-      res.render('home', { products }); // Renderiza la vista para la página principal
-    } catch (error) {
-      console.error("Error al cargar productos para la vista de inicio:", error);
-      res.status(500).send("Error al cargar la página principal.");
-    }
-  },
-
-  // 2. ver products por id
-
-
   getProductById: async (req, res) => {
     try {
       const product = await db.productDB.findByPk(req.params.id);
@@ -49,17 +32,7 @@ module.exports = {
       res.status(500).json({ error: "Error al cargar productos", })
     }
   },
-  renderViewDetail: async (req, res) => {
-    try {
-      const product = await db.productDB.findByPk(req.params.id);
-      if (!product){
-        return res.status(404).json({error: "producto no encontrado"})
-      }
-      return res.render("detailExam", { product });
-    } catch (error) {
-      res.status(404).json({ error: "Error en ver la vista", error })
-    }
-  },
+
   // OBTENER PRODUCTOS POR CATEGORIA
   getProductsByCategory: async (req, res) => {
     try {
@@ -76,68 +49,128 @@ module.exports = {
       res.status(500).json({ error: 'Error al obtener productos por categoría' });
     }
   },
-  create: (req,res) => {
+
+  //render para la pagina principal
+  renderHomePage: async (req, res) => { 
+    try {
+      const products = await db.productDB.findAll();
+      res.render('home', { products }); 
+    } catch (error) {
+      console.error("Error al cargar productos para la vista de inicio:", error);
+      res.status(500).send("Error al cargar la página principal.");
+    }
+  },
+  // Render para la vista de un producto
+  renderViewDetail: async (req, res) => {
+    const idProd = req.params.id
+    db.productDB.findByPk(idProd,{
+      })
+    .then(products => //res.send(products));
+      res.render("detailExam",{ products , idProd }));
+
+  },
+  // ----------------------------- CRUD DE PRODUCTOS ---------------------------------- 
+  // CREATE
+  create: (req, res) => {
     res.render("formUpload");
   },
-
-  createNewProduct: async (req,res)=>{
-    
-    
-    const {title, description, category, price, stock } = req.body
+  createNewProduct: async (req, res) => {
+   
+    const { title, description, category, price, stock } = req.body
+    let img_url;
+    if (req.file) {
+      img_url = "/img/products/" + req.file.filename; // Ruta de la imagen
+    }
 
     try {
       
-      const products = await db.ProductPrueba.create({
-        title,
-        description,
-        price,
-        category,
-        img_url : "img/products" + req.file.filename,
-        stock
-        
-      });
-      //ver si se creo el nuevo producto
-   res.status(500).json(products) //el que definimos recien
-   } catch (error) {
-   res.status(400).json({error: "Error al crear producto ", error})
+        const products = await db.productDB.create({
+          title,
+          description,
+          price,
+          category,
+          img_url: "/img/products/" + req.file.filename,
+          stock
+  
+        });
+        res.redirect("/");
+
+    } catch (error) {
+      res.status(400).json({ error: "Error al crear producto ", error })
     }
   },
-  // 5. Actualizar un producto
-  updateProduct: async (req, res) => {
-    const { id } = req.params; // El ID del producto que viene de la URL
-    const { title, description, category, price, img_url } = req.body; // Los datos para actualizar
 
-    try {
-      // Buscar el producto por su ID
-      const product = await ProductPrueba.findByPk(id);
 
+  // Actualizar un producto
+  edit: function (req, res) {
+    let id = req.params.id;
+    db.productDB.findByPk(id).then(product => {
       if (!product) {
-        return res.status(404).json({ message: 'Producto no encontrado' });
+        return
+      }
+      res.render('formProdEdit', { product })
+    }
+
+    )
+  },
+  updateProduct: async (req, res) => {
+    const errors = validationResult(req);
+    const productId = req.params.id; // Obtén el ID del producto
+
+    const { title, description, price, category, stock } = req.body; // Extrae los datos del cuerpo
+    let img_url;
+    if (req.file) {
+      img_url = "/img/products/" + req.file.filename; // Ruta de la imagen
+    }
+
+    console.log('Datos recibidos:', req.body);
+    console.log('ID del producto:', productId);
+   
+    try {
+      // Verifica que el producto exista
+      const existingProduct = await db.productDB.findOne({ where: { id_products: productId } });
+
+      if (!existingProduct) {
+        return res.status(404).json({ error: 'Producto no encontrado' });
       }
 
-      // Actualizar los detalles del producto
-      product.title = title || product.title;
-      product.description = description || product.description;
-      product.category = category || product.category;
-      product.price = price || product.price;
-      product.img_url = img_url || product.img_url;
+      // Validaciones 
+      if (errors.isEmpty()) {
+        const [updatedRows] = await db.productDB.update(
+          { title, description, price, category, img_url, stock },
+          { where: { id_products: productId } } 
+        );
+         // Verifica si se actualizó algún registro
+      if (updatedRows === 0) {
+        return res.status(404).json({ error: 'Producto no actualizado, verifique los datos' });
+      }
 
-      await product.save(); // Guardar los cambios en la base de datos
-
-      res.json(product); // Enviar el producto actualizado como respuesta
+      // Responde con un mensaje de éxito
+      //res.status(200).json({ message: 'Producto actualizado correctamente' });
+      res.redirect("/");
+      } else {
+        res.render('formProdEdit', {
+          product: existingProduct,
+          errors: errors.mapped(),
+          old: req.body,
+          locals: { errors: true }
+        });
+      }
+     
     } catch (error) {
-      console.error('Error al actualizar el producto:', error);
+      console.error(error); // Para depuración
       res.status(500).json({ error: 'Error al actualizar el producto' });
     }
   },
 
-  // 6. Eliminar un producto
+
+  // Eliminar un producto
   deleteProduct: async (req, res) => {
     const { id } = req.params; // El ID del producto que viene de la URL
 
     try {
       // Buscar el producto por su ID
-      const product = await ProductPrueba.findByPk(id);
+      const product = await db.productDB.findByPk(id);
 
       if (!product) {
         return res.status(404).json({ message: 'Producto no encontrado' });
@@ -146,57 +179,15 @@ module.exports = {
       // Eliminar el producto de la base de datos
       await product.destroy();
 
-      res.json({ message: 'Producto eliminado exitosamente' }); // Responder con un mensaje de éxito
+      res.redirect("/");
     } catch (error) {
       console.error('Error al eliminar el producto:', error);
       res.status(500).json({ error: 'Error al eliminar el producto' });
     }
   },
-  viewAllProducts: (req, res) => {
-    db.ProductPrueba.findAll({
-    }).then(products =>  //res.send(products));
-      res.render("homeforDB", { products }));
 
-  },
-
-  viewDetail: (req, res) => {
-    const idProd = req.params.id
-    db.productDB.findByPk(idProd,{
-      })
-    .then(products => //res.send(products));
-      res.render("detailExam",{ products , idProd }));
-
-  },
-  upLoadImag: async (req, res) => {
-    try {
-      let updated = false;
-      // Cargar productos desde el datasource
-      let products = await datasource.load();
-      let id = products.length + 1;
-
-      // Actualizar producto
-      let articleUpd = products.map((article) => {
-        if (article.id == id) {
-          article.titulo = req.body.titulo;
-          article.descripcion = req.body.descripcion;
-          article.imagen = "/img/products/" + req.file.filename;
-          article.tipo = req.body.tipo;
-          article.precio = req.body.precio;
-          updated = true;
-        }
-        return article;
-      });
-
-      if (updated) {
-        // Guardar los productos actualizados
-        await datasource.save(articleUpd);
-        res.send("Archivo subido correctamente");
-      } else {
-        res.send("Producto no encontrado");
-      }
-    } catch (error) {
-      console.error("Error al subir la imagen:", error);
-      res.status(500).send("Error al procesar la solicitud");
-    }
-  },
+  //Carrito de compra
+  renderCart: async (req, res) => {
+    res.render("carrito-compra")
+  }
 }

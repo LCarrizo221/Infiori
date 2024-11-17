@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const productsController = require('../controllers/productsControl.js'); // Asegúrate de que este sea el nombre correcto
+const userController = require('../controllers/userController.js'); // Asegúrate de que este sea el nombre correcto
 
 // Rutas para productos
 router.get('/products', productsController.getAllProducts); // Ver todos los productos
@@ -9,9 +10,9 @@ router.get('/products/category/:category', productsController.getProductsByCateg
 
 //module.exports = router;
 // Definir las rutas y asignar los métodos del controlador
-router.get('/usuarios', userController.getAllUsers);
-router.get('/usuarios/:id', userController.getUserById);
-router.post('/usuarios', userController.createUser);
+router.get('/usuarios', userController.getAllUsers2);
+router.get('/usuarios/:id', userController.getUserById2);
+router.post('/usuarios', userController.createUser2);
 /* router.put('/usuarios/:id', userController.updateUser);
 router.delete('/usuarios/:id', userController.deleteUser); */
 

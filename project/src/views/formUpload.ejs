@@ -19,19 +19,19 @@
     <main>
         <form action="/product/create/" method="post" enctype="multipart/form-data">
             <h2>Cargar Producto Nuevo</h2>
-            <!-- comprobacion de errores
+            
             <% if(locals.errors) { %>
             <% for( let oneError in errors) { %>
                <p class="feedback is-danger"> <%= errors[oneError].msg %></p> 
             <% } %>
-           <% } %> -->
+           <% } %> 
 
             <img src="/img/logoinfiori.png" alt="">
 
             <label for="title"  class="inp">
                 <input type="text" name="title" id="title" placeholder="Ingrese el titulo del articulo" 
                 value="<%=locals.old && old.title ? old.title : ''  %>"
-                class="form-control <%= locals.errors && errors.title ? 'is-invalid' : null %> ">
+                 class="form-control <%= locals.errors && errors.title ? 'is-invalid' : null %> "> 
             </label>
             <% if(locals.errors && errors.title) { %>
                 <p class="text-danger"> <%= errors.title.msg %> </p>

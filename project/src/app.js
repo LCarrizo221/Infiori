@@ -13,6 +13,7 @@ const port = 3000 || process.env.PORT;
 //Ready const for working method POST
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
+app.use(methodOverride('_method'));
 
 // Importar rutas
 const productsRoute = require("./routes/productsRoute");

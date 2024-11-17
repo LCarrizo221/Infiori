@@ -18,78 +18,91 @@
 
 <body>
     <%- include('partials/header') %>
-    <main>
-        <form action="/product/edit/?_method=PUT" method="POST" enctype="multipart/form-data">
-            <h2>Editar Producto </h2>
+        <main>
+            <form action="/product/edit/<%= product.id_products %>/?_method=put" method="POST" enctype="multipart/form-data"
+                style="background-color: rgba(165, 42, 42, 0.699);">
+                <h2>Editar Producto </h2>
 
 
-                <!-- comprobacion de errores
+                <!--
             <% if(locals.errors) { %>
             <% for( let oneError in errors) { %>
                <p class="feedback is-danger"> <%= errors[oneError].msg %></p> 
             <% } %>
-           <% } %> -->
+           <% } %> 
+-->
+                <img src="<%= product.img_url %>" alt="">
 
-                <img src="<%= product.imagen %>" alt="">
-
-                <label for="titulo" class="inp">
-                    <input type="text" name="titulo" id="titulo" placeholder="Ingrese el titulo del articulo"
-                        value="<%= product.titulo %>  %>"
-                        class="form-control <%= locals.errors && errors.titulo ? 'is-invalid' : null %> ">
-                </label>
+                <label for="title" class="inp">
+                    <input type="text" name="title" id="title" placeholder="Ingrese el titulo del articulo"
+                       value="<%= product.title %>"
+                        class="form-control <%= locals.errors && errors.title ? 'is-invalid' : '' %>">
+                    </label>
                 <% if(locals.errors && errors.titulo) { %>
                     <p class="text-danger">
-                        <%= errors.titulo.msg %>
+                        <%= errors.title.msg %>
                     </p>
                     <% } %>
-                        <label for="descripcion" class="inp">
-                            <input type="text" name="descripcion" id="descripcion" 
+                        <label for="description" class="inp">
+                            <input type="text" name="description" id="description"
                                 placeholder="Ingrese una breve descripcion" maxlength="255"
-                                value="<%= product.descripcion %>"
-                                class="form-control <%= locals.errors && errors.descripcion ? 'is-invalid' : null %> ">
+                                value="<%= product.description %>"
+                                class="form-control <%= locals.errors && errors.description ? 'is-invalid' : null %> ">
                         </label>
-                        <% if(locals.errors && errors.descripcion) { %>
+                        <% if(locals.errors && errors.description) { %>
                             <p class="text-danger">
-                                <%= errors.descripcion.msg %>
+                                <%= errors.description.msg %>
                             </p>
                             <% } %>
 
-                                <label for="imagen" class="inp">
-                                    <input type="file" name="imagen" id="imagen">
+                                <label for="img_url" class="inp">
+                                    <input type="file" name="img_url" id="img_url">
                                     <!-- Propiedad -multiple- para subir varios Archivos -->
                                 </label>
-                                <% if(locals.errors && errors.imagen) { %>
+                                <% if(locals.errors && errors.img_url) { %>
                                     <p class="text-danger">
-                                        <%= errors.imagen.msg %>
+                                        <%= errors.img_url.msg %>
                                     </p>
                                     <% } %>
 
 
-                                        <label for="tipo" class="tipo">
-                                            <select name="tipo"
-                                                class="form-select <%= locals.errors && errors.tipo ? 'is-invalid' : null %> ">
-                                                <option value="">Elegi una categoria</option>
+                                        <label for="category" class="tipo">
+                                            <select name="category"
+                                                class="form-select <%= locals.errors && errors.category ? 'is-invalid' : null %> ">
+                                                <option value=""> A que categoria pertenece?</option>
                                                 <% let categories=['Indumentaria', 'Calzado' , 'Accesorios' ]; %>
                                                     <% for( let oneCategory of categories ) { %>
-                                                        <option 
-                                                        value="<%= oneCategory %>" <%=locals.old && product.tipo===oneCategory ? 'selected' : null %> >
-                                                            <%= oneCategory %> 
+                                                        <option value="<%= oneCategory %>" 
+                                                            <%= locals.old && old.category==oneCategory ? 'selected' : null %> >
+                                                            <%= oneCategory %>
                                                         </option>
                                                         <% } %>
                                             </select>
-
-                                            <!--   <input type="text" name="tipo" id="tipo" placeholder="Indumentaria, calzado, accesorio..."> -->
                                         </label>
-                                        <label for="precio" class="inp">
-                                            <input type="number" name="precio" id="precio" placeholder="Ingrese precio"
-                                                value="<%=product.precio %>"
-                                                class="form-control <%= locals.errors && errors.precio ? 'is-invalid' : null %> ">
+                                        <label for="price"  class="inp">
+                                            <input type="number" name="price" id="price" placeholder="Ingrese precio"
+                                            value="<%=product.price %>"
+                                            class="form-control <%= locals.errors && errors.price ? 'is-invalid' : null %> ">
                                         </label>
-                                        <% if(locals.errors && errors.descripcion) { %>
-                                            <p class="text-danger">
-                                                <%= errors.precio.msg %>
-                                            </p>
+                                        <% if(locals.errors && errors.price) { %>
+                                            <p class="text-danger"> <%= errors.price.msg %> </p>
                                             <% } %>
+                                            <label for="stock"  class="stock">
+                                                <select 
+                                                name="stock" 
+                                                class="form-select <%= locals.errors && errors.stock ? 'is-invalid' : null %> ">
+                                                    <option value="">En Stock?</option>
+                                                    <% 
+                                                        let Stock = ['Y', 'N'];
+                                                    %>
+                                                    <% for( let oneStock of Stock ) { %>
+                                                        <option value="<%= oneStock %>"
+                                                            <%= locals.old && old.tipo  === oneStock ? 'selected' : null %> >
+                                                             <%= oneStock %>
+                                                             </option>
+                                                    <% } %>
+                                                </select>
+                                            </label>    
 
                                                 <label for="" class="butt">
                                                     <button type="submit">Enviar</button>

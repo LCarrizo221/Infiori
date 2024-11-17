@@ -79,3 +79,7 @@ El usuario ingreso a la ruta: /detail/1
 El usuario ingreso a la ruta: /detail/1
 El usuario ingreso a la ruta: /detail/1
 >>>>>>> de955f8928e7d01d082bc0cb48db90183e0f7c53
+El usuario ingreso a la ruta: /detail/6
+El usuario ingreso a la ruta: /detail/6
+El usuario ingreso a la ruta: /detail/17
+El usuario ingreso a la ruta: /detail/14

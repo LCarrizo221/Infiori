@@ -1,17 +1,21 @@
 const { error } = require('console');
 const express = require('express');
-const { body } = require('express-validator');
+const { body, validationResult, check  } = require('express-validator');
 const multer = require('multer');
 const path = require('path');
 
 
 const validationProduct = [
-    body('title').notEmpty().withMessage('Debes agregarle el titulo del articulo'),
-    body('description').notEmpty().withMessage('Debes agregarle una descripcion'),
-    body('category').notEmpty().withMessage('Debes elegir el tipo'),
-    body('stock').notEmpty().withMessage('Debes elegir Stock'),
-    body('price').notEmpty().withMessage('Debes agregarle un precio'),
-    body('img_url').custom((value, { req }) => {
+    check('title').notEmpty().withMessage('Debes agregarle el titulo del articulo'),
+    check('description').notEmpty().withMessage('Debes agregarle una descripcion'),
+    check('category').notEmpty().withMessage('Seleccione la categoria'),
+    check('stock').notEmpty().withMessage('Seleccione si esta en Stock'),
+    check('price')
+        .isNumeric()
+        .withMessage('El precio debe ser un número.')
+        .isFloat({ gt: 0 })
+        .withMessage('El precio debe ser mayor que 0.'),    
+    check('img_url').custom((value, { req }) => {
         let file = req.file;
         let ExtensionAcepted = ['.jpg', '.png', '.gif'];
 
@@ -23,8 +27,6 @@ const validationProduct = [
                 throw new Error(`Tienes que subir una imagen con el formato ${ExtensionAcepted.join(', ')}`);
             }
         }
-
-
         return true;
     })
 ];
