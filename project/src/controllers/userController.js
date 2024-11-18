@@ -70,11 +70,11 @@ const userController = {
     processLogin2: async (req, res) => {
         const {userName, password} = req.body;
         try {
-            const user = await db.User.FindOne({ where: { email: userName}})
+            const user = await db.USERS.FindOne({ where: { mail: userName}})
 
             if (user && await bcrypt.compare(password, user.password)) {
-                req.session.userId = user.id;
-                req.session.userName = user.firstName;
+                req.session.userId = user.id_user;
+                req.session.userName = user.name;
                 req.session.user = user ;
                 return res.redirect("/")
             }else{
@@ -93,7 +93,7 @@ const userController = {
             return res.redirect("/user/login")
         }
         try {
-            const user = await db.User.findByPk(req.session.userId);
+            const user = await db.USERS.findByPk(req.session.userId);
             if (!user) {
                 return res.status(404).send("Usuario no encontrado");
             }
@@ -145,7 +145,7 @@ const userController = {
         });
     },
 
-    processRegister: async (req, res) => {
+    processRegister2: async (req, res) => {
         const errors = validationResult(req);
         if(!errors.isEmpty()){
             return res.render("register",{
@@ -199,7 +199,7 @@ const userController = {
 
             try {
                 // Busca el usuario en la base de datos por su ID
-                const user = await Usuario.findByPk(userId);
+                const user = await db.USERS.findByPk(userId);
 
                 if (!user) {
                     // Si no se encuentra el usuario, envía un mensaje de error o redirige a otra página
@@ -239,9 +239,9 @@ const userController = {
                 const hashedPassword = await bcrypt.hash(password, salt); // Hashea la contraseña usando el "salt"
 
                 // Crear un nuevo usuario con la contraseña hasheada
-                await Usuario.create({
+                await db.USERS.create({
                     nombre,
-                    email: userName, // Añadido userName como email
+                    mail: userName, // Añadido userName como email
                     password: hashedPassword
                 });
 
@@ -265,7 +265,7 @@ const userController = {
                     id: users.length + 1,
                     firstName: nombre,
                     lastName: apellido,
-                    email: userName,
+                    mail: userName,
                     password,
                     category: "user",
                     image: ""
@@ -290,7 +290,7 @@ const userController = {
     
             try {
                 // Buscar el usuario en la base de datos usando el email o userName
-                const user = await Usuario.findOne({ where: { email: userName } });
+                const user = await db.USERS.findOne({ where: { mail: userName } });
     
                 if (!user) {
                     // Si no se encuentra el usuario, envía un mensaje de error
@@ -308,7 +308,7 @@ const userController = {
                 req.session.user = {
                     id: user.id,
                     name: user.nombre,
-                    email: user.email
+                    mail: user.mail
                 };
     
                 console.log(`Usuario ${user.email} ha iniciado sesión exitosamente`);

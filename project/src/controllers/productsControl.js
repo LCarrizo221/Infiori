@@ -60,6 +60,24 @@ module.exports = {
       res.status(500).send("Error al cargar la página principal.");
     }
   },
+  rederbyCategory: async(req,res) => {
+    try {
+      const products = await db.productDB.findAll({
+        where: { category: req.params.category } //ATENCION este es el metodo para buscar por categoria, yo lo puse por req.params pero puede ser cualquier otro metodo 
+      });
+      
+
+      if (products.length === 0) {
+        
+         res.send( 'No se encontraron productos en esta categoría') ;
+      }
+
+      res.render("home",{products}); // Responder con los productos encontrados
+    } catch (error) {
+      res.status(500).json({ error: 'Error al obtener productos por categoría' });
+    }
+
+  },
   // Render para la vista de un producto
   renderViewDetail: async (req, res) => {
     const idProd = req.params.id

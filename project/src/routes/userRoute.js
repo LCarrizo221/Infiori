@@ -9,5 +9,5 @@ router.get("/profile/:id", userController.showProfile)
 
 router.post("/login", userController.processLogin);
 router.post("/register",userValidations, userController.createUser2);
-/* router.get("/test", userController.showForein ); */
+router.get("/test", userController.showForein ); 
 module.exports = router;

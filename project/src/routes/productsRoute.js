@@ -13,6 +13,7 @@ const validationProduct = require("../services/validationProduct");
 //rutas para el home------------------------------------------------
 router.get("/", productsControl.renderHomePage); //muestra todos los objetos en el HOME
 router.post("/");
+router.get("/:category", productsControl.rederbyCategory);
 
 router.get("/cart", productsControl.renderCart);
 //router.get("/detail/:id",logMiddleware, productsControl.detail);
