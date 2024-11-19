@@ -89,3 +89,5 @@ El usuario ingreso a la ruta: /detail/6
 El usuario ingreso a la ruta: /detail/16
 El usuario ingreso a la ruta: /detail/7
 El usuario ingreso a la ruta: /detail/6
+El usuario ingreso a la ruta: /detail/3
+El usuario ingreso a la ruta: /detail/3
