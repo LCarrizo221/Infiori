@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+}
+
+p {
+  font-weight: 400;
+}
+.category-panel {
+    background: #DDADB9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra añadida */
+  }
+  
+  .categories-list {
+    margin-top: 15px;
+  }
+  
+  .category-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .category-item:last-child {
+    border-bottom: none;
+  }
+  
+  .category-count {
+    font-weight: bold;
+    color: #6B2744;
+  }
+  

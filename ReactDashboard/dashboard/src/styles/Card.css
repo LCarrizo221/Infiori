@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+}
+
+p {
+  font-weight: 400;
+}
+.card {
+    background: #DDADB9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra añadida */
+  }
+  
+  .card h3 {
+    margin: 0;
+    color: #6B2744;
+    font-size: 0.9em;
+  }
+  
+  .card-value {
+    margin: 10px 0 0;
+    font-size: 2em;
+    font-weight: bold;
+    color: #341F4C;
+  }
+  
