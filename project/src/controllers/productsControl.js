@@ -10,6 +10,79 @@ const sequelize = db.sequelize;
 const { productDB } = require('../database/models/');
 
 module.exports = {
+     /* ---------------------API CONTROLLER-------------------------- */
+  getAllProductsAPI: async (req, res) => {
+    try {
+        const products = await db.productDB.findAll();
+        
+        // Obtener count por categoría
+        const categories = [...new Set(products.map(product => product.category))];
+        const countByCategory = {};
+        for (const category of categories) {
+            countByCategory[category] = products.filter(product => 
+                product.category === category).length;
+        }
+        
+        const response = {
+            count: products.length,
+            countByCategory,
+            products: products.map(product => ({
+                id: product.id_products,
+                name: product.title,
+                description: product.description,
+                categories: [product.category], // Array con la categoría
+                price: product.price, // Añadir el precio
+                stock: product.stock, // Añadir el stock
+                detail: `/api/products/${product.id_products}`
+            }))
+        };
+        
+        res.json(response);
+    } catch (error) {
+        res.status(500).json({ error: "Error al cargar productos" });
+    }
+},
+
+getProductByIdAPI: async (req, res) => {
+    try {
+        const product = await db.productDB.findByPk(req.params.id);
+        
+        if (!product) {
+            return res.status(404).json({ error: "Producto no encontrado" });
+        }
+
+        const productResponse = {
+            id: product.id_products,
+            name: product.title,
+            description: product.description,
+            price: product.price,
+            categories: [product.category],
+            stock: product.stock,
+            image: `${req.protocol}://${req.get('host')}${product.img_url}`
+        };
+
+        res.json(productResponse);
+    } catch (error) {
+        res.status(500).json({ error: "Error al cargar el producto" });
+    }
+},
+
+getLastProductAPI: async (req, res) => {
+  try {
+    const product = await db.productDB.findOne({
+      order: [['id_products', 'DESC']]
+    });
+    
+    if (!product) {
+      return res.status(404).json({ error: "No hay productos" });
+    }
+
+    res.json(product);
+  } catch (error) {
+    res.status(500).json({ error: "Error al obtener el último producto" });
+  }
+},
+/* ---------------------API CONTROLLER FIN-------------------------- */
 
   getAllProducts: async (req, res) => {
     try {

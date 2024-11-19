@@ -22,6 +22,54 @@ const userController = {
         const { userName, password } = req.body;
         console.log(`Intento de login con usuario: ${userName}`);
     },
+    /* ---------------------API CONTROLLER COMIENZO-------------------------- */
+    getAllUsersAPI: async (req, res) => {
+        try {
+            const users = await db.USERS.findAll({
+                attributes: ['id_user', 'name', 'mail', 'img_url'] // Excluimos password y categoría
+            });
+            
+            const response = {
+                count: users.length,
+                users: users.map(user => ({
+                    id: user.id_user,
+                    name: user.name,
+                    email: user.mail,
+                    detail: `/api/usuarios/${user.id_user}`
+                }))
+            };
+            
+            res.json(response);
+        } catch (error) {
+            console.error("Error al obtener todos los usuarios:", error);
+            res.status(500).send("Error al obtener los usuarios.");
+        }
+    },
+
+    getUserByIdAPI: async (req, res) => {
+        try {
+            const user = await db.USERS.findByPk(req.params.id, {
+                attributes: ['id_user', 'name', 'firstname', 'mail', 'img_url'] // Excluimos password y categoría
+            });
+            
+            if (user) {
+                const userResponse = {
+                    id: user.id_user,
+                    name: user.name,
+                    firstname: user.firstname,
+                    email: user.mail,
+                    profileImage: `${req.protocol}://${req.get('host')}${user.img_url}`
+                };
+                res.json(userResponse);
+            } else {
+                res.status(404).send("Usuario no encontrado.");
+            }
+        } catch (error) {
+            console.error("Error al obtener el usuario:", error);
+            res.status(500).send("Error al obtener el usuario.");
+        }
+    },
+    /* ---------------------API CONTROLLER FIN-------------------------- */
     getAllUsers2: async (req, res) => {
         try {
             const users = await db.USERS.findAll();
@@ -30,7 +78,9 @@ const userController = {
             console.error("Error al obtener todos los usuarios:", error);
             res.status(500).send("Error al obtener los usuarios.");
         }
-    }, getUserById2: async (req, res) => {
+    }, 
+    
+    getUserById2: async (req, res) => {
         try {
             const user = await db.USERS.findByPk(req.params.id);
             if (user) {

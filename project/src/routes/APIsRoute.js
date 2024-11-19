@@ -4,15 +4,15 @@ const productsController = require('../controllers/productsControl.js'); // Aseg
 const userController = require('../controllers/userController.js'); // Asegúrate de que este sea el nombre correcto
 
 // Rutas para productos
-router.get('/products', productsController.getAllProducts); // Ver todos los productos
-router.get('/products/:id', productsController.getProductById); // Ver producto por ID
+router.get('/products', productsController.getAllProductsAPI); // Ver todos los productos
+router.get('/products/:id', productsController.getProductByIdAPI); // Ver producto por ID
 router.get('/products/category/:category', productsController.getProductsByCategory); // Ver productos por categoría
+router.get('/products/last', productsController.getLastProductAPI);
 
-//module.exports = router;
 // Definir las rutas y asignar los métodos del controlador
-router.get('/usuarios', userController.getAllUsers2);
-router.get('/usuarios/:id', userController.getUserById2);
-router.post('/usuarios', userController.createUser2);
+router.get('/users', userController.getAllUsersAPI);
+router.get('/users/:id', userController.getUserByIdAPI);
+router.post('/users', userController.createUser2);
 /* router.put('/usuarios/:id', userController.updateUser);
 router.delete('/usuarios/:id', userController.deleteUser); */
 
